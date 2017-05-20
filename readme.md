@@ -41,7 +41,7 @@
     │    ├──  controls/ 控制逻辑的JS文件      
     │    │ 
     │	 └──  views/   渲染UI的JS文件  
-   	│	 
+    │	 
     ├── .babelrc babel配置文件  	
     ├── .editorconfig 编辑器配置文件  
     ├── webpack.config.js webpack配置文件  
