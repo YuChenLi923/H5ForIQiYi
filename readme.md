@@ -18,7 +18,7 @@
     │
     ├──  build/ 打包后的文件
     │    ├──   resource/   静态资源目录
-    │    │ 	    ├── css/   css文件目录
+    │    │ 	  ├── css/   css文件目录
     │	 │ 		├── images/  图片目录	
     │    │      └── fonts/  字体文件目录
     │    │ 
@@ -32,7 +32,7 @@
     ├── src/ 源文件
     │    │
     │    ├──   resource/   静态资源目录
-    │    │ 		├── scss/   scss文件目录
+    │    │ 	├── scss/   scss文件目录
     │	 │ 		
     │    │      
     │    │ 
