@@ -1,4 +1,4 @@
-# blueMonPlayerWebApp
+# H5ForIQiYi
 
 
 
@@ -8,8 +8,7 @@
 ## 项目目录结构
 
 
-
-``` md
+``` 
 
 ├── blueMonPlayerWebApp/      
     │  
@@ -27,7 +26,7 @@
     │    │
     │    ├──  controls/ 控制逻辑的JS文件      
     │    │ 
-   	│	 └──  views/   渲染UI的JS文件
+    │	 └──  views/   渲染UI的JS文件
     │	
     │        
     ├── src/ 源文件
