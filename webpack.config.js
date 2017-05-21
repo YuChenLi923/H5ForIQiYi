@@ -1,11 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var bundleCSSFile = 'index';
+var bundleCSSFile = 'pagination';
 
 module.exports = {
   entry:{
-   './views/index': path.resolve(__dirname,'src/controls/index.controls.js'),
+   './views/pagination': path.resolve(__dirname,'src/controls/pagination.controls.js'),
     './libs/vendor': ['react', 'react-dom'],
   },
   output:{

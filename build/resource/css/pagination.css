@@ -1,0 +1,81 @@
+html, body, div, ul, button, input, li, nav {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none; }
+
+ul {
+  list-style: none; }
+
+.maxWarp {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.Blue_NavList {
+  overflow: hidden;
+  background: #000; }
+  .Blue_NavList a {
+    width: 10%;
+    color: white;
+    line-height: 20px;
+    height: 20px;
+    font-size: 14px;
+    display: block;
+    float: left;
+    text-align: center;
+    cursor: pointer; }
+  .Blue_NavList a:hover {
+    background-color: #666; }
+  @media (max-width: 768px) {
+    .Blue_NavList a {
+      width: 25%; } }
+  .Blue_NavList .list {
+    height: 20px;
+    transition: all  0.5s;
+    overflow: hidden; }
+    .Blue_NavList .list .on {
+      background-color: #666; }
+  .Blue_NavList .dropBox {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 2px; }
+  .Blue_NavList .off {
+    background-image: url("/build/resource/images/dropDown.png"); }
+  .Blue_NavList .on {
+    background-image: url("/build/resource/images/pullUp.png"); }
+  .Blue_NavList button {
+    width: 100px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 40px 0px;
+    background-size: 20px 20px;
+    background-color: inherit; }
+
+.Blue_Top {
+  background-color: #333; }
+  .Blue_Top .maxWarp {
+    height: 60px;
+    background: url("/build/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
+
+.Blue_Container .body {
+  height: 500px;
+  margin-top: 146px; }
+
+.Blue_Container header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.Blue_Container footer {
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #999;
+  text-align: center;
+  background: #000; }
+
+.Blue_Container .blackBox {
+  height: 10px;
+  background: #000; }

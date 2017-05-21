@@ -4,6 +4,24 @@ function getScreenWidth(){
     return docEl.getBoundingClientRect().width;
 }
 
+// 解析query
+
+function parseURLQuery(str){
+  const queryStr = decodeURI(str).split('?')[1],
+		   result = {};
+	if(queryStr) {
+		let queryArry = queryStr.split('&'),
+			  i,
+			  keyValue,
+			  len;
+		for( i = 0 , len = queryArry.length ; i < len ; i++){
+			keyValue = queryArry[i].split('=');
+			result[keyValue[0]]=keyValue[1];
+		}
+	}
+	return result;
+}
+
 const appConfig = {
   host:"http://iface.qiyi.com",
   publicData:{
@@ -34,5 +52,6 @@ const appConfig = {
 
 module.exports = {
     config:appConfig,
+    parseURLQuery:parseURLQuery,
     getScreenWidth:getScreenWidth
 };

@@ -1,33 +1,12 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
-import { Blue_Container } from '../views/index.view.js';
+import { Blue_Container } from '../views/pagination.view.js';
 import ReactDOM from 'react-dom';
 import React from 'react';
 const reducers = combineReducers({
     NavList:NavList_reducers
 });
 const store = createStore(reducers);
-const CarouselState = {
-  index:0,// 轮播图的初始索引
-	width:1180,// 轮播图显示宽度
-	time:1000,// 轮播动画时间
-	easing:'ease',
-	setIntervalTime:8000,// 自动轮播时间(ms)
-	items:[// 轮播内容(这个之后通过ajax接入数据)
-		{
-			src:"#",//点击后打开新窗口进入地址
-			img:"../resource/images/1.png" // 轮播图图片路径
-		},
-		{
-			src:"#",
-			img:"../resource/images/1.png"
-		},
-		{
-			src:"#",
-			img:"../resource/images/1.png"
-		}
-	]
-}
 function NavList_reducers(state = { items:[] , index:0 }, action) {
     switch (action.type) {
         case 'getNavListItems':
@@ -36,6 +15,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
               index:action.index,
               showLen:action.showLen,
               callback:action.callback,
+              lineIndex:action.lineIndex,
               isOn:false
             });
         case 'scrollChange':
@@ -45,7 +25,9 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             break;
         case 'clickItem':
             return Object.assign({},state,{
-              index:action.index
+              index:action.index,
+              lineIndex:action.lineIndex,
+              isOn:!state.isOn
             });
             break;
         case 'clickBtn':
@@ -59,8 +41,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
 }
 function mapStateToProps(state) {
     return {
-        NavListState: state.NavList,
-        CarouselState:CarouselState
+        NavListState: state.NavList
     }
 }
 const App = connect(

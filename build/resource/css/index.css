@@ -58,14 +58,86 @@ ul {
     height: 60px;
     background: url("/build/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
 
-.Blue_Container .body {
+.carousel_warp {
+  height: 386px; }
+
+.margin {
+  height: 14px; }
+
+.BluMUI_Carousel {
+  position: relative;
+  height: 339px;
+  width: 1180px;
+  margin-top: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden; }
+  .BluMUI_Carousel .body {
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transition: all 0.5s;
+    position: absolute; }
+    .BluMUI_Carousel .body li {
+      float: left;
+      width: 1180px;
+      height: 100%; }
+  .BluMUI_Carousel img {
+    width: 100%;
+    height: 100%; }
+  .BluMUI_Carousel .nav {
+    position: absolute;
+    z-index: 1;
+    width: 1180px;
+    height: 42px;
+    bottom: 0;
+    background: url("/build/resource/images/carousel_bg.png") repeat-x; }
+    .BluMUI_Carousel .nav li {
+      cursor: pointer;
+      float: left;
+      width: 28px;
+      height: 32px;
+      margin-left: 37px;
+      margin-top: 5px; }
+    .BluMUI_Carousel .nav button {
+      float: left;
+      border: none;
+      width: 16px;
+      height: 32px;
+      margin-top: 5px;
+      outline: none; }
+    .BluMUI_Carousel .nav .last {
+      background: url("/build/resource/images/carousel_left.png");
+      margin-right: 5px; }
+    .BluMUI_Carousel .nav .next {
+      background: url("/build/resource/images/carousel_right.png");
+      float: left;
+      margin-left: 99px; }
+    .BluMUI_Carousel .nav .control {
+      width: 402px;
+      height: 100%;
+      margin: auto; }
+  .BluMUI_Carousel .on {
+    background: url("/build/resource/images/carousel_selected.png"); }
+  .BluMUI_Carousel .off {
+    width: 28px;
+    height: 32px;
+    background: url("/build/resource/images/carousel_noselected.png"); }
+  .BluMUI_Carousel .showNav {
+    float: left;
+    margin-left: 62px; }
+
+.Blue_Container #body {
   height: 500px;
-  margin-top: 146px; }
+  margin-top: 146px;
+  transition: left 1s; }
 
 .Blue_Container header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%; }
 
 .Blue_Container footer {

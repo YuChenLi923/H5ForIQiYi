@@ -1,0 +1,111 @@
+
+// 通用部分
+$fontSizeS:14px;
+$fontSizeM:16px;
+$fontSizeL:20px;
+$maxPageWidth:1180px;
+
+html,body,div,ul,button,input,li,nav{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+
+.maxWarp{
+  max-width: $maxPageWidth;
+  margin-left: auto;
+  margin-right: auto;
+}
+// 页面结构布局样式
+
+// 组件样式
+.Blue_NavList{
+  overflow:hidden;
+  background: #000;
+  a{
+    width:10%;
+    color:white;
+    line-height: 20px;
+    height: 20px;
+    font-size: $fontSizeS;
+    display: block;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+  }
+  a:hover{
+    background-color: #666;
+  }
+  @media (max-width: 768px){
+    a{
+      width: 25%;
+    }
+  }
+  .list{
+     height:20px;
+     transition:all  0.5s;
+     overflow: hidden;
+     .on{
+       background-color: #666;
+     }
+  }
+  .dropBox{
+    text-align: center;
+    margin-top:5px;
+    margin-bottom: 2px;
+  }
+  .off{
+    background-image:url('/build/resource/images/dropDown.png');
+  }
+  .on{
+    background-image:url('/build/resource/images/pullUp.png');
+  }
+  button{
+    width: 100px;
+    height: 20px;
+    background-repeat:no-repeat;
+    background-position: 40px 0px;
+    background-size:20px 20px;
+    background-color:inherit;
+  }
+}
+.Blue_Top{
+  background-color:#333;
+  .maxWarp{
+    height: 60px;
+    background:url('/build/resource/images/iqiyi-logo.png') no-repeat 0 5px;
+  }
+}
+
+
+
+
+
+.Blue_Container{
+  .body{
+    height: 500px;
+    margin-top: 146px;
+  }
+  header{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+  }
+  footer{
+    font-size: $fontSizeS;
+    padding-top:15px;
+    padding-bottom:15px;
+    color:#999;
+    text-align:center;
+    background:#000;
+  }
+  .blackBox{
+    height: 10px;
+    background:#000;
+  }
+}
