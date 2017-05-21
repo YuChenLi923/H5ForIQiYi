@@ -17,6 +17,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
+    "fast-uglifyjs-plugin": "^0.1.6",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
@@ -24,6 +25,13 @@
   },
   "scripts": {},
   "author": "YuChenLi923",
-  "contributors":[{"name":"chenmy0917"},{"name":"sdoasddd0921"}],
+  "contributors": [
+    {
+      "name": "chenmy0917"
+    },
+    {
+      "name": "sdoasddd0921"
+    }
+  ],
   "license": "MIT"
 }
