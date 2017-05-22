@@ -67,3 +67,22 @@ $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install
 
 ```
+
+
+
+## 命令
+
+热刷新(不能自动打包)
+
+```
+npm run hot-run
+
+```
+
+
+热刷新并且自动打包(只能运行开发的文件)
+
+```
+npm run hot-build
+
+```

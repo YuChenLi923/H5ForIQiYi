@@ -35,15 +35,15 @@ ul {
     transition: all  0.5s;
     overflow: hidden; }
     .Blue_NavList .list .on {
-      background-color: #666; }
+      background: #666; }
   .Blue_NavList .dropBox {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 2px; }
   .Blue_NavList .off {
-    background-image: url("/build/resource/images/dropDown.png"); }
+    background-image: url("/../resource/images/dropDown.png"); }
   .Blue_NavList .on {
-    background-image: url("/build/resource/images/pullUp.png"); }
+    background-image: url("/../resource/images/pullUp.png"); }
   .Blue_NavList button {
     width: 100px;
     height: 20px;
@@ -56,7 +56,7 @@ ul {
   background-color: #333; }
   .Blue_Top .maxWarp {
     height: 60px;
-    background: url("/build/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
+    background: url("/../resource/images/iqiyi-logo.png") no-repeat 0 5px; }
 
 .Blue_Container .body {
   height: 500px;

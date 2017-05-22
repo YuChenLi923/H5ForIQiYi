@@ -50,7 +50,7 @@ ul{
      transition:all  0.5s;
      overflow: hidden;
      .on{
-       background-color: #666;
+       background: #666;
      }
   }
   .dropBox{
@@ -59,10 +59,10 @@ ul{
     margin-bottom: 2px;
   }
   .off{
-    background-image:url('/build/resource/images/dropDown.png');
+    background-image:url('/../resource/images/dropDown.png');
   }
   .on{
-    background-image:url('/build/resource/images/pullUp.png');
+    background-image:url('/../resource/images/pullUp.png');
   }
   button{
     width: 100px;
@@ -77,7 +77,7 @@ ul{
   background-color:#333;
   .maxWarp{
     height: 60px;
-    background:url('/build/resource/images/iqiyi-logo.png') no-repeat 0 5px;
+    background:url('/../resource/images/iqiyi-logo.png') no-repeat 0 5px;
   }
 }
 

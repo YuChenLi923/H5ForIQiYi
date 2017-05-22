@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "'爱奇艺高校技术比赛H5应用-15级蓝山工作室前端组'",
   "main": "src/app.js",
+  "scripts":{
+    "build":"webpack",
+    "hot-run":"webpack-dev-server --content-base ./build",
+    "hot-build":"webpack-dev-server --inline --compress --process --quiet --content-base ./build"
+  },
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -23,7 +28,6 @@
     "style-loader": "^0.17.0",
     "webpack-dev-server": "^1.14.0"
   },
-  "scripts": {},
   "author": "YuChenLi923",
   "contributors": [
     {

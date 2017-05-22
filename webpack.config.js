@@ -11,7 +11,7 @@ module.exports = {
   output:{
       path:path.resolve(__dirname,'build'),
       filename:"[name].js",
-      publicPath: 'http://localhost/build'
+      publicPath: 'http://localhost/'
   },
   plugins: [
       new webpack.optimize.CommonsChunkPlugin({
