@@ -20,7 +20,7 @@
     │    ├──   resource/   静态资源目录
     │    │ 	    ├── css/   css文件目录
     │    │ 	    ├── images/  图片目录
-    │    │        └── fonts/  字体文件目录
+    │    │         └── fonts/  字体文件目录
     │    │
     │    ├──  libs/ 第三方库资源
     │    │
@@ -33,7 +33,7 @@
     │    │
     │    ├──   resource/   静态资源目录
     │    │ 	   └── scss/   scss文件目录
-    │	   │ 		
+    │	  │ 		
     │    │      
     │    │
     │    ├──  libs/ 库资源
@@ -42,7 +42,7 @@
     │    │
     │    ├── reduxer/ 控制组件state的文件
     │    │
-    │	  └──  views/   渲染UI的JS文件  
+    │	 └──  views/   渲染UI的JS文件  
     │	 
     ├── .babelrc babel配置文件  	
     ├── .editorconfig 编辑器配置文件  
