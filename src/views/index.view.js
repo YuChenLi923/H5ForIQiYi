@@ -79,7 +79,7 @@ class Blue_Carousel extends React.Component{
 			navShow.push(
 				<li data-index={i}
 					 key={i}
-					 onClick={this.clickNav}
+					 onClick={clickNav}
 					 className={i==index?"on":"off"}>
 				</li>);
 		}
@@ -99,7 +99,7 @@ class Blue_Carousel extends React.Component{
 				<div className="nav">
 					<ul className="control" >
             {do{
-              if(width>=768){
+              if(width>768){
                 <button onClick={clickLast}
 								        className="last">
 						    </button>}
@@ -108,7 +108,7 @@ class Blue_Carousel extends React.Component{
 							{navShow}
 						</ul>
             {do{
-              if(width>=768){
+              if(width>768){
   						  <button onClick={clickNext}
   							 	    className="next">
   					  	</button>

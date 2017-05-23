@@ -60,7 +60,6 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   }else {
     dpr = 1;
   }
-
   docEl.setAttribute('data-dpr', dpr);
   updateRem(width,dpr);
   appConfig.dpr = dpr;

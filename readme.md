@@ -86,3 +86,10 @@ npm run hot-run
 npm run hot-build
 
 ```
+
+
+## 开发注意
+
+- 所有html文件必须引用ajax.config.js文件,这个文件目前可以输出1个config对象和3个工具函数，同时会自动设置rem的大小。
+- 此次开始是做自适应的网页，移动端的长度单位使用rem,pc端长度单位使用px或者rem。
+- 1rem = 36.5px(以Ipone6为参考)

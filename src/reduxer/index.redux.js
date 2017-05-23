@@ -133,7 +133,6 @@ function mapDispatchToProps(dispatch) {
               type:'changIndex',
               changIndexType:-1
             });
-            createTimeid();
           },
           clickNext:function(){
             clearInterval(timerID);
@@ -141,17 +140,15 @@ function mapDispatchToProps(dispatch) {
               type:'changIndex',
               changIndexType:1
             });
-            createTimeid();
           },
           clickNav:function(e){
             var target=e.target,
       				  index=parseInt(target.getAttribute("data-index"));
-              clearInterval(timerID);
+            clearInterval(timerID);
             dispatch({
               type:'changIndex',
               index:index
             });
-            createTimeid();
           },
           touchStart:function(e){
             let touchs = e.touches[0];
