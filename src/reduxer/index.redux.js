@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 const reducers = combineReducers({
     NavList:NavList_reducers,
-    Carousel:Carousel_reducers
+    Carousel:Carousel_reducers,
+    Cards:Cards_reducers
 });
 const store = createStore(reducers);
 let timerID = null;
@@ -19,6 +20,7 @@ function createTimeid(){
           });
   },3000);
 }
+// 导航栏的reducers
 function NavList_reducers(state = { items:[] , index:0 }, action) {
     switch (action.type) {
         case 'getNavListItems':
@@ -48,7 +50,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             return state
     }
 }
-
+// 轮播图的reducers
 function Carousel_reducers(state,action){
   if(state === undefined){
     state = {
@@ -113,20 +115,35 @@ function Carousel_reducers(state,action){
     return state;
   }
 }
+
+function Cards_reducers(state = { cards:[]},action){
+  switch (action.type) {
+    case 'getCardInf':
+      let cards = state.cards;
+      cards.push(action.card);
+      return Object.assign({},state,{
+        cards:cards
+      });
+      break;
+    default:
+      return state;
+  }
+}
 function mapStateToProps(state) {
     return {
         NavListState: state.NavList,
-        CarouselState:state.Carousel
+        CarouselState:state.Carousel,
+        CardsState:state.Cards
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        NavListDispatch:{
+        NavListDispatch:{// 导航栏的dispatch
           clickBtn:function(){
             dispatch({type:'clickBtn'});
           }
         },
-        CarouseDispatch:{
+        CarouseDispatch:{// 轮播图的dispatch
           clickLast:function(){
             clearInterval(timerID);
             dispatch({

@@ -121,6 +121,37 @@ class Blue_Carousel extends React.Component{
 	}
 }
 
+// 内容卡片
+class Blue_CardBox extends React.Component{
+  _createItems(items){
+    let i,
+        len,
+        result = [];
+    for( i = 0 , len = items.length ; i < len ; i++){
+      result.push(
+        <div key ={i} className='card'>
+          <img src={items[i].img} />
+          <span>{items[i].title}</span>
+        </div>
+      );
+    }
+    return result;
+  }
+  render(){
+    let { card  } = this.props;
+    return (
+      <section className='Blue_CardBox'>
+        <header className='header'>
+          <span className='title' style={{backgroundImage:'url(../resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
+          <span className='more'>更多</span>
+        </header>
+        <div className="cardWarp">
+        {this._createItems(card.items)}
+        </div>
+      </section>
+    );
+  }
+}
 
 // 顶部
 class Blue_Top extends React.Component{
@@ -140,7 +171,7 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { CarouseDispatch , NavListDispatch ,NavListState , CarouselState } = this.props;
+        let { CarouseDispatch , NavListDispatch ,NavListState , CarouselState ,CardsState} = this.props;
         return(
             <div className="Blue_Container">
                 <header>
@@ -148,8 +179,14 @@ class Blue_Container extends React.Component{
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
                 <Blue_Carousel {...CarouselState} {...CarouseDispatch}/>
-                <section id = 'body'>
-                </section>
+                <div id = 'body'>
+                  {
+                    CardsState.cards.map((card,index)=>{
+                      console.log(card);
+                      return <Blue_CardBox card = {card} key={index}/>
+                    })
+                  }
+                </div>
                 <footer>
                     蓝山工作室15级前端组制作
                 </footer>

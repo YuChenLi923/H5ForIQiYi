@@ -1,8 +1,11 @@
 
 // 通用部分
+$fontSizeSS:12px;
 $fontSizeS:14px;
 $fontSizeM:16px;
 $fontSizeL:20px;
+$fontSizeXL:24px;
+$fontSizeXLL:28px;
 $maxPageWidth:1180px;
 
 html,body,div,ul,button,input,li,nav{
@@ -93,11 +96,9 @@ ul{
 }
 
 // 轮播图
-
 .carousel_warp{
 	height: 386px;
 }
-
 .margin{
 	height: 14px;
 }
@@ -220,19 +221,94 @@ ul{
 
 }
 
+// 卡片
+
+.Blue_CardBox{
+  font-size: $fontSizeM;
+  .more,.title{
+    font-size: $fontSizeXL;
+    line-height: 40px;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    color:#699f00;
+  }
+  .title{
+    float: left;
+    background-position: 5px 5px;
+    padding-left: 40px;
+  }
+  .more{
+    float: right;
+    padding-right: 30px;
+    background-position: 48px 5px;
+    cursor: pointer;
+    background-image:url('/resource/images/more.png');
+  }
+  .cardWarp{
+    overflow: hidden;
+    margin-top: 5px;
+  }
+  .header{
+    overflow: hidden;
+    height: 40px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  @media(max-width: 768px){
+    .more,.title{
+      background-size: 20px 20px;
+      font-size: $fontSizeM;
+    }
+    .title{
+      background-position: 5px 10px;
+      padding-left: 30px;
+    }
+    .more{
+      background-position: 32px 10px;
+      padding-right: 32px;
+    }
+  }
+  .card{
+    width:25%;
+    position: relative;
+    float: left;
+    span{
+      left:0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      text-align: center;
+      display: block;
+      overflow: hidden;
+      color:white;
+      bottom: 0;
+      position: absolute;
+    }
+    @media(max-width: 768px){
+      span{
+        font-size: $fontSizeSS;
+        height: 16px;
+        line-height: 16px;
+      }
+    }
+    img{
+      width: 100%;
+    }
+  }
+}
+
+// 顶级容器
 .Blue_Container{
   #body{
-    height: 500px;
-    margin-top: 146px;
-    transition: left 1s;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
   }
   header{
     top:0;
     left: 0;
     z-index: 2;
     width: 100%;
+    height: 32px;
   }
-
   footer{
     font-size: $fontSizeS;
     padding-top:15px;
@@ -240,5 +316,6 @@ ul{
     color:#999;
     text-align:center;
     background:#000;
+    margin-top: 10px;
   }
 }

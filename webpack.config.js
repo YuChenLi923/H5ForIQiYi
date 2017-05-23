@@ -20,18 +20,18 @@ module.exports = {
       new webpack.optimize.CommonsChunkPlugin({
             name: ['./libs/vendor','./libs/manifest'],
        }),
-     // 生产环境的打包请取消下面的注释,开发环境保留下面的注释
-    //  new webpack.optimize.UglifyJsPlugin({
-    //      compress: {
-    //          warnings: false,
-    //          drop_console:true
-    //      }
-    //  }),
-    //   new webpack.DefinePlugin({
-    //       'process.env':{
-    //           'NODE_ENV': JSON.stringify('production')
-    //       }
-    //   }),
+     //生产环境的打包请取消下面的注释,开发环境保留下面的注释
+     new webpack.optimize.UglifyJsPlugin({
+         compress: {
+             warnings: false,
+             drop_console:true
+         }
+     }),
+      new webpack.DefinePlugin({
+          'process.env':{
+              'NODE_ENV': JSON.stringify('production')
+          }
+      }),
       new ExtractTextPlugin("resource/css/[name].css")
   ],
   module: {

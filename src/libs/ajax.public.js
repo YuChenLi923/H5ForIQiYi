@@ -120,7 +120,6 @@ function getTouchDirection(startX,startY,endX,endY){
       touchDis = Math.sqrt( disX*disX + disY*disY),
       tanV = disY / disX,
       dir = Math.atan2(disY , disX)/(Math.PI)*180;
-  console.log(dir,tanV);
   if(touchDis < 3){
     return 0;
   }

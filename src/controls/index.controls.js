@@ -106,7 +106,7 @@ function createAction(type,data){
           code = result.code,
           data = result.data;
       for( i = 0 , len = data.length ; i < len ; i++){
-        handleRecommend(data[i].title,data[i].video_list);
+        handleRecommend(data[i].title,data[i]);
       }
     }
   },'getCarousel');
@@ -121,6 +121,7 @@ function handleRecommend(title,data){
       setCarousel(data);
       break;
     default:
+    setCardInf(data);
     break;
   }
 }
@@ -130,17 +131,44 @@ function handleRecommend(title,data){
 function setCarousel(data){
   let i,
       items = [],
-      len = data.length;
+      videos = data.video_list,
+      len = videos.length;
   for( i = 0 ;  i < len ; i++){
     items.push({
       src:'#',
-      img:data[i].img,
-      title:data[i].short_title
+      img:videos[i].img,
+      title:videos[i].short_title
     });
   }
   store.dispatch(createAction('getCarouselItems',{
     items:items,
     width:scrollW<=768?scrollW:1180,
     height:scrollW>768?316/640*1180:316/640*scrollW
+  }))
+}
+
+
+// 设置各个卡片的信息
+
+function setCardInf(data){
+  let i,
+      items = [],
+      card = {},
+      title = data.title,
+      id = data.channel_id,
+      videos = data.video_list,
+      len = videos.length;
+  for( i = 0 ;  i < len ; i++){
+    items.push({
+      src:'#',
+      img:videos[i].img,
+      title:videos[i].short_title
+    });
+  }
+  card.id  = id;
+  card.title = title;
+  card.items = items;
+  store.dispatch(createAction('getCardInf',{
+    card:card
   }))
 }

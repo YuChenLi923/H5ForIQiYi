@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch) {
   return{
     NavListDispatch:{
       clickItem:function(){
-        dispatch({type:'clickBtn'})
+        dispatch({type:'clickItem'})
       }
     }
   }

@@ -13,15 +13,19 @@ ul {
   margin-right: auto; }
 
 .Blue_NavList {
+  width: 100%;
   overflow: hidden;
-  background: #000; }
+  background: #000;
+  position: absolute;
+  z-index: 2; }
   .Blue_NavList a {
     width: 10%;
     color: white;
     line-height: 20px;
     height: 20px;
     font-size: 14px;
-    display: inline-block;
+    display: block;
+    float: left;
     text-align: center;
     cursor: pointer; }
   .Blue_NavList a:hover {
@@ -37,14 +41,16 @@ ul {
     .Blue_NavList .list .on {
       background-color: #666; }
   .Blue_NavList .dropBox {
-    text-align: center;
     margin-top: 5px;
     margin-bottom: 2px; }
   .Blue_NavList .off {
-    background-image: url("/build/resource/images/dropDown.png"); }
+    background-image: url("/resource/images/dropDown.png"); }
   .Blue_NavList .on {
-    background-image: url("/build/resource/images/pullUp.png"); }
+    background-image: url("/resource/images/pullUp.png"); }
   .Blue_NavList button {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
     width: 100px;
     height: 20px;
     background-repeat: no-repeat;
@@ -56,7 +62,7 @@ ul {
   background-color: #333; }
   .Blue_Top .maxWarp {
     height: 60px;
-    background: url("/build/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
+    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
 
 .carousel_warp {
   height: 386px; }
@@ -66,9 +72,8 @@ ul {
 
 .BluMUI_Carousel {
   position: relative;
-  height: 339px;
-  width: 1180px;
-  margin-top: 160px;
+  max-width: 1180px;
+  margin-top: 95px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden; }
@@ -81,64 +86,154 @@ ul {
     position: absolute; }
     .BluMUI_Carousel .body li {
       float: left;
-      width: 1180px;
-      height: 100%; }
+      height: 100%;
+      position: relative; }
   .BluMUI_Carousel img {
     width: 100%;
     height: 100%; }
   .BluMUI_Carousel .nav {
     position: absolute;
     z-index: 1;
-    width: 1180px;
     height: 42px;
+    width: 100%;
     bottom: 0;
-    background: url("/build/resource/images/carousel_bg.png") repeat-x; }
+    background: rgba(0, 0, 0, 0.5); }
     .BluMUI_Carousel .nav li {
       cursor: pointer;
       float: left;
-      width: 28px;
-      height: 32px;
-      margin-left: 37px;
+      width: 35px;
+      height: 35px;
+      margin-left: 35px;
       margin-top: 5px; }
+    .BluMUI_Carousel .nav .control {
+      width: 424px;
+      height: 100%;
+      margin: auto; }
+    .BluMUI_Carousel .nav .showNav {
+      float: left; }
+    @media (max-width: 768px) {
+      .BluMUI_Carousel .nav {
+        height: 0.45rem; }
+        .BluMUI_Carousel .nav li {
+          width: 0.35rem;
+          height: 0.35rem;
+          margin-left: 0.1rem;
+          margin-top: 0.05rem; }
+        .BluMUI_Carousel .nav .control {
+          width: auto; }
+        .BluMUI_Carousel .nav .showNav {
+          float: right;
+          margin-right: 0.1rem; }
+        .BluMUI_Carousel .nav .next {
+          margin-left: 0.2rem; } }
     .BluMUI_Carousel .nav button {
       float: left;
+      display: block;
+      margin-top: 5px;
       border: none;
       width: 16px;
       height: 32px;
-      margin-top: 5px;
       outline: none; }
     .BluMUI_Carousel .nav .last {
-      background: url("/build/resource/images/carousel_left.png");
+      background: url("/resource/images/carousel_left.png");
       margin-right: 5px; }
     .BluMUI_Carousel .nav .next {
-      background: url("/build/resource/images/carousel_right.png");
+      background: url("/resource/images/carousel_right.png");
       float: left;
-      margin-left: 99px; }
-    .BluMUI_Carousel .nav .control {
-      width: 402px;
-      height: 100%;
-      margin: auto; }
+      margin-left: 37px; }
   .BluMUI_Carousel .on {
-    background: url("/build/resource/images/carousel_selected.png"); }
+    background: url("/resource/images/carousel_selected.png") no-repeat;
+    background-size: 100% 100%; }
   .BluMUI_Carousel .off {
     width: 28px;
     height: 32px;
-    background: url("/build/resource/images/carousel_noselected.png"); }
-  .BluMUI_Carousel .showNav {
+    background: url("/resource/images/carousel_noselected.png") no-repeat;
+    background-size: 100% 100%; }
+  @media (max-width: 768px) {
+    .BluMUI_Carousel span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: white;
+      font-size: 0.35rem;
+      text-align: center;
+      width: 100%;
+      height: 0.45rem;
+      line-height: 0.45rem;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.5);
+      display: inline-block; }
+    .BluMUI_Carousel .nav {
+      background: none; } }
+
+.Blue_CardBox {
+  font-size: 16px; }
+  .Blue_CardBox .more, .Blue_CardBox .title {
+    font-size: 24px;
+    line-height: 40px;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    color: #699f00; }
+  .Blue_CardBox .title {
     float: left;
-    margin-left: 62px; }
+    background-position: 5px 5px;
+    padding-left: 40px; }
+  .Blue_CardBox .more {
+    float: right;
+    padding-right: 30px;
+    background-position: 48px 5px;
+    cursor: pointer;
+    background-image: url("/resource/images/more.png"); }
+  .Blue_CardBox .cardWarp {
+    overflow: hidden;
+    margin-top: 5px; }
+  .Blue_CardBox .header {
+    overflow: hidden;
+    height: 40px;
+    border-bottom: 1px solid #e1e1e1; }
+  @media (max-width: 768px) {
+    .Blue_CardBox .more, .Blue_CardBox .title {
+      background-size: 20px 20px;
+      font-size: 16px; }
+    .Blue_CardBox .title {
+      background-position: 5px 10px;
+      padding-left: 30px; }
+    .Blue_CardBox .more {
+      background-position: 32px 10px;
+      padding-right: 32px; } }
+  .Blue_CardBox .card {
+    width: 25%;
+    position: relative;
+    float: left; }
+    .Blue_CardBox .card span {
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      display: block;
+      overflow: hidden;
+      color: white;
+      bottom: 0;
+      position: absolute; }
+    @media (max-width: 768px) {
+      .Blue_CardBox .card span {
+        font-size: 12px;
+        height: 16px;
+        line-height: 16px; } }
+    .Blue_CardBox .card img {
+      width: 100%; }
 
 .Blue_Container #body {
-  height: 500px;
-  margin-top: 146px;
-  transition: left 1s; }
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto; }
 
 .Blue_Container header {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
-  width: 100%; }
+  width: 100%;
+  height: 32px; }
 
 .Blue_Container footer {
   font-size: 14px;
@@ -146,4 +241,5 @@ ul {
   padding-bottom: 15px;
   color: #999;
   text-align: center;
-  background: #000; }
+  background: #000;
+  margin-top: 10px; }
