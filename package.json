@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "'爱奇艺高校技术比赛H5应用-15级蓝山工作室前端组'",
   "main": "src/app.js",
-  "scripts":{
-    "build":"webpack",
-    "hot-run":"webpack-dev-server --content-base ./build",
-    "hot-build":"webpack-dev-server --inline --compress --process --quiet --content-base ./build"
+  "scripts": {
+    "build": "webpack",
+    "hot-run": "webpack-dev-server --content-base ./build",
+    "hot-build": "webpack-dev-server --inline --compress --process --quiet --content-base ./build"
   },
   "dependencies": {
     "react": "^15.5.4",
@@ -17,6 +17,7 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-do-expressions": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

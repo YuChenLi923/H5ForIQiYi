@@ -1,9 +1,8 @@
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenWidth ,parseURLQuery } from '../libs/ajax.public';
-import '../resource/scss/pagination.scss';
+import { config ,  getScreenSize ,parseURLQuery } from '../libs/ajax.public';
 import store from '../reduxer/pagination.redux';
 let  tid,
-     scrollW = getScreenWidth();
+     scrollW = getScreenSize().width;
 // 初始ajaxExpanding对象
 ajaxExpanding.init({
     name:'getNavList',
@@ -72,7 +71,7 @@ ajaxExpanding.init({
 function scrollChange(){
   clearTimeout(tid);
   tid = setTimeout(function(){
-      scrollW = getScreenWidth();
+      scrollW = getScreenSize().width;
       store.dispatch(createAction('scrollChange',{
         showLen:scrollW>768?10:4
       }));

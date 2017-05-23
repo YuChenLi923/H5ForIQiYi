@@ -44,8 +44,18 @@ function mapStateToProps(state) {
         NavListState: state.NavList
     }
 }
+function mapDispatchToProps(dispatch) {
+  return{
+    NavListDispatch:{
+      clickItem:function(){
+        dispatch({type:'clickBtn'})
+      }
+    }
+  }
+}
 const App = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Blue_Container);
 ReactDOM.render(
     <Provider store={store}>

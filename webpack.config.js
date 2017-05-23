@@ -1,11 +1,14 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var bundleCSSFile = 'pagination';
+
 
 module.exports = {
   entry:{
    './views/pagination': path.resolve(__dirname,'src/controls/pagination.controls.js'),
+   './views/index':path.resolve(__dirname,'src/controls/index.controls.js'),
+   'index': path.resolve(__dirname,'src/resource/scss/index.scss'),
+   'pagination': path.resolve(__dirname,'src/resource/scss/pagination.scss'),
     './libs/vendor': ['react', 'react-dom'],
   },
   output:{
@@ -18,18 +21,18 @@ module.exports = {
             name: ['./libs/vendor','./libs/manifest'],
        }),
      // 生产环境的打包请取消下面的注释,开发环境保留下面的注释
-     new webpack.optimize.UglifyJsPlugin({
-         compress: {
-             warnings: false,
-             drop_console:true
-         }
-     }),
-      new webpack.DefinePlugin({
-          'process.env':{
-              'NODE_ENV': JSON.stringify('production')
-          }
-      }),
-      new ExtractTextPlugin("resource/css/" + bundleCSSFile + ".css")
+    //  new webpack.optimize.UglifyJsPlugin({
+    //      compress: {
+    //          warnings: false,
+    //          drop_console:true
+    //      }
+    //  }),
+    //   new webpack.DefinePlugin({
+    //       'process.env':{
+    //           'NODE_ENV': JSON.stringify('production')
+    //       }
+    //   }),
+      new ExtractTextPlugin("resource/css/[name].css")
   ],
   module: {
     loaders: [

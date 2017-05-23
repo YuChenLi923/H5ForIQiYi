@@ -1,10 +1,6 @@
 import React from 'react';
 // 导航栏
 class Blue_NavList extends React.Component{
-    constructor(props){
-        super(props);
-        this._clickBtn = this._clickBtn.bind(this);
-    }
     _click(item,index){
       var that = this;
       return function(){
@@ -26,16 +22,11 @@ class Blue_NavList extends React.Component{
         }
         return result;
     }
-    _clickBtn(){
-      this.props.dispatch({
-        type:'clickBtn'
-      });
-    }
+
 
     render(){
-        let { items,index,callback,isOn,showLen,lineIndex } = this.props;
+        let { items,index,callback,isOn,showLen,lineIndex,clickItem } = this.props;
         let len = items.length;
-        console.log(this.props);
         return (
             <nav className="Blue_NavList" >
               <div className = "list maxWarp" style = {
@@ -46,7 +37,7 @@ class Blue_NavList extends React.Component{
                 {this._createList(items,index,callback)}
               </div>
               <div className = "dropBox">
-                <button onClick = {this._clickBtn}
+                <button onClick = {clickItem}
                         className = {isOn?'on':'off'}
                 ></button>
               </div>
@@ -73,13 +64,13 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { dispatch , NavListState } = this.props;
+        let { NavListDispatch , NavListState } = this.props;
         return(
             <div className="Blue_Container">
                 <header>
                     <Blue_Top/>
                     <div className="blackBox"></div>
-                    <Blue_NavList {...NavListState} dispatch = {dispatch} />
+                    <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
                 <section className = 'body'>
                 </section>

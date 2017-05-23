@@ -27,7 +27,7 @@ class Blue_NavList extends React.Component{
         return result;
     }
     _clickBtn(){
-      this.props.dispatch({
+      this.props.clickBtn({
         type:'clickBtn'
       });
     }
@@ -36,7 +36,7 @@ class Blue_NavList extends React.Component{
         let len = items.length;
         return (
             <nav className="Blue_NavList" >
-              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*22+'px':'44px'}}>
+              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*20+'px':'40px'}}>
                 {this._createList(items,index,callback)}
               </div>
               <div className = "dropBox">
@@ -51,133 +51,69 @@ class Blue_NavList extends React.Component{
 // 轮播图
 
 class Blue_Carousel extends React.Component{
-	constructor(props){
-		super(props);
-		this.clickNav=this.clickNav.bind(this);
-		this.clickNext=this.clickNext.bind(this);
-		this.clickLast=this.clickLast.bind(this);
-		this.changIndex=this.changIndex.bind(this);
-		this.carouselAnimation=this.carouselAnimation.bind(this);
-		this.mouseOffHandel=this.mouseOffHandel.bind(this);
-		this.mouseOverHandel=this.mouseOverHandel.bind(this);
-		this.state={
-			index:this.props.index,
-			left:-1*this.props.index*this.props.width,
-			animation:false,
-			mouse:false
-		};
-	}
-	componentWillMount(){
-		var that=this;
-		this.timerID=setInterval(
-			function(){
-				if(!that.state.animation&&!that.state.mouse){
-					that.changIndex(that.state.index+1);
-					that.carouselAnimation(-1*that.props.width);
-				}
-			},
-			that.props.setIntervalTime
-		);
-	}
-	componentWillUnmount() {
-		clearInterval(this.timerID);
-	}
-	clickLast(){
-		if(this.state.animation==false){
-			this.changIndex(this.state.index-1);
-			this.carouselAnimation(this.props.width);
-		}
-	}
-	clickNext(){
-		if(this.state.animation==false){
-			this.changIndex(this.state.index+1);
-			this.carouselAnimation(-1*this.props.width);
-		}
-	}
-	clickNav(e){
-		if(this.state.animation==false){
-			var target=e.target,
-				preIndex=this.state.index,
-				nextIndex=parseInt(target.getAttribute("data-index")),
-				dis=(nextIndex-preIndex)*this.props.width;
-			this.changIndex(nextIndex);
-			this.carouselAnimation(-1*dis);
-		}
-	}
-	mouseOverHandel(){
-		this.setState({
-			mouse:true
-		});
-	}
-	mouseOffHandel(){
-		this.setState({
-			mouse:false
-		})
-	}
-	carouselAnimation(dis){
-		var that = this,
-			left = this.state.left,
-			newpos = left + dis;
-		if(newpos>0 && dis>0){
-			left=((that.props.items.length-1) * that.props.width * -1);
-			newpos=left ;
-		}
-		if(newpos<(this.props.width * (that.props.items.length-1) * (-1)) && dis<0){
-			left=0;
-			newpos=left;
-		}
-  	this.setState({
-      left:newpos
-    });
-	}
-	changIndex(nextIndex){
-		if(nextIndex < 0){
-			nextIndex = this.props.items.length-1;
-		}
-		if(nextIndex > this.props.items.length-1){
-			nextIndex=0;
-		}
-		this.setState({index:nextIndex})
-	}
 	render(){
-		var bodyShow=[],
-			navShow=[],
-			i,
-			len;
-		for(i= 0 ,len = this.props.items.length;i < len;i++){
+		let bodyShow=[],
+			  navShow=[],
+			  i,
+        { items,
+          width,
+          CarouseDispatch,
+          index,
+          clickLast,
+          clickNext,
+          clickNav,
+          touchStart,
+          touchEnd,
+          mouseOut,
+          mouseOver,
+          height
+        }  = this.props,
+        len = items.length;
+		for(i= 0;i < len;i++){
 			bodyShow.push(
-				<li key={i}>
-					<img  src={this.props.items[i].img}/>
+				<li key={i} style={{width:width+'px'}}>
+					<img src={items[i].img}/>
+          <span>{items[i].title}</span>
 				</li>
 			);
 			navShow.push(
 				<li data-index={i}
 					 key={i}
 					 onClick={this.clickNav}
-					 className={i==this.state.index?"on":"off"}>
+					 className={i==index?"on":"off"}>
 				</li>);
 		}
 		return(
-			<div onMouseOut={this.mouseOffHandel}
-				   onMouseOver={this.mouseOverHandel}
+			<div onMouseOut={mouseOut}
+				   onMouseOver={mouseOver}
+           onTouchStart = {touchStart}
+           onTouchEnd = {touchEnd}
+           style = {{height:height + 'px'}}
 				   className={"BluMUI_Carousel "}>
 				<ul className="body"
 					 style={{
-					 	left:this.state.left+"px",
-					 	width:(this.props.items.length+1)*this.props.width+'px'}}>
+					 	left:-1*index*width+"px",
+					 	width:len*width+'px'}}>
 					{bodyShow}
 				</ul>
 				<div className="nav">
 					<ul className="control" >
-						<button onClick={this.clickLast}
-								  className="last">
-						</button>
+            {do{
+              if(width>=768){
+                <button onClick={clickLast}
+								        className="last">
+						    </button>}
+            }}
 						<ul className="showNav">
 							{navShow}
 						</ul>
-						<button onClick={this.clickNext}
-								  className="next">
-						</button>
+            {do{
+              if(width>=768){
+  						  <button onClick={clickNext}
+  							 	    className="next">
+  					  	</button>
+              }
+            }}
 					</ul>
 				</div>
 			</div>
@@ -204,14 +140,14 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { dispatch , NavListState ,CarouselState } = this.props;
+        let { CarouseDispatch , NavListDispatch ,NavListState , CarouselState } = this.props;
         return(
             <div className="Blue_Container">
                 <header>
                     <Blue_Top/>
-                    <Blue_NavList {...NavListState} dispatch = {dispatch} />
+                    <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
-                <Blue_Carousel {...CarouselState}/>
+                <Blue_Carousel {...CarouselState} {...CarouseDispatch}/>
                 <section id = 'body'>
                 </section>
                 <footer>
