@@ -153,15 +153,23 @@ class Blue_CardBox extends React.Component{
   }
 }
 
+
+
 // 顶部
 class Blue_Top extends React.Component{
   constructor(props){
     super(props);
   }
   render(){
+      let { search,input } = this.props;
       return (
-        <div className = 'Blue_Top'>
-            <div className = 'maxWarp'></div>
+        <div className = "Blue_Top">
+            <div className = "maxWarp">
+               <div className = "search">
+                  <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
+                  <button onClick = {search} ></button>
+               </div>
+            </div>
         </div>
       );
   }
@@ -171,18 +179,23 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { CarouseDispatch , NavListDispatch ,NavListState , CarouselState ,CardsState} = this.props;
+        let { CarouseDispatch,
+              NavListDispatch,
+              topDisPatch,
+              NavListState,
+              CarouselState,
+              CardsState
+            } = this.props;
         return(
             <div className="Blue_Container">
                 <header>
-                    <Blue_Top/>
+                    <Blue_Top {...topDisPatch}/>
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
                 <Blue_Carousel {...CarouselState} {...CarouseDispatch}/>
                 <div id = 'body'>
                   {
                     CardsState.cards.map((card,index)=>{
-                      console.log(card);
                       return <Blue_CardBox card = {card} key={index}/>
                     })
                   }

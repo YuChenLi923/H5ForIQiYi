@@ -1,0 +1,118 @@
+$fontSizeSS:12px;
+$fontSizeS:14px;
+$fontSizeM:16px;
+$fontSizeL:20px;
+$fontSizeXL:24px;
+$fontSizeXLL:28px;
+
+html,body,div,ul,button,input,li,nav,h1,p{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+*{
+    font-family: "黑体",Arial,Helvetica,sans-serif;
+}
+
+// 顶部组件
+.Blue_Top{
+  height: 40px;
+  background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 5px 6px;
+  background-size:84px 28px;
+  background-color:#333;
+  span{
+    display:block;
+    font-size:$fontSizeM;
+    color: #699f00;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    margin-left: 95px;
+    padding-left: 10px;
+    background: url('/resource/images/searchMobile/dot.png') no-repeat 0 17.5px;
+    background-size: 5px 5px;
+  }
+}
+
+// 搜索组件
+
+
+.Blue_SearchMobile{
+  background: #E6E9ED;
+  overflow: hidden;
+  .inputWarp{
+    margin: 0.4rem;
+    position: relative;
+    input{
+      padding-left: 0.2rem;
+      padding-right: 0.8rem;
+      box-sizing: border-box;
+      height: 0.8rem;
+      display: block;
+      font-size: 18px;
+      color:#333;
+      width: 100%;
+      border: 2px;
+      ::placeholder{
+        color:#999;
+      }
+    }
+    button{
+        display: block;
+        position: absolute;
+        right: 0;
+        top:0;
+        height: 0.8rem;
+        width: 0.8rem;
+        background:url('/resource/images/search.png') no-repeat 0.2rem 0.2rem;
+        padding: 5px;
+        background-size:0.4rem  0.4rem;
+        background-color: #699f00;
+    }
+  }
+  .myHistory{
+    background: #fff;
+      h1{
+        padding-top: 0.2rem;
+        font-size: $fontSizeM;
+        color:#699f00;
+        padding-left: 0.4rem;
+      }
+      li{
+        font-size: $fontSizeL;
+        text-align: center;
+        margin-top: 0.2rem;
+        margin-left: 0.4rem;
+        overflow: hidden;
+        color: #999;
+        margin-right: 0.4rem;
+        background: #F5FAF7;
+        border: 1px solid #E6E9ED;
+        border-radius:3px;
+      }
+      p{
+        font-size: $fontSizeM;
+        color:#999;
+        text-align: center;
+        margin-top: 0.4rem;
+      }
+      .empty{
+        display: block;
+        width:0.7rem;
+        height: 0.7rem;
+        margin: auto;
+        margin-top: 0.3rem;
+        background:url('/resource/images/searchMobile/empty.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .emptyWarn{
+        font-size: $fontSizeSS;
+        margin-top: 0.1rem;
+      }
+  }
+}

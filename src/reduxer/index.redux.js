@@ -1,16 +1,18 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/index.view.js';
-import { getTouchDirection } from '../libs/ajax.public';
+import { getTouchDirection,config } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
 const reducers = combineReducers({
     NavList:NavList_reducers,
     Carousel:Carousel_reducers,
-    Cards:Cards_reducers
+    Cards:Cards_reducers,
+    search:search_reducers
 });
 const store = createStore(reducers);
-let timerID = null;
+let timerID = null,
+    isLocalStorage = !!window.localStorage;
 
 function createTimeid(){
   timerID = setInterval(function(){
@@ -115,7 +117,35 @@ function Carousel_reducers(state,action){
     return state;
   }
 }
-
+// 搜索框的reducers
+function search_reducers(state = {value:''},action){
+  switch (action.type) {
+    case 'inputValue':
+      return Object.assign({},state,{
+        value:action.value
+      });
+      break;
+    case 'submit':
+      let searchValue = state.value;
+      if(isLocalStorage){
+        let history = localStorage.getItem('searchHistory') || '';
+        if(history === ''){
+          history = searchValue;
+        }else{
+          history += '&' + searchValue;
+        }
+        localStorage.setItem('searchHistory',history);
+      }
+      window.location.href = 'search.html?searchContent=' + encodeURI(searchValue);
+      return state;
+      break;
+    case 'showMobileSearch':
+      window.location.href = 'searchMobile.html';
+      break;
+    default:
+      return state;
+  }
+}
 function Cards_reducers(state = { cards:[]},action){
   switch (action.type) {
     case 'getCardInf':
@@ -133,7 +163,8 @@ function mapStateToProps(state) {
     return {
         NavListState: state.NavList,
         CarouselState:state.Carousel,
-        CardsState:state.Cards
+        CardsState:state.Cards,
+        searchState:state.search
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -196,6 +227,23 @@ function mapDispatchToProps(dispatch) {
           },
           mouseOver:function(e){
             clearInterval(timerID);
+          }
+        },
+        topDisPatch:{
+          search:function(){
+            let isMobile = config.isMobile;
+            if(isMobile){
+              dispatch({type:'showMobileSearch'});
+            }else{
+                dispatch({type:'submit'});
+            }
+          },
+          input:function(e){
+            var value = e.target.value;
+            dispatch({
+              type:'inputValue',
+              value:value
+            });
           }
         }
     }
