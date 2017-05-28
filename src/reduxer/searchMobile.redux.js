@@ -23,27 +23,63 @@ function getSearchHistory(hisStr){
     }
     return [];
 }
-function searchMobile_reducers(state,action){
-  if(state === undefined){
-    let history = getSearchHistory(localStorage.getItem('searchHistory'));
-    console.log(history);
-    state = {
-      value:'',
-      history:history
+// 添加历史记录，并且去重
+function setSearchHistory(value,curHistory){
+  let i,
+      len,
+      result = '',
+      myhistory = localStorage.getItem('searchHistory') || '';
+  if( myhistory === ''){
+      result = value;
+  }else{
+      result = myhistory + '&' + value;
+  }
+  for( i = 0 , len = curHistory.length ; i < len ; i++){
+    if(value === curHistory[i]){
+      result = myhistory;
+      break;
     }
   }
+  return result;
+}
+
+function searchMobile_reducers(state,action){
+  if(state === undefined){
+    state = {
+      value:'',
+      isShow:true,
+      myhistory:[],
+      items:[],
+      desc:'',
+      isSearching:false
+    }
+  }
+
+
   switch (action.type) {
+    case 'init':
+      let  myhistory = getSearchHistory(localStorage.getItem('searchHistory'));
+      action.ajaxSearch(action.content);
+      return Object.assign({},state,{
+        myhistory:myhistory || [],
+        ajaxSearch:action.ajaxSearch,
+        value:action.content,
+        isShow:action.isShow
+      });
+      break;
     case 'submit':
       if(isLocalStorage){
-        let history = localStorage.getItem('searchHistory') || '';
-        if(history === ''){
-          history = state.value;
-        }else{
-          history += '&' + state.value;
-        }
-        localStorage.setItem('searchHistory',history);
+        let value = state.value,
+            myhistory = setSearchHistory(value,state.myhistory),
+            newURL = 'searchMobile.html?content='+value;
+        localStorage.setItem('searchHistory',myhistory);
+        history.pushState({},'',newURL);
+        state.ajaxSearch(value);
       }
-      return state;
+      return Object.assign({},state,{
+        isSearching:true,
+        isShow:false
+      });
       break;
     case 'inputValue':
     return Object.assign({},state,{
@@ -53,7 +89,15 @@ function searchMobile_reducers(state,action){
     case 'empty':
       localStorage.removeItem('searchHistory');
     return Object.assign({},state,{
-      history:[]
+      myhistory:[]
+    });
+    break;
+    case 'getSearchResult':
+    return Object.assign({},state,{
+      isShow:false,
+      isSearching:false,
+      items:action.items,
+      desc:action.desc
     });
     break;
     default:

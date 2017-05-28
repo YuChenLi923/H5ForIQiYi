@@ -18,41 +18,102 @@ class Blue_Top extends React.Component{
       );
   }
 }
-// 移动端搜索组件
 
-class Blue_SearchMobile extends React.Component{
+// 搜索内容卡片组件
+class Blue_SearchCard extends React.Component{
   render(){
-    let { input , search , history , empty} = this.props;
+    let {
+          img,
+          title,
+          score
+        } = this.props.item;
+    return (
+      <div className = "Blue_SearchCard">
+        <img src={img} />
+        <div className = "desc">
+          <span className="name">{title}</span>
+          <span className="score">{score||'无'}</span>
+        </div>
+      </div>
+    )
+  }
+}
+// 移动端搜索组件
+class Blue_SearchMobile extends React.Component{
+  _creatCards(items,desc){
+      let i,
+          len = items.length,
+          result = [];
+      if(len === 0 ){
+        result.push(
+          <p className="searching" key={0}>{desc}</p>
+        )
+      }
+      else{
+        for(i = 0 ; i < len ; i++){
+          result.push(
+            <Blue_SearchCard key = {i} item = {items[i]}/>
+          )
+        }
+      }
+      return result;
+  }
+  render(){
+    let { input,
+          search,
+          myhistory,
+          empty,
+          isShow,
+          items,
+          desc,
+          value,
+          isSearching
+        } = this.props;
     return (
       <div className  = "Blue_SearchMobile">
           <div className="inputWarp">
-              <input onInput = {input}/>
+              <input value = {value} onInput = {input} />
               <button onClick = {search}></button>
           </div>
-          <div className="myHistory">
-            <h1>搜索记录</h1>
-            <ul>
+          { isShow&&!isSearching&&
+            <div className="myHistory">
+              <h1>搜索记录</h1>
+              <ul>
+                {
+                  myhistory.map((value,index)=>{
+                    return(<li key = {index}>
+                      <span>{value}</span>
+                    </li>);
+                  })
+                }
+              </ul>
               {
-                history.map((value,index)=>{
-                  return(<li key = {index}>
-                    <span>{value}</span>
-                  </li>);
-                })
-              }
-            </ul>
-            {
-              do{
-                if(history.length>0){
-                    <div>
-                      <button className="empty" onClick = {empty}></button>
-                      <p className="emptyWarn">清空记录</p>
-                    </div>
-                }else{
-                  <p>目前还没有搜索记录!</p>
+                do{
+                  if(myhistory.length>0){
+                      <div>
+                        <button className="empty" onClick = {empty}></button>
+                        <p className="emptyWarn">清空记录</p>
+                      </div>
+                  }else{
+                    <p>目前还没有搜索记录!</p>
+                  }
                 }
               }
+            </div>
+          }
+          {do{
+            if(!isShow&&!isSearching){
+              <div className = "searchContent">
+                {
+                  this._creatCards(items,desc)
+                }
+              </div>
             }
-          </div>
+          }}
+          {
+            isSearching&&
+            <p className = 'searching'>正在搜索中....</p>
+          }
       </div>
     )
   }

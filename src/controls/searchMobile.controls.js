@@ -4,11 +4,12 @@
  *
 **/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize } from '../libs/ajax.public';
+import { config , getScreenSize ,parseURLQuery } from '../libs/ajax.public';
 import store from '../reduxer/searchMobile.redux';
 // 全局常量
 const win = window,
       host = config.host,
+      searchURL = host + '/openapi/realtime/search',
       publicData = config.publicData;
 
 // 全局变量
@@ -16,7 +17,7 @@ let  tid,
      scrollW = getScreenSize().width;
 // 初始化ajaxExpanding对象
 ajaxExpanding.init({
-    name:'getNavList',
+    name:'getSearchContent',
     dataType:'json',
     type:'get',
     async:true,
@@ -46,8 +47,57 @@ function createAction(type,data){
     return action;
 }
 
-// 导航栏组件逻辑控制
+// 搜索组件逻辑控制
 (function () {
-
-
+  let win = window,
+      query = parseURLQuery(window.location.href),
+      content = query.content,
+      isShow = true;
+  if(content){
+    isShow = false;
+  }
+  store.dispatch(createAction('init',{
+    ajaxSearch:ajaxSearch,
+    isShow:isShow,
+    content:content || ''
+  }));
+  function ajaxSearch(searchContent){
+    let data = publicData;
+    data.key = searchContent;
+    data.from = 'mobile_list';
+    data.version = 7.5;
+    ajaxExpanding.send({
+      url:searchURL,
+      data:data,
+      onSuccess:function(result){
+        let data = result.data,
+            code = result.code,
+            i,
+            desc = '',
+            items = [],
+            len;
+        if(code === 100000){
+          for( i = 0 , len = data.length; i < len ; i++){
+            items.push({
+              title:data[i].short_title,
+              score:data[i].sns_score,
+              img:data[i].img
+            });
+          }
+        }else{
+          desc = "未搜索到相应内容";
+        }
+        store.dispatch(createAction('getSearchResult',{
+          items:items,
+          desc:desc
+        }));
+      },
+      onFail:function(){
+        store.dispatch(createAction('getSearchResult',{
+          items:[],
+          desc:'工程师正在全力抢修中...'
+        }));
+      }
+    },'getSearchContent');
+  }
 })();
