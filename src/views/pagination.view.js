@@ -1,4 +1,5 @@
 import React from 'react';
+import Zq from './Zq.view';
 // 导航栏
 class Blue_NavList extends React.Component{
     _click(item,index){
@@ -80,7 +81,7 @@ class Blue_Container extends React.Component{
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
                 <div className = 'body'>
-                  {NavListState.title}
+                  <Zq Title={NavListState.title}/>
                 </div>
                 <footer>
                     蓝山工作室15级前端组制作
