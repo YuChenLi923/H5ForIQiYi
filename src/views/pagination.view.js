@@ -22,10 +22,17 @@ class Blue_NavList extends React.Component{
         }
         return result;
     }
-
-
     render(){
-        let { items,index,callback,isOn,showLen,lineIndex,clickItem } = this.props;
+        let {
+              items,
+              index,
+              callback,
+              isOn,
+              showLen,
+              lineIndex,
+              clickItem,
+              clickBtn
+             } = this.props;
         let len = items.length;
         return (
             <nav className="Blue_NavList" >
@@ -37,7 +44,7 @@ class Blue_NavList extends React.Component{
                 {this._createList(items,index,callback)}
               </div>
               <div className = "dropBox">
-                <button onClick = {clickItem}
+                <button onClick = {clickBtn}
                         className = {isOn?'on':'off'}
                 ></button>
               </div>
@@ -72,8 +79,9 @@ class Blue_Container extends React.Component{
                     <div className="blackBox"></div>
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
-                <section className = 'body'>
-                </section>
+                <div className = 'body'>
+                  {NavListState.title}
+                </div>
                 <footer>
                     蓝山工作室15级前端组制作
                 </footer>

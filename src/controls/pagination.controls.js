@@ -47,6 +47,7 @@ ajaxExpanding.init({
             store.dispatch(createAction('getNavListItems',{
               items:items,
               index:index,
+              title:items[index].name,
               isOn:false,
               lineIndex:scrollW>768?Math.floor(index/10)+1:Math.floor(index/4)+1,
               callback:clickNav,
@@ -54,19 +55,17 @@ ajaxExpanding.init({
             }));
         }
     },'getNavList');
-
     // 监听页面变化，自适应改变组件参数
     win.addEventListener('resize',scrollChange,false);
     win.addEventListener('pageshow',scrollChange, false);
+    win.addEventListener('popstate',()=>window.location.reload(),false);
     function handleRoute(index,data){
-      console.log(index);
       if(index>-1){
         title.innerHTML = data[index].name;
       }else{
         win.location.href = 'error404.html';
       }
     }
-
 })();
 function scrollChange(){
   clearTimeout(tid);
@@ -78,14 +77,20 @@ function scrollChange(){
   }, 300);
 }
 function clickNav(item,index) {
-  let title = document.querySelector('title');
-  title.innerHTML = item.name;
+  let title = document.querySelector('title'),
+      name = item.name,
+      newURL = "pagination.html?type=" + item.id;
+  history.pushState({
+    id:item.id
+  }, name, newURL);
+  title.innerHTML = name;
   store.dispatch(
     createAction('clickItem',{
       index:index,
+      title:name,
       lineIndex:scrollW>768?Math.floor(index/10)+1:Math.floor(index/4)+1
     })
-  )
+  );
 }
 function createAction(type,data){
     var action = data || {};

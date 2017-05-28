@@ -16,6 +16,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
               showLen:action.showLen,
               callback:action.callback,
               lineIndex:action.lineIndex,
+              title:action.title,
               isOn:false
             });
         case 'scrollChange':
@@ -24,10 +25,17 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             });
             break;
         case 'clickItem':
+            let actionLine = action.lineIndex,
+                stateLine = state.lineIndex,
+                isOn = !state.isOn;
+            if(actionLine === stateLine){
+              isOn = false;
+            }
             return Object.assign({},state,{
               index:action.index,
-              lineIndex:action.lineIndex,
-              isOn:!state.isOn
+              lineIndex:actionLine,
+              title:action.title,
+              isOn:isOn
             });
             break;
         case 'clickBtn':
@@ -49,6 +57,9 @@ function mapDispatchToProps(dispatch) {
     NavListDispatch:{
       clickItem:function(){
         dispatch({type:'clickItem'})
+      },
+      clickBtn:function(){
+        dispatch({type:'clickBtn'})
       }
     }
   }
