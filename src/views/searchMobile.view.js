@@ -59,6 +59,12 @@ class Blue_SearchMobile extends React.Component{
       }
       return result;
   }
+  _clickHistory(value){
+    let that = this;
+    return function(){
+      that.props.clickHistory(value);
+    }
+  }
   render(){
     let { input,
           search,
@@ -69,7 +75,8 @@ class Blue_SearchMobile extends React.Component{
           desc,
           value,
           isSearching
-        } = this.props;
+        } = this.props,
+        that = this;
     return (
       <div className  = "Blue_SearchMobile">
           <div className="inputWarp">
@@ -82,7 +89,7 @@ class Blue_SearchMobile extends React.Component{
               <ul>
                 {
                   myhistory.map((value,index)=>{
-                    return(<li key = {index}>
+                    return(<li key = {index} onClick = {that._clickHistory(value)}>
                       <span>{value}</span>
                     </li>);
                   })

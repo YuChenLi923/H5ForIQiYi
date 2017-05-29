@@ -56,8 +56,11 @@ function searchMobile_reducers(state,action){
   }
   switch (action.type) {
     case 'init':
-      let  myhistory = getSearchHistory(localStorage.getItem('searchHistory'));
-      action.ajaxSearch(action.content);
+      let  curHistory = localStorage.getItem('searchHistory'),
+           myhistory = getSearchHistory(curHistory),
+           content = action.content;
+      if(content)
+      action.ajaxSearch(content,curHistory);
       return Object.assign({},state,{
         myhistory:myhistory || [],
         ajaxSearch:action.ajaxSearch,
@@ -70,9 +73,8 @@ function searchMobile_reducers(state,action){
         let value = state.value,
             myhistory = setSearchHistory(value,state.myhistory),
             newURL = 'searchMobile.html?content='+value;
-        localStorage.setItem('searchHistory',myhistory);
         history.pushState({},'',newURL);
-        state.ajaxSearch(value);
+        state.ajaxSearch(value,myhistory);
       }
       return Object.assign({},state,{
         isSearching:true,
@@ -98,6 +100,18 @@ function searchMobile_reducers(state,action){
       desc:action.desc
     });
     break;
+    case 'clickHistory':
+    let value = action.value,
+        myHistory = setSearchHistory(value,state.myhistory),
+        newURL = 'searchMobile.html?content='+value;
+        history.pushState({},'',newURL);
+        state.ajaxSearch(value,myHistory);
+        return Object.assign({},state,{
+          isSearching:true,
+          isShow:false,
+          value:value
+        });
+      break;
     default:
       return state;
   }
@@ -123,23 +137,9 @@ function mapDispatchToProps(dispatch) {
       },
       empty:function(){
         dispatch({type:'empty'});
-      }
-    },
-    topDisPatch:{
-      search:function(){
-        let isMobile = config.isMobile;
-        if(isMobile){
-          dispatch({type:'showMobileSearch'});
-        }else{
-            dispatch({type:'submit'});
-        }
       },
-      input:function(e){
-        var value = e.target.value;
-        dispatch({
-          type:'inputValue',
-          value:value
-        });
+      clickHistory:function(value){
+        dispatch({type:'clickHistory',value:value});
       }
     }
   }

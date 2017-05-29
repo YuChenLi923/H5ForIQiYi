@@ -61,7 +61,8 @@ function createAction(type,data){
     isShow:isShow,
     content:content || ''
   }));
-  function ajaxSearch(searchContent){
+  win.addEventListener('popstate',()=>window.location.reload(),false);
+  function ajaxSearch(searchContent,myhistory){
     let data = publicData;
     data.key = searchContent;
     data.from = 'mobile_list';
@@ -84,6 +85,7 @@ function createAction(type,data){
               img:data[i].img
             });
           }
+          localStorage.setItem('searchHistory',myhistory);
         }else{
           desc = "未搜索到相应内容";
         }

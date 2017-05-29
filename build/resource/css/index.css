@@ -61,12 +61,27 @@ ul {
 .Blue_Top {
   background-color: #333; }
   .Blue_Top .maxWarp {
-    height: 60px;
-    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 5px; }
+    height: 60px; }
+  .Blue_Top .logo {
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 50px;
+    width: 105px;
+    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 0px;
+    background-size: 100% 100%; }
   @media (max-width: 768px) {
     .Blue_Top .maxWarp {
       height: 40px;
-      background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 5px 6px;
+      background-size: 84px 28px; }
+    .Blue_Top .logo {
+      height: 28px;
+      width: 84px;
+      margin-top: 6px;
+      margin-left: 5px;
+      background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
       background-size: 84px 28px; } }
   .Blue_Top .search {
     height: 100%;

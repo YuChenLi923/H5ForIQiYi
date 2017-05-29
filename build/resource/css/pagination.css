@@ -55,8 +55,61 @@ ul {
 .Blue_Top {
   background-color: #333; }
   .Blue_Top .maxWarp {
-    height: 60px;
-    background: url("/../resource/images/iqiyi-logo.png") no-repeat 0 5px; }
+    height: 60px; }
+  .Blue_Top .logo {
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 50px;
+    width: 105px;
+    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 0px;
+    background-size: 100% 100%; }
+  @media (max-width: 768px) {
+    .Blue_Top .maxWarp {
+      height: 40px;
+      background-size: 84px 28px; }
+    .Blue_Top .logo {
+      height: 28px;
+      width: 84px;
+      margin-top: 6px;
+      margin-left: 5px;
+      background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+      background-size: 84px 28px; } }
+  .Blue_Top .search {
+    height: 100%;
+    float: right; }
+    .Blue_Top .search input {
+      float: left;
+      margin-top: 15px;
+      padding-left: 15px;
+      padding-right: 5px;
+      height: 30px;
+      width: 150px;
+      display: block;
+      color: white;
+      background-color: #699f00;
+      border: 2px; }
+    .Blue_Top .search input::placeholder {
+      color: white; }
+    .Blue_Top .search button {
+      margin-top: 15px;
+      display: block;
+      float: left;
+      height: 30px;
+      width: 30px;
+      background: url("/resource/images/search.png") no-repeat 5px 5px;
+      padding: 5px;
+      background-size: 20px  20px;
+      background-color: #699f00; }
+    @media (max-width: 768px) {
+      .Blue_Top .search input {
+        display: none; }
+      .Blue_Top .search button {
+        margin-right: 15px;
+        margin-top: 7px;
+        background-color: inherit; } }
 
 .Blue_Container .body {
   height: 500px;
