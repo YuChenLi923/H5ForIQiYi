@@ -60,9 +60,16 @@ class Blue_Top extends React.Component{
     super(props);
   }
   render(){
+      let { search,input } = this.props;
       return (
-        <div className = 'Blue_Top'>
-            <div className = 'maxWarp'></div>
+        <div className = "Blue_Top">
+            <div className = "maxWarp">
+              <a href="index.html"><span className="logo"></span></a>
+               <div className = "search">
+                  <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
+                  <button onClick = {search} ></button>
+               </div>
+            </div>
         </div>
       );
   }
@@ -72,11 +79,11 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { NavListDispatch , NavListState } = this.props;
+        let { NavListDispatch , NavListState,topDisPatch } = this.props;
         return(
             <div className="Blue_Container">
                 <header>
-                    <Blue_Top/>
+                    <Blue_Top {...topDisPatch}/>
                     <div className="blackBox"></div>
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>

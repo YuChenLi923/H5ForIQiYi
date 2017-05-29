@@ -6,7 +6,7 @@ ajaxExpanding.init({
   name:'getDetails',
   dataType:'json',
   type:'get',
-  async:false,
+  async:true,
   handleData:function (result) {
     return JSON.parse(result);
   }
@@ -21,14 +21,13 @@ function get_msg(name) {
   data.is_purchase = 2; //是否付费的片子
   data.version = 7.5;
   data.page_size = 30;
+  console.log(name,999);
   data.channel_name = name;
   var back;
   ajaxExpanding.send({
     url:config.host + '/openapi/realtime/channel',
     data:data,
     onSuccess:result=>{
-      console.log("result:\n",result)
-      console.log(data)
       back=result;
     }
   },
@@ -36,23 +35,29 @@ function get_msg(name) {
   return back;
 }
 
-
 class Page_body extends React.Component {
   constructor(props) {
     super(props);
     this.get_msg=this.get_msg.bind(this);
-
-    this.channel_name='';
+    this.preTitle = '';
   }
   get_msg() {
-    let gets=get_msg(this.channel_name);
-    console.log(gets);
-  }
-  componentDidMount() {
-    this.get_msg();
+    if(this.props.Title){
+      if(!this.preTitle){
+        get_msg(this.props.Title);
+        this.preTitle = this.props.Title;
+      }
+      else{
+        if(this.preTitle != this.props.Title){
+          get_msg(this.props.Title);
+          this.preTitle = this.props.Title;
+        }
+      }
+    }
   }
   render() {
-    data.channel_name=this.props.Title;
+    this.get_msg();
+    console.log(this.props);
     return <div style={{background:'blue',fontSize:'0.8rem'}}>{'props is:'+this.props.Title}</div>
   }
 }

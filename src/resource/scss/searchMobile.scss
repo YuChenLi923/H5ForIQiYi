@@ -21,9 +21,15 @@ ul{
 // 顶部组件
 .Blue_Top{
   height: 40px;
-  background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 5px 6px;
-  background-size:84px 28px;
   background-color:#333;
+  .logo{
+      height: 28px;
+      width: 84px;
+      margin-top: 6px;
+      margin-left: 5px;
+      background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 0px 0px;
+      background-size:84px 28px;
+  }
   span{
     display:block;
     font-size:$fontSizeM;
@@ -32,7 +38,6 @@ ul{
     height: 40px;
     line-height: 40px;
     font-weight: bold;
-    margin-left: 95px;
     padding-left: 10px;
     background: url('/resource/images/searchMobile/dot.png') no-repeat 0 17.5px;
     background-size: 5px 5px;

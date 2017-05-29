@@ -7,7 +7,6 @@ $fontSizeL:20px;
 $fontSizeXL:24px;
 $fontSizeXLL:28px;
 $maxPageWidth:1180px;
-
 html,body,div,ul,button,input,li,nav{
   margin: 0;
   padding: 0;
@@ -23,6 +22,9 @@ ul{
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
 // 页面结构布局样式
 
 // 组件样式
@@ -91,12 +93,29 @@ ul{
   background-color:#333;
   .maxWarp{
     height: 60px;
-    background:url('/resource/images/iqiyi-logo.png') no-repeat 0 5px;
+  }
+  .logo{
+      cursor: pointer;
+      display: block;
+      float: left;
+      margin-top: 5px;
+      margin-left: 5px;
+      height: 50px;
+      width: 105px;
+      background:url('/resource/images/iqiyi-logo.png') no-repeat 0 0px ;
+      background-size: 100% 100%;
   }
   @media(max-width: 768px){
     .maxWarp{
         height: 40px;
-        background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 5px 6px;
+        background-size:84px 28px;
+    }
+    .logo{
+        height: 28px;
+        width: 84px;
+        margin-top: 6px;
+        margin-left: 5px;
+        background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 0px 0px;
         background-size:84px 28px;
     }
   }
@@ -140,6 +159,7 @@ ul{
       }
     }
   }
+
 }
 
 // 轮播图

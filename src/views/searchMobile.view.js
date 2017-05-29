@@ -13,6 +13,7 @@ class Blue_Top extends React.Component{
       let { search,input } = this.props;
       return (
         <div className = "Blue_Top">
+              <a href="index.html"><span className="logo"></span></a>
               <span>搜索</span>
         </div>
       );

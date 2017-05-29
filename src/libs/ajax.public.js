@@ -92,6 +92,8 @@ function updateRem(width,dpr){
   rem = width / 10;
   appConfig.rem = rem;
   docEl.style.fontSize = rem + 'px';
+  if(width <= 768 )
+    appConfig.isMobile = true;
 }
 
 // 解析query

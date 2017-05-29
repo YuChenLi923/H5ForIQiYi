@@ -1,10 +1,12 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/pagination.view.js';
+import { config } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
 const reducers = combineReducers({
-    NavList:NavList_reducers
+    NavList:NavList_reducers,
+    search:search_reducers
 });
 const store = createStore(reducers);
 function NavList_reducers(state = { items:[] , index:0 }, action) {
@@ -47,9 +49,38 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             return state
     }
 }
+function search_reducers(state = {value:''},action){
+  switch (action.type) {
+    case 'inputValue':
+      return Object.assign({},state,{
+        value:action.value
+      });
+      break;
+    case 'submit':
+      let searchValue = state.value;
+      if(isLocalStorage){
+        let history = localStorage.getItem('searchHistory') || '';
+        if(history === ''){
+          history = searchValue;
+        }else{
+          history += '&' + searchValue;
+        }
+        localStorage.setItem('searchHistory',history);
+      }
+      window.location.href = 'search.html?searchContent=' + encodeURI(searchValue);
+      return state;
+      break;
+    case 'showMobileSearch':
+      window.location.href = 'searchMobile.html';
+      break;
+    default:
+      return state;
+  }
+}
 function mapStateToProps(state) {
     return {
-        NavListState: state.NavList
+        NavListState: state.NavList,
+        searchState:state.search
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -60,6 +91,23 @@ function mapDispatchToProps(dispatch) {
       },
       clickBtn:function(){
         dispatch({type:'clickBtn'})
+      }
+    },
+    topDisPatch:{
+      search:function(){
+        let isMobile = config.isMobile;
+        if(isMobile){
+          dispatch({type:'showMobileSearch'});
+        }else{
+            dispatch({type:'submit'});
+        }
+      },
+      input:function(e){
+        var value = e.target.value;
+        dispatch({
+          type:'inputValue',
+          value:value
+        });
       }
     }
   }

@@ -54,8 +54,6 @@ function searchMobile_reducers(state,action){
       isSearching:false
     }
   }
-
-
   switch (action.type) {
     case 'init':
       let  myhistory = getSearchHistory(localStorage.getItem('searchHistory'));
@@ -125,6 +123,23 @@ function mapDispatchToProps(dispatch) {
       },
       empty:function(){
         dispatch({type:'empty'});
+      }
+    },
+    topDisPatch:{
+      search:function(){
+        let isMobile = config.isMobile;
+        if(isMobile){
+          dispatch({type:'showMobileSearch'});
+        }else{
+            dispatch({type:'submit'});
+        }
+      },
+      input:function(e){
+        var value = e.target.value;
+        dispatch({
+          type:'inputValue',
+          value:value
+        });
       }
     }
   }
