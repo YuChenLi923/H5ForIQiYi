@@ -4,7 +4,7 @@ $fontSizeS:14px;
 $fontSizeM:16px;
 $fontSizeL:20px;
 $maxPageWidth:1180px;
-
+$host:'https://www.yuchenblog.cn/images/';
 html,body,div,ul,button,input,li,nav{
   margin: 0;
   padding: 0;
@@ -59,10 +59,10 @@ ul{
     margin-bottom: 2px;
   }
   .off{
-    background-image:url('/../resource/images/dropDown.png');
+    background-image:url($host + 'dropDown.png');
   }
   .on{
-    background-image:url('/../resource/images/pullUp.png');
+    background-image:url($host + 'pullUp.png');
   }
   button{
     width: 100px;
@@ -86,7 +86,7 @@ ul{
       margin-left: 5px;
       height: 50px;
       width: 105px;
-      background:url('/resource/images/iqiyi-logo.png') no-repeat 0 0px ;
+      background:url($host + 'iqiyi-logo.png') no-repeat 0 0px ;
       background-size: 100% 100%;
   }
   @media(max-width: 768px){
@@ -99,7 +99,7 @@ ul{
         width: 84px;
         margin-top: 6px;
         margin-left: 5px;
-        background:url('/resource/images/iqiyi-logo-mobile.png') no-repeat 0px 0px;
+        background:url($host + 'iqiyi-logo-mobile.png') no-repeat 0px 0px;
         background-size:84px 28px;
     }
   }
@@ -127,7 +127,7 @@ ul{
       float:left;
       height: 30px;
       width: 30px;
-      background:url('/resource/images/search.png') no-repeat 5px 5px;
+      background:url($host + 'search.png') no-repeat 5px 5px;
       padding: 5px;
       background-size:20px  20px;
       background-color: #699f00;

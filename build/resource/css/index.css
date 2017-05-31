@@ -44,9 +44,9 @@ ul {
     margin-top: 5px;
     margin-bottom: 2px; }
   .Blue_NavList .off {
-    background-image: url("/resource/images/dropDown.png"); }
+    background-image: url("https://www.yuchenblog.cn/images/dropDown.png"); }
   .Blue_NavList .on {
-    background-image: url("/resource/images/pullUp.png"); }
+    background-image: url("https://www.yuchenblog.cn/images/pullUp.png"); }
   .Blue_NavList button {
     display: block;
     margin: auto;
@@ -70,7 +70,7 @@ ul {
     margin-left: 5px;
     height: 50px;
     width: 105px;
-    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 0px;
+    background: url("https://www.yuchenblog.cn/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
   @media (max-width: 768px) {
     .Blue_Top .maxWarp {
@@ -81,7 +81,7 @@ ul {
       width: 84px;
       margin-top: 6px;
       margin-left: 5px;
-      background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+      background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
       background-size: 84px 28px; } }
   .Blue_Top .search {
     height: 100%;
@@ -105,7 +105,7 @@ ul {
       float: left;
       height: 30px;
       width: 30px;
-      background: url("/resource/images/search.png") no-repeat 5px 5px;
+      background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 5px 5px;
       padding: 5px;
       background-size: 20px  20px;
       background-color: #699f00; }
@@ -188,19 +188,19 @@ ul {
       height: 32px;
       outline: none; }
     .BluMUI_Carousel .nav .last {
-      background: url("/resource/images/carousel_left.png");
+      background: url("https://www.yuchenblog.cn/images/carousel_left.png");
       margin-right: 5px; }
     .BluMUI_Carousel .nav .next {
-      background: url("/resource/images/carousel_right.png");
+      background: url("https://www.yuchenblog.cn/images/carousel_right.png");
       float: left;
       margin-left: 37px; }
   .BluMUI_Carousel .on {
-    background: url("/resource/images/carousel_selected.png") no-repeat;
+    background: url("https://www.yuchenblog.cn/images/carousel_selected.png") no-repeat;
     background-size: 100% 100%; }
   .BluMUI_Carousel .off {
     width: 28px;
     height: 32px;
-    background: url("/resource/images/carousel_noselected.png") no-repeat;
+    background: url("https://www.yuchenblog.cn/images/carousel_noselected.png") no-repeat;
     background-size: 100% 100%; }
   @media (max-width: 768px) {
     .BluMUI_Carousel span {
@@ -236,7 +236,7 @@ ul {
     padding-right: 30px;
     background-position: 48px 5px;
     cursor: pointer;
-    background-image: url("/resource/images/more.png"); }
+    background-image: url("https://www.yuchenblog.cn/images/more.png"); }
   .Blue_CardBox .cardWarp {
     overflow: hidden;
     margin-top: 5px; }
@@ -285,8 +285,7 @@ ul {
   top: 0;
   left: 0;
   z-index: 2;
-  width: 100%;
-  height: 32px; }
+  width: 100%; }
 
 .Blue_Container footer {
   font-size: 14px;

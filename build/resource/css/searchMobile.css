@@ -19,7 +19,7 @@ ul {
     width: 84px;
     margin-top: 6px;
     margin-left: 5px;
-    background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+    background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
     background-size: 84px 28px; }
   .Blue_Top span {
     display: block;
@@ -30,7 +30,7 @@ ul {
     line-height: 40px;
     font-weight: bold;
     padding-left: 10px;
-    background: url("/resource/images/searchMobile/dot.png") no-repeat 0 17.5px;
+    background: url("https://www.yuchenblog.cn/images/searchMobile/dot.png") no-repeat 0 17.5px;
     background-size: 5px 5px; }
 
 .Blue_SearchMobile {
@@ -58,7 +58,7 @@ ul {
       top: 0.4rem;
       height: 0.8rem;
       width: 0.8rem;
-      background: url("/resource/images/search.png") no-repeat 0.2rem 0.2rem;
+      background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 0.2rem 0.2rem;
       padding: 5px;
       background-size: 0.4rem  0.4rem;
       background-color: #699f00; }
@@ -91,7 +91,7 @@ ul {
       height: 0.7rem;
       margin: auto;
       margin-top: 0.3rem;
-      background: url("/resource/images/searchMobile/empty.png") no-repeat;
+      background: url("https://www.yuchenblog.cn/images/searchMobile/empty.png") no-repeat;
       background-size: 100% 100%; }
     .Blue_SearchMobile .myHistory .emptyWarn {
       font-size: 12px;

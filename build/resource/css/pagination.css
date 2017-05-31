@@ -41,9 +41,9 @@ ul {
     margin-top: 5px;
     margin-bottom: 2px; }
   .Blue_NavList .off {
-    background-image: url("/../resource/images/dropDown.png"); }
+    background-image: url("https://www.yuchenblog.cn/images/dropDown.png"); }
   .Blue_NavList .on {
-    background-image: url("/../resource/images/pullUp.png"); }
+    background-image: url("https://www.yuchenblog.cn/images/pullUp.png"); }
   .Blue_NavList button {
     width: 100px;
     height: 20px;
@@ -64,7 +64,7 @@ ul {
     margin-left: 5px;
     height: 50px;
     width: 105px;
-    background: url("/resource/images/iqiyi-logo.png") no-repeat 0 0px;
+    background: url("https://www.yuchenblog.cn/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
   @media (max-width: 768px) {
     .Blue_Top .maxWarp {
@@ -75,7 +75,7 @@ ul {
       width: 84px;
       margin-top: 6px;
       margin-left: 5px;
-      background: url("/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+      background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
       background-size: 84px 28px; } }
   .Blue_Top .search {
     height: 100%;
@@ -99,7 +99,7 @@ ul {
       float: left;
       height: 30px;
       width: 30px;
-      background: url("/resource/images/search.png") no-repeat 5px 5px;
+      background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 5px 5px;
       padding: 5px;
       background-size: 20px  20px;
       background-color: #699f00; }
