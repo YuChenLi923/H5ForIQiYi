@@ -44,6 +44,7 @@ ajaxExpanding.init({
                   });
             }
             handleRoute(index,data);
+            console.log(scrollW);
             store.dispatch(createAction('getNavListItems',{
               items:items,
               index:index,

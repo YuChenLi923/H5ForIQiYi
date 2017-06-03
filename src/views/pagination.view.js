@@ -15,7 +15,8 @@ class Blue_NavList extends React.Component{
         for( i = 0 , len = items.length ; i < len ;i++){
             result.push(
                 <a  onClick={this._click(items[i],i)}
-                    key={i} className={index === i?'on':'off'}
+                    key={i}
+                    className={index === i?'fontSizeS select':'fontSizeS'}
                 >
                     {items[i].name}
                 </a>
@@ -39,8 +40,8 @@ class Blue_NavList extends React.Component{
             <nav className="Blue_NavList" >
               <div className = "list maxWarp" style = {
                 {
-                  height:isOn?Math.ceil(len/showLen)*20+'px':(lineIndex)*20 + 'px',
-                  marginTop:!isOn?((lineIndex-1)*20)*-1 + 'px':'0px'
+                  height:isOn?Math.ceil(len/showLen)*40/75+'rem':(lineIndex)*40/75 + 'rem',
+                  marginTop:!isOn?((lineIndex-1)*40/75)*-1 + 'rem':'0rem'
                 }}>
                 {this._createList(items,index,callback)}
               </div>
@@ -90,7 +91,7 @@ class Blue_Container extends React.Component{
                 <div className = 'body'>
                   <Zq Title={NavListState.title}/>
                 </div>
-                <footer>
+                <footer className = "fontSizeSS">
                     蓝山工作室15级前端组制作
                 </footer>
             </div>

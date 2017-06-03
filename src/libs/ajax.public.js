@@ -24,6 +24,7 @@ const appConfig = {
     req_times:1
   },
   dpr:1,
+  scale:1,
   isMobile:false,
   width:0 ,// 屏幕宽度
   height:0// 屏幕高度
@@ -43,8 +44,10 @@ metaEl = doc.querySelector('meta[name="viewport"]');
       width = docEl.getBoundingClientRect().width,
       height = docEl.clientHeight,
       dpr = 1,
+      scale = 1,
       mobileSystemV = 0;
   // 是手机
+  console.log(isIPhone);
   if(isAndroid || isIPhone ){
       appConfig.isMobile = true;
       mobileSystemV = isAndroid?isAndroid[1]:isIPhone[1];
@@ -60,8 +63,11 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   }else {
     dpr = 1;
   }
+  scale = parseFloat((1 / dpr).toFixed(2));
   docEl.setAttribute('data-dpr', dpr);
+  metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
   updateRem(width,dpr);
+  appConfig.scale = scale;
   appConfig.dpr = dpr;
   appConfig.width = width;
   appConfig.height = height;
@@ -77,8 +83,8 @@ function getScreenSize(){
        height = docEl.clientHeight;
     updateRem(width,appConfig.dpr);
     return {
-      width:width,
-      height:height
+      width:Math.ceil(width*appConfig.scale),
+      height:Math.ceil(height*appConfig.scale)
     }
 }
 
@@ -140,10 +146,19 @@ function getTouchDirection(startX,startY,endX,endY){
   return 0;
 }
 
+function getlimitStr(str,limitLen,suffix){
+      let i,
+          suf = suffix || '',
+          len = str.length;
+  if(len >= limitLen)
+    str = str.substring(0,limitLen-1) + suf;
+  return str;
+}
 
 module.exports = {
     config:appConfig,
     parseURLQuery:parseURLQuery,
     getScreenSize:getScreenSize,
-    getTouchDirection:getTouchDirection
+    getTouchDirection:getTouchDirection,
+    getlimitStr:getlimitStr
 };

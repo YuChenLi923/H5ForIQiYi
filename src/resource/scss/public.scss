@@ -1,0 +1,86 @@
+$fontSizeSS:12px;
+$fontSizeS:14px;
+$fontSizeM:16px;
+$fontSizeL:20px;
+$fontSizeXL:24px;
+$fontSizeXLL:28px;
+$maxPageWidth:1180px;
+$host:'https://www.yuchenblog.cn/images/';
+*{
+    font-family: "黑体",Arial,Helvetica,sans-serif;
+}
+html,body,div,ul,button,input,li,nav{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+
+.maxWarp{
+  max-width: $maxPageWidth;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-dpr='1'] .fontSizeS{
+  font-size: $fontSizeS;
+}
+[data-dpr='2'] .fontSizeS{
+  font-size: $fontSizeS*2;
+}
+[data-dpr='3'] .fontSizeS{
+  font-size: $fontSizeS*3;
+}
+
+[data-dpr='1'] .fontSizeSS{
+  font-size: $fontSizeSS;
+}
+[data-dpr='2'] .fontSizeSS{
+  font-size: $fontSizeS*2;
+}
+[data-dpr='3'] .fontSizeSS{
+  font-size: $fontSizeS*3;
+}
+
+[data-dpr='1'] .fontSizeM{
+  font-size: $fontSizeM;
+}
+[data-dpr='2'] .fontSizeM{
+  font-size: $fontSizeM*2;
+}
+[data-dpr='3'] .fontSizeM{
+  font-size: $fontSizeM*3;
+}
+
+[data-dpr='1'] .fontSizeL{
+  font-size: $fontSizeL;
+}
+[data-dpr='2'] .fontSizeL{
+  font-size: $fontSizeL*2;
+}
+[data-dpr='3'] .fontSizeL{
+  font-size: $fontSizeL*3;
+}
+
+[data-dpr='1'] .fontSizeXL{
+  font-size: $fontSizeXL;
+}
+[data-dpr='2'] .fontSizeXL{
+  font-size: $fontSizeXL*2;
+}
+[data-dpr='3'] .fontSizeXL{
+  font-size: $fontSizeXL*3;
+}
+
+[data-dpr='1'] .fontSizeXLL{
+  font-size: $fontSizeXLL;
+}
+[data-dpr='2'] .fontSizeXLL{
+  font-size: $fontSizeXLL*2;
+}
+[data-dpr='3'] .fontSizeXLL{
+  font-size: $fontSizeXLL*3;
+}

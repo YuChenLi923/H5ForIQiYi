@@ -4,7 +4,7 @@
  *
 **/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize ,parseURLQuery } from '../libs/ajax.public';
+import { config , getScreenSize ,parseURLQuery , getlimitStr } from '../libs/ajax.public';
 import store from '../reduxer/searchMobile.redux';
 // 全局常量
 const win = window,
@@ -80,7 +80,7 @@ function createAction(type,data){
         if(code === 100000){
           for( i = 0 , len = data.length; i < len ; i++){
             items.push({
-              title:data[i].short_title,
+              title:getlimitStr(data[i].short_title,10),
               score:data[i].sns_score,
               img:data[i].img
             });

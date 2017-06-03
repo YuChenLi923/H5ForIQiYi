@@ -1,46 +1,26 @@
-$fontSizeSS:12px;
-$fontSizeS:14px;
-$fontSizeM:16px;
-$fontSizeL:20px;
-$fontSizeXL:24px;
-$fontSizeXLL:28px;
-$host:'https://www.yuchenblog.cn/images/';
-html,body,div,ul,button,input,li,nav,h1,p{
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-}
-ul{
-  list-style: none;
-}
-*{
-    font-family: "黑体",Arial,Helvetica,sans-serif;
-}
-
+@import "public.scss";
 // 顶部组件
 .Blue_Top{
-  height: 40px;
+  height: (80rem/75);
   background-color:#333;
   .logo{
-      height: 28px;
-      width: 84px;
-      margin-top: 6px;
-      margin-left: 5px;
+      height:(56rem/75);
+      width: (168rem/75);
+      margin-top: (12rem/75);
+      margin-left: (10rem/75);
       background:url($host + 'iqiyi-logo-mobile.png') no-repeat 0px 0px;
-      background-size:84px 28px;
+      background-size:(168rem/75) (56rem/75);
   }
   span{
     display:block;
-    font-size:$fontSizeM;
     color: #699f00;
     float: left;
-    height: 40px;
-    line-height: 40px;
+    height: (80rem/75);
+    line-height: (80rem/75);
     font-weight: bold;
-    padding-left: 10px;
-    background: url($host + 'searchMobile/dot.png') no-repeat 0 17.5px;
-    background-size: 5px 5px;
+    padding-left: (20rem/75);
+    background: url($host + 'searchMobile/dot.png') no-repeat 0 (35rem/75);
+    background-size: (10rem/75) (10rem/75);
   }
 }
 
@@ -59,7 +39,6 @@ ul{
       box-sizing: border-box;
       height: 0.8rem;
       display: block;
-      font-size: 18px;
       color:#333;
       width: 100%;
       border: 2px;
@@ -84,12 +63,10 @@ ul{
     background: #fff;
       h1{
         padding-top: 0.2rem;
-        font-size: $fontSizeM;
         color:#699f00;
         padding-left: 0.4rem;
       }
       li{
-        font-size: $fontSizeL;
         text-align: center;
         margin-top: 0.2rem;
         margin-left: 0.4rem;
@@ -101,7 +78,6 @@ ul{
         border-radius:3px;
       }
       p{
-        font-size: $fontSizeM;
         color:#999;
         text-align: center;
         margin-top: 0.4rem;
@@ -116,44 +92,43 @@ ul{
         background-size: 100% 100%;
       }
       .emptyWarn{
-        font-size: $fontSizeSS;
         margin-top: 0.1rem;
       }
   }
   .searching{
     background: #fff;
-    font-size: $fontSizeM;
     text-align: center;
     color: #999;
     margin-top: 1rem;
+  }
+  .searchContent{
+    overflow: hidden;
+    text-align: center;
   }
 }
 
 
 .Blue_SearchCard{
-  overflow: hidden;
   padding: 0.2rem;
+  display: inline-block;
+  text-align: justify;
   .desc{
     float: left;
-    font-size: $fontSizeL;
     color: #333;
     margin-left: 0.5rem;
   }
   .name{
     display: block;
-    width: 6rem;
-    margin-top: 15px;
-    height: 20px;
-    overflow: hidden;
+    margin-top: (30rem/75);
   }
   .score{
-    margin-top: 25px;
+    margin-top: (50rem/75);
     display: block;
   }
   img{
     float: left;
-    width:96px;
-    height:128px;
+    width:(192rem/75);
+    height:(256rem/75);
     background: #333;
   }
 }

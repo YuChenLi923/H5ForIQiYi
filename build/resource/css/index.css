@@ -1,3 +1,7 @@
+@charset "UTF-8";
+* {
+  font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
+
 html, body, div, ul, button, input, li, nav {
   margin: 0;
   padding: 0;
@@ -12,6 +16,60 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
+[data-dpr='1'] .fontSizeS {
+  font-size: 14px; }
+
+[data-dpr='2'] .fontSizeS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeSS {
+  font-size: 12px; }
+
+[data-dpr='2'] .fontSizeSS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeSS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeM {
+  font-size: 16px; }
+
+[data-dpr='2'] .fontSizeM {
+  font-size: 32px; }
+
+[data-dpr='3'] .fontSizeM {
+  font-size: 48px; }
+
+[data-dpr='1'] .fontSizeL {
+  font-size: 20px; }
+
+[data-dpr='2'] .fontSizeL {
+  font-size: 40px; }
+
+[data-dpr='3'] .fontSizeL {
+  font-size: 60px; }
+
+[data-dpr='1'] .fontSizeXL {
+  font-size: 24px; }
+
+[data-dpr='2'] .fontSizeXL {
+  font-size: 48px; }
+
+[data-dpr='3'] .fontSizeXL {
+  font-size: 72px; }
+
+[data-dpr='1'] .fontSizeXLL {
+  font-size: 28px; }
+
+[data-dpr='2'] .fontSizeXLL {
+  font-size: 56px; }
+
+[data-dpr='3'] .fontSizeXLL {
+  font-size: 84px; }
+
 .Blue_NavList {
   width: 100%;
   overflow: hidden;
@@ -21,16 +79,15 @@ ul {
   .Blue_NavList a {
     width: 10%;
     color: white;
-    line-height: 20px;
-    height: 20px;
-    font-size: 14px;
+    line-height: 0.53333rem;
+    height: 0.53333rem;
     display: block;
     float: left;
     text-align: center;
     cursor: pointer; }
   .Blue_NavList a:hover {
     background-color: #666; }
-  @media (max-width: 768px) {
+  @media screen and (max-device-width: 768px) {
     .Blue_NavList a {
       width: 25%; } }
   .Blue_NavList .list {
@@ -40,9 +97,6 @@ ul {
     overflow: hidden; }
     .Blue_NavList .list .on {
       background-color: #666; }
-  .Blue_NavList .dropBox {
-    margin-top: 5px;
-    margin-bottom: 2px; }
   .Blue_NavList .off {
     background-image: url("https://www.yuchenblog.cn/images/dropDown.png"); }
   .Blue_NavList .on {
@@ -50,12 +104,13 @@ ul {
   .Blue_NavList button {
     display: block;
     margin: auto;
-    margin-bottom: 10px;
-    width: 100px;
-    height: 20px;
+    margin-top: 0.13333rem;
+    margin-bottom: 0.13333rem;
+    width: 0.53333rem;
+    height: 0.53333rem;
     background-repeat: no-repeat;
-    background-position: 40px 0px;
-    background-size: 20px 20px;
+    background-position: 0 0rem;
+    background-size: 0.53333rem 0.53333rem;
     background-color: inherit; }
 
 .Blue_Top {
@@ -72,17 +127,16 @@ ul {
     width: 105px;
     background: url("https://www.yuchenblog.cn/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
-  @media (max-width: 768px) {
-    .Blue_Top .maxWarp {
-      height: 40px;
-      background-size: 84px 28px; }
+  @media screen and (max-device-width: 768px) {
     .Blue_Top .logo {
-      height: 28px;
-      width: 84px;
-      margin-top: 6px;
-      margin-left: 5px;
+      height: 0.74667rem;
+      width: 2.24rem;
+      margin-top: 0.16rem;
+      margin-left: 0.13333rem;
       background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
-      background-size: 84px 28px; } }
+      background-size: 2.24rem 0.74667rem; }
+    .Blue_Top .maxWarp {
+      height: 1.06667rem; } }
   .Blue_Top .search {
     height: 100%;
     float: right; }
@@ -92,7 +146,7 @@ ul {
       padding-left: 15px;
       padding-right: 5px;
       height: 30px;
-      width: 150px;
+      width: 185px;
       display: block;
       color: white;
       background-color: #699f00;
@@ -107,15 +161,19 @@ ul {
       width: 30px;
       background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 5px 5px;
       padding: 5px;
-      background-size: 20px  20px;
+      background-size: 20px 20px;
       background-color: #699f00; }
-    @media (max-width: 768px) {
+    @media screen and (max-device-width: 768px) {
       .Blue_Top .search input {
         display: none; }
       .Blue_Top .search button {
-        margin-right: 15px;
-        margin-top: 7px;
-        background-color: inherit; } }
+        margin-right: 0.4rem;
+        margin-top: 0.18667rem;
+        background-color: inherit;
+        height: 0.53333rem;
+        width: 0.53333rem;
+        background-size: 0.53333rem 0.53333rem;
+        background-position: 0 0; } }
 
 .carousel_warp {
   height: 386px; }
@@ -126,7 +184,7 @@ ul {
 .BluMUI_Carousel {
   position: relative;
   max-width: 1180px;
-  margin-top: 95px;
+  margin-top: 85px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden; }
@@ -144,6 +202,35 @@ ul {
   .BluMUI_Carousel img {
     width: 100%;
     height: 100%; }
+  .BluMUI_Carousel .last {
+    background-image: url("https://www.yuchenblog.cn/images/carousel_left.png");
+    left: 20px;
+    top: 50%;
+    margin-top: -16px;
+    position: absolute; }
+  .BluMUI_Carousel .next {
+    background-image: url("https://www.yuchenblog.cn/images/carousel_right.png");
+    top: 50%;
+    margin-top: -16px;
+    right: 20px;
+    position: absolute; }
+  .BluMUI_Carousel button {
+    float: left;
+    display: block;
+    margin-top: 5px;
+    border: none;
+    width: 48px;
+    height: 48px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-size: 18px 36px;
+    background-position: 15px 6px;
+    border-radius: 50%;
+    transition: all 0.5s; }
+  .BluMUI_Carousel button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    background-size: 12px 36px; }
   .BluMUI_Carousel .nav {
     position: absolute;
     z-index: 1;
@@ -164,7 +251,7 @@ ul {
       margin: auto; }
     .BluMUI_Carousel .nav .showNav {
       float: left; }
-    @media (max-width: 768px) {
+    @media screen and (max-device-width: 768px) {
       .BluMUI_Carousel .nav {
         height: 0.45rem; }
         .BluMUI_Carousel .nav li {
@@ -179,21 +266,6 @@ ul {
           margin-right: 0.1rem; }
         .BluMUI_Carousel .nav .next {
           margin-left: 0.2rem; } }
-    .BluMUI_Carousel .nav button {
-      float: left;
-      display: block;
-      margin-top: 5px;
-      border: none;
-      width: 16px;
-      height: 32px;
-      outline: none; }
-    .BluMUI_Carousel .nav .last {
-      background: url("https://www.yuchenblog.cn/images/carousel_left.png");
-      margin-right: 5px; }
-    .BluMUI_Carousel .nav .next {
-      background: url("https://www.yuchenblog.cn/images/carousel_right.png");
-      float: left;
-      margin-left: 37px; }
   .BluMUI_Carousel .on {
     background: url("https://www.yuchenblog.cn/images/carousel_selected.png") no-repeat;
     background-size: 100% 100%; }
@@ -202,79 +274,71 @@ ul {
     height: 32px;
     background: url("https://www.yuchenblog.cn/images/carousel_noselected.png") no-repeat;
     background-size: 100% 100%; }
-  @media (max-width: 768px) {
-    .BluMUI_Carousel span {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      color: white;
-      font-size: 0.35rem;
-      text-align: center;
-      width: 100%;
-      height: 0.45rem;
-      line-height: 0.45rem;
-      z-index: 2;
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-block; }
-    .BluMUI_Carousel .nav {
-      background: none; } }
+  @media screen and (max-device-width: 768px) {
+    .BluMUI_Carousel {
+      margin-top: 1.53333rem; }
+      .BluMUI_Carousel button {
+        display: none; }
+      .BluMUI_Carousel span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: white;
+        font-size: 0.35rem;
+        text-align: center;
+        width: 100%;
+        height: 0.45rem;
+        line-height: 0.45rem;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.5);
+        display: inline-block; }
+      .BluMUI_Carousel .nav {
+        background: none; } }
 
-.Blue_CardBox {
-  font-size: 16px; }
-  .Blue_CardBox .more, .Blue_CardBox .title {
-    font-size: 24px;
-    line-height: 40px;
-    background-repeat: no-repeat;
-    background-size: 30px 30px;
-    color: #699f00; }
-  .Blue_CardBox .title {
-    float: left;
-    background-position: 5px 5px;
-    padding-left: 40px; }
-  .Blue_CardBox .more {
-    float: right;
-    padding-right: 30px;
-    background-position: 48px 5px;
-    cursor: pointer;
-    background-image: url("https://www.yuchenblog.cn/images/more.png"); }
-  .Blue_CardBox .cardWarp {
+.Blue_CardBox .more, .Blue_CardBox .title {
+  line-height: 1.06667rem;
+  background-repeat: no-repeat;
+  background-size: 0.66667rem 0.66667rem;
+  color: #699f00; }
+
+.Blue_CardBox .title {
+  float: left;
+  background-position: 0 0.2rem;
+  padding-left: 0.8rem; }
+
+.Blue_CardBox .more {
+  float: right;
+  width: 1.33333rem;
+  padding-right: 0.8rem;
+  background-position: 1.33333rem 0.2rem;
+  cursor: pointer;
+  background-image: url("https://www.yuchenblog.cn/images/more.png"); }
+
+.Blue_CardBox .cardWarp {
+  overflow: hidden;
+  margin-top: 5px; }
+
+.Blue_CardBox .header {
+  overflow: hidden;
+  height: 1.06667rem;
+  border-bottom: 1px solid #e1e1e1; }
+
+.Blue_CardBox .card {
+  width: 25%;
+  position: relative;
+  float: left;
+  box-sizing: border-box;
+  padding: 0.13333rem; }
+  .Blue_CardBox .card span {
+    left: 0;
+    margin: 0.13333rem;
+    text-align: center;
+    display: block;
     overflow: hidden;
-    margin-top: 5px; }
-  .Blue_CardBox .header {
-    overflow: hidden;
-    height: 40px;
-    border-bottom: 1px solid #e1e1e1; }
-  @media (max-width: 768px) {
-    .Blue_CardBox .more, .Blue_CardBox .title {
-      background-size: 20px 20px;
-      font-size: 16px; }
-    .Blue_CardBox .title {
-      background-position: 5px 10px;
-      padding-left: 30px; }
-    .Blue_CardBox .more {
-      background-position: 32px 10px;
-      padding-right: 32px; } }
-  .Blue_CardBox .card {
-    width: 25%;
-    position: relative;
-    float: left; }
-    .Blue_CardBox .card span {
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      text-align: center;
-      display: block;
-      overflow: hidden;
-      color: white;
-      bottom: 0;
-      position: absolute; }
-    @media (max-width: 768px) {
-      .Blue_CardBox .card span {
-        font-size: 12px;
-        height: 16px;
-        line-height: 16px; } }
-    .Blue_CardBox .card img {
-      width: 100%; }
+    color: #333;
+    bottom: 0; }
+  .Blue_CardBox .card img {
+    width: 100%; }
 
 .Blue_Container #body {
   max-width: 1180px;
@@ -288,7 +352,6 @@ ul {
   width: 100%; }
 
 .Blue_Container footer {
-  font-size: 14px;
   padding-top: 15px;
   padding-bottom: 15px;
   color: #999;

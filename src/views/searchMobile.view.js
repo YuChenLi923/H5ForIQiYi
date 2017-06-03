@@ -12,7 +12,7 @@ class Blue_Top extends React.Component{
   render(){
       let { search,input } = this.props;
       return (
-        <div className = "Blue_Top">
+        <div className = "Blue_Top fontSizeM">
               <a href="index.html"><span className="logo"></span></a>
               <span>搜索</span>
         </div>
@@ -31,7 +31,7 @@ class Blue_SearchCard extends React.Component{
     return (
       <div className = "Blue_SearchCard">
         <img src={img} />
-        <div className = "desc">
+        <div className = "desc fontSizeL">
           <span className="name">{title}</span>
           <span className="score">{score||'无'}</span>
         </div>
@@ -47,7 +47,7 @@ class Blue_SearchMobile extends React.Component{
           result = [];
       if(len === 0 ){
         result.push(
-          <p className="searching" key={0}>{desc}</p>
+          <p className="searching fontSizeM" key={0}>{desc}</p>
         )
       }
       else{
@@ -80,16 +80,19 @@ class Blue_SearchMobile extends React.Component{
     return (
       <div className  = "Blue_SearchMobile">
           <div className="inputWarp">
-              <input value = {value} onInput = {input} />
+              <input className = "fontSizeL" value = {value} onInput = {input} />
               <button onClick = {search}></button>
           </div>
           { isShow&&!isSearching&&
             <div className="myHistory">
-              <h1>搜索记录</h1>
+              <h1 className = "fontSizeM">搜索记录</h1>
               <ul>
                 {
                   myhistory.map((value,index)=>{
-                    return(<li key = {index} onClick = {that._clickHistory(value)}>
+                    return(<li key = {index}
+                                onClick = {that._clickHistory(value)}
+                                className = "fontSizeM"
+                           >
                       <span>{value}</span>
                     </li>);
                   })
@@ -100,10 +103,10 @@ class Blue_SearchMobile extends React.Component{
                   if(myhistory.length>0){
                       <div>
                         <button className="empty" onClick = {empty}></button>
-                        <p className="emptyWarn">清空记录</p>
+                        <p className="emptyWarn fontSizeSS">清空记录</p>
                       </div>
                   }else{
-                    <p>目前还没有搜索记录!</p>
+                    <p className = "fontSizeM">目前还没有搜索记录!</p>
                   }
                 }
               }
@@ -120,7 +123,7 @@ class Blue_SearchMobile extends React.Component{
           }}
           {
             isSearching&&
-            <p className = 'searching'>正在搜索中....</p>
+            <p className = 'searching fontSizeM'>正在搜索中....</p>
           }
       </div>
     )

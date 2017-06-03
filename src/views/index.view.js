@@ -18,7 +18,8 @@ class Blue_NavList extends React.Component{
         for( i = 0 , len = items.length ; i < len ;i++){
             result.push(
                 <a  onClick={this._click(items[i],i)}
-                    key={i} className={index === i?'on':'off'}
+                    key={i}
+                    className='fontSizeS'
                 >
                     {items[i].name}
                 </a>
@@ -36,7 +37,7 @@ class Blue_NavList extends React.Component{
         let len = items.length;
         return (
             <nav className="Blue_NavList" >
-              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*20+'px':'40px'}}>
+              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*40/75+'rem':40/75+'rem'}}>
                 {this._createList(items,index,callback)}
               </div>
               <div className = "dropBox">
@@ -98,24 +99,17 @@ class Blue_Carousel extends React.Component{
 				</ul>
 				<div className="nav">
 					<ul className="control" >
-            {do{
-              if(width>768){
-                <button onClick={clickLast}
-								        className="last">
-						    </button>}
-            }}
 						<ul className="showNav">
 							{navShow}
 						</ul>
-            {do{
-              if(width>768){
-  						  <button onClick={clickNext}
-  							 	    className="next">
-  					  	</button>
-              }
-            }}
 					</ul>
 				</div>
+        <button onClick={clickNext}
+              className="next">
+        </button>
+        <button onClick={clickLast}
+               className="last">
+        </button>
 			</div>
 		)
 	}
@@ -140,10 +134,10 @@ class Blue_CardBox extends React.Component{
   render(){
     let { card  } = this.props;
     return (
-      <section className='Blue_CardBox'>
+      <section className='Blue_CardBox fontSizeS'>
         <header className='header'>
-          <span className='title' style={{backgroundImage:'url(../resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
-          <span className='more'>更多</span>
+          <span className='title fontSizeL' style={{backgroundImage:'url(../resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
+          <span className='more fontSizeL'>更多</span>
         </header>
         <div className="cardWarp">
         {this._createItems(card.items)}
@@ -201,7 +195,7 @@ class Blue_Container extends React.Component{
                     })
                   }
                 </div>
-                <footer>
+                <footer className = "fontSizeSS">
                     蓝山工作室15级前端组制作
                 </footer>
             </div>

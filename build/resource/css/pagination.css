@@ -1,3 +1,7 @@
+@charset "UTF-8";
+* {
+  font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
+
 html, body, div, ul, button, input, li, nav {
   margin: 0;
   padding: 0;
@@ -12,44 +16,103 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
+[data-dpr='1'] .fontSizeS {
+  font-size: 14px; }
+
+[data-dpr='2'] .fontSizeS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeSS {
+  font-size: 12px; }
+
+[data-dpr='2'] .fontSizeSS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeSS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeM {
+  font-size: 16px; }
+
+[data-dpr='2'] .fontSizeM {
+  font-size: 32px; }
+
+[data-dpr='3'] .fontSizeM {
+  font-size: 48px; }
+
+[data-dpr='1'] .fontSizeL {
+  font-size: 20px; }
+
+[data-dpr='2'] .fontSizeL {
+  font-size: 40px; }
+
+[data-dpr='3'] .fontSizeL {
+  font-size: 60px; }
+
+[data-dpr='1'] .fontSizeXL {
+  font-size: 24px; }
+
+[data-dpr='2'] .fontSizeXL {
+  font-size: 48px; }
+
+[data-dpr='3'] .fontSizeXL {
+  font-size: 72px; }
+
+[data-dpr='1'] .fontSizeXLL {
+  font-size: 28px; }
+
+[data-dpr='2'] .fontSizeXLL {
+  font-size: 56px; }
+
+[data-dpr='3'] .fontSizeXLL {
+  font-size: 84px; }
+
 .Blue_NavList {
+  width: 100%;
   overflow: hidden;
-  background: #000; }
+  background: #000;
+  position: absolute;
+  z-index: 2; }
   .Blue_NavList a {
     width: 10%;
     color: white;
-    line-height: 20px;
-    height: 20px;
-    font-size: 14px;
+    line-height: 0.53333rem;
+    height: 0.53333rem;
     display: block;
     float: left;
     text-align: center;
     cursor: pointer; }
   .Blue_NavList a:hover {
     background-color: #666; }
-  @media (max-width: 768px) {
+  @media screen and (max-device-width: 768px) {
     .Blue_NavList a {
       width: 25%; } }
   .Blue_NavList .list {
-    height: 20px;
-    transition: all  0.5s;
+    margin-top: 10px;
+    height: 1.06667rem;
+    transition: all 0.5s;
     overflow: hidden; }
     .Blue_NavList .list .on {
-      background: #666; }
-  .Blue_NavList .dropBox {
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 2px; }
+      background-color: #666; }
   .Blue_NavList .off {
     background-image: url("https://www.yuchenblog.cn/images/dropDown.png"); }
   .Blue_NavList .on {
     background-image: url("https://www.yuchenblog.cn/images/pullUp.png"); }
+  .Blue_NavList .select {
+    background: #666; }
   .Blue_NavList button {
-    width: 100px;
-    height: 20px;
+    display: block;
+    margin: auto;
+    margin-top: 0.13333rem;
+    margin-bottom: 0.13333rem;
+    width: 0.53333rem;
+    height: 0.53333rem;
     background-repeat: no-repeat;
-    background-position: 40px 0px;
-    background-size: 20px 20px;
+    background-position: 0 0rem;
+    background-size: 0.53333rem 0.53333rem;
     background-color: inherit; }
 
 .Blue_Top {
@@ -66,17 +129,16 @@ ul {
     width: 105px;
     background: url("https://www.yuchenblog.cn/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
-  @media (max-width: 768px) {
-    .Blue_Top .maxWarp {
-      height: 40px;
-      background-size: 84px 28px; }
+  @media screen and (max-device-width: 768px) {
     .Blue_Top .logo {
-      height: 28px;
-      width: 84px;
-      margin-top: 6px;
-      margin-left: 5px;
+      height: 0.74667rem;
+      width: 2.24rem;
+      margin-top: 0.16rem;
+      margin-left: 0.13333rem;
       background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
-      background-size: 84px 28px; } }
+      background-size: 2.24rem 0.74667rem; }
+    .Blue_Top .maxWarp {
+      height: 1.06667rem; } }
   .Blue_Top .search {
     height: 100%;
     float: right; }
@@ -86,7 +148,7 @@ ul {
       padding-left: 15px;
       padding-right: 5px;
       height: 30px;
-      width: 150px;
+      width: 185px;
       display: block;
       color: white;
       background-color: #699f00;
@@ -101,15 +163,19 @@ ul {
       width: 30px;
       background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 5px 5px;
       padding: 5px;
-      background-size: 20px  20px;
+      background-size: 20px 20px;
       background-color: #699f00; }
-    @media (max-width: 768px) {
+    @media screen and (max-device-width: 768px) {
       .Blue_Top .search input {
         display: none; }
       .Blue_Top .search button {
-        margin-right: 15px;
-        margin-top: 7px;
-        background-color: inherit; } }
+        margin-right: 0.4rem;
+        margin-top: 0.18667rem;
+        background-color: inherit;
+        height: 0.53333rem;
+        width: 0.53333rem;
+        background-size: 0.53333rem 0.53333rem;
+        background-position: 0 0; } }
 
 .Blue_Container .body {
   height: 500px;
@@ -122,7 +188,6 @@ ul {
   width: 100%; }
 
 .Blue_Container footer {
-  font-size: 14px;
   padding-top: 15px;
   padding-bottom: 15px;
   color: #999;

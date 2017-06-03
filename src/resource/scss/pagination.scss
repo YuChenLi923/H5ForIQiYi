@@ -1,37 +1,21 @@
 
 // 通用部分
-$fontSizeS:14px;
-$fontSizeM:16px;
-$fontSizeL:20px;
-$maxPageWidth:1180px;
-$host:'https://www.yuchenblog.cn/images/';
-html,body,div,ul,button,input,li,nav{
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-}
-ul{
-  list-style: none;
-}
+@import "public.scss";
 
-.maxWarp{
-  max-width: $maxPageWidth;
-  margin-left: auto;
-  margin-right: auto;
-}
 // 页面结构布局样式
 
 // 组件样式
 .Blue_NavList{
+  width:100%;
   overflow:hidden;
   background: #000;
+  position: absolute;
+  z-index: 2;
   a{
     width:10%;
     color:white;
-    line-height: 20px;
-    height: 20px;
-    font-size: $fontSizeS;
+    line-height:(40rem/75);
+    height:(40rem/75);
     display: block;
     float: left;
     text-align: center;
@@ -40,23 +24,19 @@ ul{
   a:hover{
     background-color: #666;
   }
-  @media (max-width: 768px){
+  @media screen and (max-device-width: 768px){
     a{
       width: 25%;
     }
   }
   .list{
-     height:20px;
-     transition:all  0.5s;
+     margin-top: 10px;
+     height:(80rem/75);
+     transition:all 0.5s;
      overflow: hidden;
      .on{
-       background: #666;
+       background-color: #666;
      }
-  }
-  .dropBox{
-    text-align: center;
-    margin-top:5px;
-    margin-bottom: 2px;
   }
   .off{
     background-image:url($host + 'dropDown.png');
@@ -64,19 +44,27 @@ ul{
   .on{
     background-image:url($host + 'pullUp.png');
   }
+  .select{
+    background: #666;
+  }
   button{
-    width: 100px;
-    height: 20px;
+    display: block;
+    margin: auto;
+    margin-top: (10rem/75);
+    margin-bottom: (10rem/75);
+    width: (40rem/75);
+    height: (40rem/75);
     background-repeat:no-repeat;
-    background-position: 40px 0px;
-    background-size:20px 20px;
+    background-position:0 0rem;
+    background-size:(40rem/75) (40rem/75);
     background-color:inherit;
   }
 }
+
 .Blue_Top{
   background-color:#333;
   .maxWarp{
-    height: 60px;
+    height:60px;
   }
   .logo{
       cursor: pointer;
@@ -89,18 +77,17 @@ ul{
       background:url($host + 'iqiyi-logo.png') no-repeat 0 0px ;
       background-size: 100% 100%;
   }
-  @media(max-width: 768px){
-    .maxWarp{
-        height: 40px;
-        background-size:84px 28px;
-    }
+  @media screen and (max-device-width: 768px){
     .logo{
-        height: 28px;
-        width: 84px;
-        margin-top: 6px;
-        margin-left: 5px;
+        height: (56rem/75);
+        width: (168rem/75);
+        margin-top: (12rem/75);
+        margin-left: (10rem/75);
         background:url($host + 'iqiyi-logo-mobile.png') no-repeat 0px 0px;
-        background-size:84px 28px;
+        background-size:(168rem/75) (56rem/75);
+    }
+    .maxWarp{
+      height:(80rem/75);
     }
   }
   .search{
@@ -112,7 +99,7 @@ ul{
       padding-left: 15px;
       padding-right: 5px;
       height: 30px;
-      width: 150px;
+      width: 185px;
       display: block;
       color:white;
       background-color: #699f00;
@@ -129,17 +116,21 @@ ul{
       width: 30px;
       background:url($host + 'search.png') no-repeat 5px 5px;
       padding: 5px;
-      background-size:20px  20px;
+      background-size:20px 20px;
       background-color: #699f00;
     }
-    @media(max-width: 768px){
+    @media screen and (max-device-width: 768px){
       input{
         display: none;
       }
       button{
-          margin-right: 15px;
-          margin-top: 7px;
+          margin-right: (30rem/75);
+          margin-top: (14rem/75);
           background-color: inherit;
+          height:(40rem/75);
+          width: (40rem/75);
+          background-size:(40rem/75) (40rem/75);
+          background-position: 0 0;
       }
     }
   }
@@ -162,7 +153,6 @@ ul{
     width: 100%;
   }
   footer{
-    font-size: $fontSizeS;
     padding-top:15px;
     padding-bottom:15px;
     color:#999;

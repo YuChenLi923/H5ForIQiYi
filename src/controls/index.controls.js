@@ -4,7 +4,7 @@
  *
 **/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize } from '../libs/ajax.public';
+import { config , getScreenSize, getlimitStr } from '../libs/ajax.public';
 import store from '../reduxer/index.redux';
 // 全局常量
 const win = window,
@@ -137,13 +137,13 @@ function setCarousel(data){
     items.push({
       src:'#',
       img:videos[i].img,
-      title:videos[i].short_title
+      title:getlimitStr(videos[i].short_title,15,'...')
     });
   }
   store.dispatch(createAction('getCarouselItems',{
     items:items,
-    width:scrollW<=768?scrollW:1180,
-    height:scrollW>768?316/640*1180:316/640*scrollW
+    width:scrollW<=768?scrollW/config.scale:1180,
+    height:scrollW>768?316/640*1180:316/640*scrollW/config.scale
   }))
 }
 
@@ -162,7 +162,7 @@ function setCardInf(data){
     items.push({
       src:'#',
       img:videos[i].img,
-      title:videos[i].short_title
+      title:getlimitStr(videos[i].short_title,10)
     });
   }
   card.id  = id;

@@ -1,5 +1,8 @@
 @charset "UTF-8";
-html, body, div, ul, button, input, li, nav, h1, p {
+* {
+  font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
+
+html, body, div, ul, button, input, li, nav {
   margin: 0;
   padding: 0;
   border: none;
@@ -8,30 +11,85 @@ html, body, div, ul, button, input, li, nav, h1, p {
 ul {
   list-style: none; }
 
-* {
-  font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
+.maxWarp {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto; }
+
+[data-dpr='1'] .fontSizeS {
+  font-size: 14px; }
+
+[data-dpr='2'] .fontSizeS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeSS {
+  font-size: 12px; }
+
+[data-dpr='2'] .fontSizeSS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeSS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeM {
+  font-size: 16px; }
+
+[data-dpr='2'] .fontSizeM {
+  font-size: 32px; }
+
+[data-dpr='3'] .fontSizeM {
+  font-size: 48px; }
+
+[data-dpr='1'] .fontSizeL {
+  font-size: 20px; }
+
+[data-dpr='2'] .fontSizeL {
+  font-size: 40px; }
+
+[data-dpr='3'] .fontSizeL {
+  font-size: 60px; }
+
+[data-dpr='1'] .fontSizeXL {
+  font-size: 24px; }
+
+[data-dpr='2'] .fontSizeXL {
+  font-size: 48px; }
+
+[data-dpr='3'] .fontSizeXL {
+  font-size: 72px; }
+
+[data-dpr='1'] .fontSizeXLL {
+  font-size: 28px; }
+
+[data-dpr='2'] .fontSizeXLL {
+  font-size: 56px; }
+
+[data-dpr='3'] .fontSizeXLL {
+  font-size: 84px; }
 
 .Blue_Top {
-  height: 40px;
+  height: 1.06667rem;
   background-color: #333; }
   .Blue_Top .logo {
-    height: 28px;
-    width: 84px;
-    margin-top: 6px;
-    margin-left: 5px;
+    height: 0.74667rem;
+    width: 2.24rem;
+    margin-top: 0.16rem;
+    margin-left: 0.13333rem;
     background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
-    background-size: 84px 28px; }
+    background-size: 2.24rem 0.74667rem; }
   .Blue_Top span {
     display: block;
-    font-size: 16px;
     color: #699f00;
     float: left;
-    height: 40px;
-    line-height: 40px;
+    height: 1.06667rem;
+    line-height: 1.06667rem;
     font-weight: bold;
-    padding-left: 10px;
-    background: url("https://www.yuchenblog.cn/images/searchMobile/dot.png") no-repeat 0 17.5px;
-    background-size: 5px 5px; }
+    padding-left: 0.26667rem;
+    background: url("https://www.yuchenblog.cn/images/searchMobile/dot.png") no-repeat 0 0.46667rem;
+    background-size: 0.13333rem 0.13333rem; }
 
 .Blue_SearchMobile {
   overflow: hidden; }
@@ -45,7 +103,6 @@ ul {
       box-sizing: border-box;
       height: 0.8rem;
       display: block;
-      font-size: 18px;
       color: #333;
       width: 100%;
       border: 2px; }
@@ -66,11 +123,9 @@ ul {
     background: #fff; }
     .Blue_SearchMobile .myHistory h1 {
       padding-top: 0.2rem;
-      font-size: 16px;
       color: #699f00;
       padding-left: 0.4rem; }
     .Blue_SearchMobile .myHistory li {
-      font-size: 20px;
       text-align: center;
       margin-top: 0.2rem;
       margin-left: 0.4rem;
@@ -81,7 +136,6 @@ ul {
       border: 1px solid #E6E9ED;
       border-radius: 3px; }
     .Blue_SearchMobile .myHistory p {
-      font-size: 16px;
       color: #999;
       text-align: center;
       margin-top: 0.4rem; }
@@ -94,34 +148,32 @@ ul {
       background: url("https://www.yuchenblog.cn/images/searchMobile/empty.png") no-repeat;
       background-size: 100% 100%; }
     .Blue_SearchMobile .myHistory .emptyWarn {
-      font-size: 12px;
       margin-top: 0.1rem; }
   .Blue_SearchMobile .searching {
     background: #fff;
-    font-size: 16px;
     text-align: center;
     color: #999;
     margin-top: 1rem; }
+  .Blue_SearchMobile .searchContent {
+    overflow: hidden;
+    text-align: center; }
 
 .Blue_SearchCard {
-  overflow: hidden;
-  padding: 0.2rem; }
+  padding: 0.2rem;
+  display: inline-block;
+  text-align: justify; }
   .Blue_SearchCard .desc {
     float: left;
-    font-size: 20px;
     color: #333;
     margin-left: 0.5rem; }
   .Blue_SearchCard .name {
     display: block;
-    width: 6rem;
-    margin-top: 15px;
-    height: 20px;
-    overflow: hidden; }
+    margin-top: 0.4rem; }
   .Blue_SearchCard .score {
-    margin-top: 25px;
+    margin-top: 0.66667rem;
     display: block; }
   .Blue_SearchCard img {
     float: left;
-    width: 96px;
-    height: 128px;
+    width: 2.56rem;
+    height: 3.41333rem;
     background: #333; }
