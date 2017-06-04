@@ -143,7 +143,7 @@
 
 .Blue_Container{
   .body{
-    height: 500px;
+    // height: 500px;
     margin-top: 146px;
   }
   header{
@@ -163,4 +163,9 @@
     height: 10px;
     background:#000;
   }
+}
+
+// ZQ item
+.detail_item {
+  // font-size:$zq-font-size;
 }

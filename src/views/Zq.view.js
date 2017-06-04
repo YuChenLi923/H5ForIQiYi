@@ -11,54 +11,39 @@ ajaxExpanding.init({
     return JSON.parse(result);
   }
 });
-var data = config.publicData;
 
 
-function get_msg(name) {
-  var data = config.publicData;
-  data.type = 'detail';
-  data.mode = 11;
-  data.is_purchase = 2; //是否付费的片子
-  data.version = 7.5;
-  data.page_size = 30;
-  console.log(name,999);
-  data.channel_name = name;
-  var back;
-  ajaxExpanding.send({
-    url:config.host + '/openapi/realtime/channel',
-    data:data,
-    onSuccess:result=>{
-      back=result;
-    }
-  },
-  'getDetails');
-  return back;
-}
+
 
 class Page_body extends React.Component {
   constructor(props) {
     super(props);
-    this.get_msg=this.get_msg.bind(this);
-    this.preTitle = '';
+    // this.create_body=this.create_body.bind(this);
+
+    this.channel_name='';
+    this.state={};
   }
-  get_msg() {
-    if(this.props.Title){
-      if(!this.preTitle){
-        get_msg(this.props.Title);
-        this.preTitle = this.props.Title;
-      }
-      else{
-        if(this.preTitle != this.props.Title){
-          get_msg(this.props.Title);
-          this.preTitle = this.props.Title;
-        }
-      }
-    }
+
+  create_body() {
+    if(this.props.nodata) {
+      return <div id="detail_error">{this.props.error}</div>
+    } else
+      return <div id="details">
+        {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
+          <img src={e.img} alt={e.title}/>
+          <span  className="fontSizeSS" title={e.title}>{e.short_title}</span>
+        </div>)}
+      </div>
   }
+
   render() {
-    this.get_msg();
-    console.log(this.props);
-    return <div style={{background:'blue',fontSize:'0.8rem'}}>{'props is:'+this.props.Title}</div>
+    // this.get_msg(this.props.Title);
+    console.log("ZQ:",this.props)
+    return <div style={{background:'yellow'}}>
+      {this.create_body()}
+    </div>
   }
 }
+
+
 module.exports = Page_body;

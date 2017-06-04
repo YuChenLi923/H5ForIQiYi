@@ -80,7 +80,7 @@ class Blue_Container extends React.Component{
         super(props);
     }
     render(){
-        let { NavListDispatch , NavListState,topDisPatch } = this.props;
+        let { NavListDispatch , NavListState,topDisPatch, DetailsState } = this.props;
         return(
             <div className="Blue_Container">
                 <header>
@@ -89,7 +89,7 @@ class Blue_Container extends React.Component{
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
                 <div className = 'body'>
-                  <Zq Title={NavListState.title}/>
+                  <Zq {...DetailsState}/>
                 </div>
                 <footer className = "fontSizeSS">
                     蓝山工作室15级前端组制作

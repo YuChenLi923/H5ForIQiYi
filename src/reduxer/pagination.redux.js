@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 const reducers = combineReducers({
     NavList:NavList_reducers,
-    search:search_reducers
+    search:search_reducers,
+    Details:Detail_reducers
 });
 const store = createStore(reducers);
 function NavList_reducers(state = { items:[] , index:0 }, action) {
@@ -49,6 +50,34 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             return state
     }
 }
+
+function Detail_reducers(state = {nodata:0,videos:[]}, action) {
+  switch (action.type) {
+    case 'getNavListItems':
+      console.log("first")
+    case 'clickItem':
+      action.getDetail(action.title);
+      return state;
+      break;
+    case 'newDetails':
+      if(action.datas.code==100000)
+        return Object.assign({},state,{
+          nodata:0,
+          videos:action.datas.data.video_list
+        });
+      else {
+        return Object.assign({},state,{
+          nodata:1,
+          videos:[],
+          error:'哎呀，找不到数据了！'
+        });
+      }
+    default:
+      return state;
+  }
+  return state;
+}
+
 function search_reducers(state = {value:''},action){
   switch (action.type) {
     case 'inputValue':
@@ -80,7 +109,8 @@ function search_reducers(state = {value:''},action){
 function mapStateToProps(state) {
     return {
         NavListState: state.NavList,
-        searchState:state.search
+        searchState:state.search,
+        DetailsState: state.Details
     }
 }
 function mapDispatchToProps(dispatch) {

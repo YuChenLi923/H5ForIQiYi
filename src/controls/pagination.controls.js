@@ -46,6 +46,7 @@ ajaxExpanding.init({
             handleRoute(index,data);
             console.log(scrollW);
             store.dispatch(createAction('getNavListItems',{
+              getDetail:getDetail,
               items:items,
               index:index,
               title:items[index].name,
@@ -89,6 +90,7 @@ function clickNav(item,index) {
     createAction('clickItem',{
       index:index,
       title:name,
+      getDetail:getDetail,
       lineIndex:scrollW>768?Math.floor(index/10)+1:Math.floor(index/4)+1
     })
   );
@@ -97,4 +99,27 @@ function createAction(type,data){
     var action = data || {};
     action.type = type;
     return action;
+}
+
+function getDetail(name) {
+  // 请求详细信息ajax
+  // 设置本次请求的data
+  var zq_data = config.publicData;
+  zq_data.type = 'detail';
+  zq_data.version = 7.5;
+  zq_data.mode = 11;
+  // data.is_purchase = 2; //是否付费的片子
+  zq_data.page_size = 30;
+  zq_data.channel_name = name;
+  console.log("title:",name)
+  ajaxExpanding.send({
+      url:config.host + '/openapi/realtime/channel',
+      data:zq_data,
+      onSuccess:function (result) {
+        store.dispatch(createAction('newDetails',{
+          datas:result
+        }))
+        console.log("详细信息：",result)
+      }
+  },'getDetails')
 }
