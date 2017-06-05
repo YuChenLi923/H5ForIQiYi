@@ -32,6 +32,8 @@ class Page_body extends React.Component {
         {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
           <img src={e.img} alt={e.title}/>
           <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
+          <img src={e.img} />
+          <a  className="fontSizeSS" title={e.title}>{e.short_title}</a>
         </div>)}
       </div>
   }

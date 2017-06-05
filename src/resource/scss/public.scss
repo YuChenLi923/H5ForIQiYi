@@ -24,9 +24,12 @@ ul{
   margin-left: auto;
   margin-right: auto;
 }
-
+.fontSizeS,.fontSizeSS,.fontSizeM,.fontSizeL,.fontSizeXL,.fontSizeXLL{
+    -webkit-text-size-adjust:none;
+}
 [data-dpr='1'] .fontSizeS{
   font-size: $fontSizeS;
+
 }
 [data-dpr='2'] .fontSizeS{
   font-size: $fontSizeS*2;
@@ -39,10 +42,10 @@ ul{
   font-size: $fontSizeSS;
 }
 [data-dpr='2'] .fontSizeSS{
-  font-size: $fontSizeS*2;
+  font-size: $fontSizeSS*2;
 }
 [data-dpr='3'] .fontSizeSS{
-  font-size: $fontSizeS*3;
+  font-size: $fontSizeSS*3;
 }
 
 [data-dpr='1'] .fontSizeM{
