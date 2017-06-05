@@ -167,5 +167,12 @@
 
 // ZQ item
 .detail_item {
+  font-size:16rem/75;
+}
+.detail_item span{
   // font-size:$zq-font-size;
+  // display:block;
+  // height:30px;
+  -webkit-text-size-adjust: none;
+
 }

@@ -65,7 +65,7 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   }
   scale = parseFloat((1 / dpr).toFixed(2));
   docEl.setAttribute('data-dpr', dpr);
-  metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+  metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
   updateRem(width,dpr);
   appConfig.scale = scale;
   appConfig.dpr = dpr;

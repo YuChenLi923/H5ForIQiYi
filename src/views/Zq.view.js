@@ -31,7 +31,7 @@ class Page_body extends React.Component {
       return <div id="details">
         {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
           <img src={e.img} alt={e.title}/>
-          <span  className="fontSizeSS" title={e.title}>{e.short_title}</span>
+          <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
         </div>)}
       </div>
   }
