@@ -1,5 +1,6 @@
 const appConfig = {
   host:"http://iface.qiyi.com",
+  ourHost:"http://www.yuchenblog.cn:8080/iqiyi",
   publicData:{
     app_k:"f0f6c3ee5709615310c0f053dc9c65f2",
     app_v:8.4,
@@ -67,6 +68,11 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   docEl.setAttribute('data-dpr', dpr);
   metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
   updateRem(width,dpr);
+  if(width*scale>=768){
+    appConfig.imgSzie = '_480_360';
+  }else{
+    appConfig.imgSzie = '_180_236'
+  }
   appConfig.scale = scale;
   appConfig.dpr = dpr;
   appConfig.width = width;
@@ -81,7 +87,13 @@ metaEl = doc.querySelector('meta[name="viewport"]');
 function getScreenSize(){
    let width = docEl.getBoundingClientRect().width,
        height = docEl.clientHeight;
+    if(width*appConfig.scale>=768){
+       appConfig.imgSzie = '_480_360';
+     }else{
+       appConfig.imgSzie = '_180_236'
+    }
     updateRem(width,appConfig.dpr);
+
     return {
       width:Math.ceil(width*appConfig.scale),
       height:Math.ceil(height*appConfig.scale)
@@ -147,16 +159,26 @@ function getTouchDirection(startX,startY,endX,endY){
 }
 
 function getlimitStr(str,limitLen,suffix){
-      let i,
-          suf = suffix || '',
-          len = str.length;
+  let i,
+      suf = suffix || '',
+      len = str.length;
   if(len >= limitLen)
     str = str.substring(0,limitLen-1) + suf;
   return str;
 }
 
+// 处理适配图片问题
+
+function getImgURL(url){
+  let suffixStart = url.lastIndexOf('.',url.length),
+      imgURL = url.substring(0,suffixStart),
+      suffix = url.substring(suffixStart,url.length);
+
+  return imgURL + appConfig.imgSzie + suffix + '?sign=iqiyi';
+}
 module.exports = {
     config:appConfig,
+    getImgURL:getImgURL,
     parseURLQuery:parseURLQuery,
     getScreenSize:getScreenSize,
     getTouchDirection:getTouchDirection,

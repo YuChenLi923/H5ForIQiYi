@@ -16,6 +16,9 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
+.fontSizeS, .fontSizeSS, .fontSizeM, .fontSizeL, .fontSizeXL, .fontSizeXLL {
+  -webkit-text-size-adjust: none; }
+
 [data-dpr='1'] .fontSizeS {
   font-size: 14px; }
 
@@ -29,10 +32,10 @@ ul {
   font-size: 12px; }
 
 [data-dpr='2'] .fontSizeSS {
-  font-size: 28px; }
+  font-size: 24px; }
 
 [data-dpr='3'] .fontSizeSS {
-  font-size: 42px; }
+  font-size: 36px; }
 
 [data-dpr='1'] .fontSizeM {
   font-size: 16px; }
@@ -98,9 +101,9 @@ ul {
     .Blue_NavList .list .on {
       background-color: #666; }
   .Blue_NavList .off {
-    background-image: url("https://www.yuchenblog.cn/images/dropDown.png"); }
+    background-image: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/dropDown.png"); }
   .Blue_NavList .on {
-    background-image: url("https://www.yuchenblog.cn/images/pullUp.png"); }
+    background-image: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/pullUp.png"); }
   .Blue_NavList .select {
     background: #666; }
   .Blue_NavList button {
@@ -127,7 +130,7 @@ ul {
     margin-left: 5px;
     height: 50px;
     width: 105px;
-    background: url("https://www.yuchenblog.cn/images/iqiyi-logo.png") no-repeat 0 0px;
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
   @media screen and (max-device-width: 768px) {
     .Blue_Top .logo {
@@ -135,7 +138,7 @@ ul {
       width: 2.24rem;
       margin-top: 0.16rem;
       margin-left: 0.13333rem;
-      background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
       background-size: 2.24rem 0.74667rem; }
     .Blue_Top .maxWarp {
       height: 1.06667rem; } }
@@ -161,7 +164,7 @@ ul {
       float: left;
       height: 30px;
       width: 30px;
-      background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 5px 5px;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/search.png") no-repeat 5px 5px;
       padding: 5px;
       background-size: 20px 20px;
       background-color: #699f00; }
@@ -178,7 +181,6 @@ ul {
         background-position: 0 0; } }
 
 .Blue_Container .body {
-  height: 500px;
   margin-top: 146px; }
 
 .Blue_Container header {
@@ -197,3 +199,9 @@ ul {
 .Blue_Container .blackBox {
   height: 10px;
   background: #000; }
+
+.detail_item {
+  font-size: 16rem/75; }
+
+.detail_item span {
+  -webkit-text-size-adjust: none; }

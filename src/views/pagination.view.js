@@ -65,7 +65,7 @@ class Blue_Top extends React.Component{
       return (
         <div className = "Blue_Top">
             <div className = "maxWarp">
-              <a href="index.html"><span className="logo"></span></a>
+              <a href="../index.html"><span className="logo"></span></a>
                <div className = "search">
                   <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
                   <button onClick = {search} ></button>

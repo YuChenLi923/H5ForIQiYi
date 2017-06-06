@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImgURL,config } from '../libs/ajax.public';
 // 导航栏
 class Blue_NavList extends React.Component{
     constructor(props){
@@ -124,7 +125,7 @@ class Blue_CardBox extends React.Component{
     for( i = 0 , len = items.length ; i < len ; i++){
       result.push(
         <div key ={i} className='card'>
-          <img src={items[i].img} />
+          <a rel="noreferrer"><img  src={getImgURL(items[i].img) } /></a>
           <span>{items[i].title}</span>
         </div>
       );
@@ -136,7 +137,7 @@ class Blue_CardBox extends React.Component{
     return (
       <section className='Blue_CardBox fontSizeS'>
         <header className='header'>
-          <span className='title fontSizeL' style={{backgroundImage:'url(../resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
+          <span className='title fontSizeL' style={{backgroundImage:'url('+ config.ourHost + '/resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
           <span className='more fontSizeL'>更多</span>
         </header>
         <div className="cardWarp">

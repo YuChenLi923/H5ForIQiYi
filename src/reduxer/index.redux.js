@@ -136,11 +136,11 @@ function search_reducers(state = {value:''},action){
         }
         localStorage.setItem('searchHistory',history);
       }
-      window.location.href = 'search.html?searchContent=' + encodeURI(searchValue);
+      window.location.href = 'pages/search.html?searchContent=' + encodeURI(searchValue);
       return state;
       break;
     case 'showMobileSearch':
-      window.location.href = 'searchMobile.html';
+      window.location.href = 'pages/searchMobile.html';
       break;
     default:
       return state;

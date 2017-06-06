@@ -41,8 +41,8 @@ function scrollChange(){
       scrollW = getScreenSize().width;
       store.dispatch(createAction('scrollChange',{
         showLen:scrollW>768?10:4,
-        width:scrollW>768?1180:scrollW,
-        height:scrollW>768?316/640*1180:316/640*scrollW
+        width:scrollW<=1180?scrollW/config.scale:1180,
+        height:scrollW>1180?316/640*1180:316/640*scrollW/config.scale
       }));
 
   }, 300);
@@ -88,7 +88,7 @@ function createAction(type,data){
     win.addEventListener('resize',scrollChange,false);
     win.addEventListener('pageshow',scrollChange, false);
     function clickNav(item,index) {
-      window.location.href = 'pagination.html?type='+item.id;
+      window.location.href = './pages/pagination.html?type='+item.id;
     }
 })();
 
@@ -142,8 +142,8 @@ function setCarousel(data){
   }
   store.dispatch(createAction('getCarouselItems',{
     items:items,
-    width:scrollW<=768?scrollW/config.scale:1180,
-    height:scrollW>768?316/640*1180:316/640*scrollW/config.scale
+    width:scrollW<=1180?scrollW/config.scale:1180,
+    height:scrollW>1180?316/640*1180:316/640*scrollW/config.scale
   }))
 }
 

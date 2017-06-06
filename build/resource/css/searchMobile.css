@@ -16,6 +16,9 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
+.fontSizeS, .fontSizeSS, .fontSizeM, .fontSizeL, .fontSizeXL, .fontSizeXLL {
+  -webkit-text-size-adjust: none; }
+
 [data-dpr='1'] .fontSizeS {
   font-size: 14px; }
 
@@ -29,10 +32,10 @@ ul {
   font-size: 12px; }
 
 [data-dpr='2'] .fontSizeSS {
-  font-size: 28px; }
+  font-size: 24px; }
 
 [data-dpr='3'] .fontSizeSS {
-  font-size: 42px; }
+  font-size: 36px; }
 
 [data-dpr='1'] .fontSizeM {
   font-size: 16px; }
@@ -78,7 +81,7 @@ ul {
     width: 2.24rem;
     margin-top: 0.16rem;
     margin-left: 0.13333rem;
-    background: url("https://www.yuchenblog.cn/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
     background-size: 2.24rem 0.74667rem; }
   .Blue_Top span {
     display: block;
@@ -88,7 +91,7 @@ ul {
     line-height: 1.06667rem;
     font-weight: bold;
     padding-left: 0.26667rem;
-    background: url("https://www.yuchenblog.cn/images/searchMobile/dot.png") no-repeat 0 0.46667rem;
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/dot.png") no-repeat 0 0.46667rem;
     background-size: 0.13333rem 0.13333rem; }
 
 .Blue_SearchMobile {
@@ -115,7 +118,7 @@ ul {
       top: 0.4rem;
       height: 0.8rem;
       width: 0.8rem;
-      background: url("https://www.yuchenblog.cn/images/search.png") no-repeat 0.2rem 0.2rem;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/search.png") no-repeat 0.2rem 0.2rem;
       padding: 5px;
       background-size: 0.4rem  0.4rem;
       background-color: #699f00; }
@@ -145,7 +148,7 @@ ul {
       height: 0.7rem;
       margin: auto;
       margin-top: 0.3rem;
-      background: url("https://www.yuchenblog.cn/images/searchMobile/empty.png") no-repeat;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/empty.png") no-repeat;
       background-size: 100% 100%; }
     .Blue_SearchMobile .myHistory .emptyWarn {
       margin-top: 0.1rem; }
