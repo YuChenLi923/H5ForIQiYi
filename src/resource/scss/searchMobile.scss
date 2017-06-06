@@ -107,11 +107,13 @@
   }
 }
 
-
+// 卡片组件
 .Blue_SearchCard{
   padding: 0.2rem;
-  display: inline-block;
+  overflow: hidden;
   text-align: justify;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
   .desc{
     float: left;
     color: #333;
@@ -121,14 +123,38 @@
     display: block;
     margin-top: (30rem/75);
   }
-  .score{
-    margin-top: (50rem/75);
-    display: block;
-  }
   img{
     float: left;
     width:(192rem/75);
     height:(256rem/75);
     background: #333;
   }
+  .Blue_Score{
+  	overflow: hidden;
+    margin-top:(50rem/75);
+    margin-right: -0.05rem;
+    .star{
+    	display: block;
+    	float: left;
+    	width: (36rem/75);
+    	height: (36rem/75);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    	cursor: pointer;
+    }
+    .onstar{
+    	background-image:url($host + 'searchMobile/star1.png');
+    }
+    .nostar{
+    	background-image: url($host + 'searchMobile/star.png');
+    }
+    .score{
+      display: block;
+      float: left;
+      line-height: (36rem/75);
+      margin-left: 0.1rem;
+      color:#e09015;
+    }
+  }
+
 }

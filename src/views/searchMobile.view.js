@@ -1,9 +1,36 @@
 import React from 'react';
 
-//  <div className = "search">
-//     <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
-//     <button onClick = {search} ></button>
-//  </div>
+// 评分组件
+class Blue_Score extends React.Component{
+	_createStar(startNum,sum){
+		let i,
+			  len,
+			  starList=[];
+    if(startNum > sum)
+      startNum = sum;
+		for(i=0,len=sum;i<len;i++){
+			starList.push(
+				<span className={i < startNum?'star onstar':'star nostar'}
+						key={i}
+						data-key={i}>
+				</span>
+			);
+		}
+		return starList;
+	}
+	render(){
+    let  { score } = this.props,
+         sum = 5,
+         startNum = Math.floor(score/2);
+    return(
+			<div className={'Blue_Score'}>
+				{this._createStar(startNum,sum)}
+        <span className = 'score fontSizeM'>{score}</span>
+      </div>
+    );
+  }
+}
+
 // 顶部
 class Blue_Top extends React.Component{
   constructor(props){
@@ -33,7 +60,7 @@ class Blue_SearchCard extends React.Component{
         <img src={img} />
         <div className = "desc fontSizeL">
           <span className="name">{title}</span>
-          <span className="score">{score||'无'}</span>
+          <Blue_Score score ={+score||0}></Blue_Score>
         </div>
       </div>
     )

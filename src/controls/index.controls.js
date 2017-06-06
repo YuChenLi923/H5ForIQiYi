@@ -121,7 +121,7 @@ function handleRecommend(title,data){
       setCarousel(data);
       break;
     default:
-    setCardInf(data);
+    setCardInf(data,title);
     break;
   }
 }
@@ -150,20 +150,32 @@ function setCarousel(data){
 
 // 设置各个卡片的信息
 
-function setCardInf(data){
+function setCardInf(data,type){
   let i,
       items = [],
+      item = {},
       card = {},
       title = data.title,
       id = data.channel_id,
       videos = data.video_list,
       len = videos.length;
   for( i = 0 ;  i < len ; i++){
-    items.push({
+    item = {
       src:'#',
       img:videos[i].img,
       title:getlimitStr(videos[i].short_title,10)
-    });
+    }
+    if(type === '综艺'){
+      item.extText = getPeriods(videos[i].date_format);
+    }
+    if(type === '电视剧'){
+      if(videos[i].update_num < videos[i].total_num){
+        item.extText = '更新至' + videos[i].update_num  + '集';
+      }else{
+        item.extText = videos[i].update_num + '集全';
+      }
+    }
+    items.push(item);
   }
   card.id  = id;
   card.title = title;
@@ -171,4 +183,12 @@ function setCardInf(data){
   store.dispatch(createAction('getCardInf',{
     card:card
   }))
+}
+
+
+// 获取综艺节目的期数
+
+function getPeriods(str){
+  let start = str.indexOf('-')+1;
+  return str.substring(start,str.length)  + '期';
 }

@@ -2,7 +2,7 @@
 * {
   font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
 
-html, body, div, ul, button, input, li, nav {
+html, body, div, ul, button, input, li, nav, p {
   margin: 0;
   padding: 0;
   border: none;
@@ -191,6 +191,20 @@ ul {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden; }
+  .BluMUI_Carousel .Blue_Loading {
+    width: 100%;
+    height: 0.77333rem;
+    position: absolute;
+    color: #999;
+    top: 40%;
+    text-align: center;
+    margin-top: -0.38667rem; }
+    .BluMUI_Carousel .Blue_Loading .lodingImg {
+      height: 0.42667rem;
+      width: 0.42667rem; }
+    .BluMUI_Carousel .Blue_Loading .failImg {
+      height: 0.64rem;
+      width: 0.64rem; }
   .BluMUI_Carousel .body {
     list-style: none;
     height: 100%;
@@ -262,7 +276,7 @@ ul {
       margin-left: 35px;
       margin-top: 5px; }
     .BluMUI_Carousel .nav .control {
-      width: 424px;
+      width: 385px;
       height: 100%;
       margin: auto; }
     .BluMUI_Carousel .nav .showNav {
@@ -353,8 +367,18 @@ ul {
     overflow: hidden;
     color: #333;
     bottom: 0; }
+  .Blue_CardBox .card a {
+    position: relative;
+    display: block;
+    font-size: 0; }
   .Blue_CardBox .card img {
     width: 100%; }
+  .Blue_CardBox .card .extText {
+    position: absolute;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0; }
 
 .Blue_Container #body {
   max-width: 1180px;
