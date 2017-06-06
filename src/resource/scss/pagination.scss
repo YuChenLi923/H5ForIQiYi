@@ -160,19 +160,79 @@
     background:#000;
   }
   .blackBox{
-    height: 10px;
+    height: (20rem/75);
     background:#000;
   }
 }
 
 // ZQ item
-.detail_item {
-  font-size:16rem/75;
+#zq_body {
+  margin-top:2.53rem;
+  text-align:center;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail_item img{
+  font-size:0.46rem;
+  width: (120rem/75);
+  height: (160rem/75);
 }
 .detail_item span{
   // font-size:$zq-font-size;
   // display:block;
   // height:30px;
+  // 解除浏览器对字体大小的限制
   -webkit-text-size-adjust: none;
+  // 限制行数
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 
 }
+.detail_item {
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  float: left;
+  width: 147.5px;
+  height: (200rem/54);
+  padding: (12rem/54);
+}
+#details {
+  // float:left;
+  padding-top:30px;
+  padding-bottom:30px;
+  overflow:hidden;
+  margin: 0 auto;
+}
+
+
+@media screen and (max-device-width: 768px){
+  .detail_item {
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    float: left;
+    width: 33.333333%;
+    height: (200rem/54);
+    padding: (12rem/54);
+  }
+}
+@media screen and (max-width: 1196px) {
+  #details {
+    width: 1032.5px;
+  }
+}
+@media screen and (max-width: 1049px) {
+  #details {
+    width: 885px;
+  }
+}
+@media screen and (max-width: 901px) {
+  #details {
+    width: 737.5px;
+  }
+}
+
+

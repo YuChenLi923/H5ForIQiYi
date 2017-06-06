@@ -32,8 +32,6 @@ class Page_body extends React.Component {
         {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
           <img src={e.img} alt={e.title}/>
           <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
-          <img src={e.img} />
-          <a  className="fontSizeSS" title={e.title}>{e.short_title}</a>
         </div>)}
       </div>
   }
@@ -41,7 +39,7 @@ class Page_body extends React.Component {
   render() {
     // this.get_msg(this.props.Title);
     console.log("ZQ:",this.props)
-    return <div style={{background:'yellow'}}>
+    return <div style={{background:'yellow'}} id="zq_body">
       {this.create_body()}
     </div>
   }
