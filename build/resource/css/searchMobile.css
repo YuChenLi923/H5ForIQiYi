@@ -2,7 +2,7 @@
 * {
   font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
 
-html, body, div, ul, button, input, li, nav {
+html, body, div, ul, button, input, li, nav, p {
   margin: 0;
   padding: 0;
   border: none;
@@ -163,8 +163,10 @@ ul {
 
 .Blue_SearchCard {
   padding: 0.2rem;
-  display: inline-block;
-  text-align: justify; }
+  overflow: hidden;
+  text-align: justify;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem; }
   .Blue_SearchCard .desc {
     float: left;
     color: #333;
@@ -172,11 +174,30 @@ ul {
   .Blue_SearchCard .name {
     display: block;
     margin-top: 0.4rem; }
-  .Blue_SearchCard .score {
-    margin-top: 0.66667rem;
-    display: block; }
   .Blue_SearchCard img {
     float: left;
     width: 2.56rem;
     height: 3.41333rem;
     background: #333; }
+  .Blue_SearchCard .Blue_Score {
+    overflow: hidden;
+    margin-top: 0.66667rem;
+    margin-right: -0.05rem; }
+    .Blue_SearchCard .Blue_Score .star {
+      display: block;
+      float: left;
+      width: 0.48rem;
+      height: 0.48rem;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      cursor: pointer; }
+    .Blue_SearchCard .Blue_Score .onstar {
+      background-image: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/star1.png"); }
+    .Blue_SearchCard .Blue_Score .nostar {
+      background-image: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/star.png"); }
+    .Blue_SearchCard .Blue_Score .score {
+      display: block;
+      float: left;
+      line-height: 0.48rem;
+      margin-left: 0.1rem;
+      color: #e09015; }

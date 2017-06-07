@@ -138,6 +138,9 @@
 .carousel_warp{
 	height: 386px;
 }
+
+
+
 .margin{
 	height: 14px;
 }
@@ -148,6 +151,23 @@
   margin-left: auto;
   margin-right: auto;
 	overflow: hidden;
+  .Blue_Loading{
+    width: 100%;
+    height:(58rem/75);
+    position: absolute;
+    color:#999;
+    top: 40%;
+    text-align: center;
+    margin-top:-(58rem/150);
+    .lodingImg{
+      height: (32rem/75);
+      width:(32rem/75);
+    }
+    .failImg{
+      height: (48rem/75);
+      width:(48rem/75);
+    }
+  }
   .body{
   	list-style: none;
   	height: 100%;
@@ -228,7 +248,7 @@
     	margin-top: 5px;
     }
     .control{
-    	width: 424px;
+    	width: 385px;
     	height: 100%;
     	margin: auto;
     }
@@ -337,8 +357,20 @@
       color:#333;
       bottom: 0;
     }
+    a{
+      position: relative;
+      display: block;
+      font-size: 0;
+    }
     img{
       width: 100%;
+    }
+    .extText{
+      position: absolute;
+      width: 100%;
+      color: white;
+      background-color: rgba(0,0,0,0.5);
+      margin: 0;
     }
   }
 }
