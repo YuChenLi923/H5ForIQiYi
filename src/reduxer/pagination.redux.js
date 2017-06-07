@@ -51,22 +51,26 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
     }
 }
 
-function Detail_reducers(state = {nodata:0,videos:[]}, action) {
+function Detail_reducers(state = {loading:true,nodata:0,videos:[]}, action) {
   switch (action.type) {
     case 'getNavListItems':
       console.log("first")
     case 'clickItem':
       action.getDetail(action.title);
-      return state;
+      return Object.assign({},state,{
+        loading:true
+      });
       break;
     case 'newDetails':
       if(action.datas.code==100000)
         return Object.assign({},state,{
+          loading:false,
           nodata:0,
           videos:action.datas.data.video_list
         });
       else {
         return Object.assign({},state,{
+          loading:false,
           nodata:1,
           videos:[],
           error:'哎呀，找不到数据了！'

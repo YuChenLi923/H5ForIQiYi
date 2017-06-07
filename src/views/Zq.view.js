@@ -13,6 +13,50 @@ ajaxExpanding.init({
 });
 
 
+// 加载组件
+
+class Blue_Loading extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      loadFail:false
+    }
+  }
+  componentWillMount(){
+    this.timerID = setTimeout(()=>{
+      this.setState({
+        loadFail:true
+      })
+    },5000);
+  }
+  componentWillUnmount(){
+    clearTimeout(this.timerID);
+  }
+  render(){
+    let loadingText = this.props.text ||'';
+    return(
+      <div className = 'Blue_Loading'>
+        {
+          this.state.loadFail&&
+          <img className = "failImg" src={config.ourHost + "/resource/images/" + 'fail.png'} />
+        }
+        {
+          this.state.loadFail&&
+          <p className = "fontSizeSS">加载失败,请重新刷新页面</p>
+        }
+        {
+          !this.state.loadFail&&
+          <img className = "lodingImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
+        }
+        {
+          !this.state.loadFail&&
+          <p className = "fontSizeSS">{loadingText}</p>
+        }
+      </div>
+    );
+  }
+}
+
 
 
 class Page_body extends React.Component {
@@ -25,21 +69,26 @@ class Page_body extends React.Component {
   }
 
   create_body() {
-    if(this.props.nodata) {
-      return <div id="detail_error">{this.props.error}</div>
-    } else
-      return <div id="details">
-        {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
-          <img src={getImgURL(e.img)} alt={e.title}/>
-          <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
-        </div>)}
-      </div>
+    if(this.props.loading) {
+      return <Blue_Loading text="正在加载内容"/>
+    } else {
+      if(this.props.nodata) {
+        return <div id="detail_error">{this.props.error}</div>
+      } else {
+        return <div id="details">
+          {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
+            <img src={getImgURL(e.img)} alt={e.title}/>
+            <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
+          </div>)}
+        </div>
+      }
+    }
   }
 
   render() {
     // this.get_msg(this.props.Title);
     console.log("ZQ:",this.props)
-    return <div style={{background:'yellow'}} id="zq_body">
+    return <div style={{background:'#FFF'}} id="zq_body">
       {this.create_body()}
     </div>
   }

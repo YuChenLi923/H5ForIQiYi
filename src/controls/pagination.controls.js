@@ -102,6 +102,9 @@ function createAction(type,data){
 }
 
 function getDetail(name) {
+  // store.dispatch(createAction('newDetails',{
+  //   loading:true
+  // }))
   // 请求详细信息ajax
   // 设置本次请求的data
   var zq_data = config.publicData;
@@ -117,9 +120,13 @@ function getDetail(name) {
       data:zq_data,
       onSuccess:function (result) {
         store.dispatch(createAction('newDetails',{
+          loading:false,
           datas:result
         }))
         console.log("详细信息：",result)
+      },
+      onFail:(result)=>{
+        getDetail(name);
       }
   },'getDetails')
 }
