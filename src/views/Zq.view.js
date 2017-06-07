@@ -1,6 +1,6 @@
 import React from 'react';
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize } from '../libs/ajax.public';
+import { config , getImgURL } from '../libs/ajax.public';
 // 中间部分
 ajaxExpanding.init({
   name:'getDetails',
@@ -30,7 +30,7 @@ class Page_body extends React.Component {
     } else
       return <div id="details">
         {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
-          <img src={e.img} alt={e.title}/>
+          <img src={getImgURL(e.img)} alt={e.title}/>
           <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
         </div>)}
       </div>
