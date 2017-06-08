@@ -8,7 +8,8 @@ const reducers = combineReducers({
     NavList:NavList_reducers,
     Carousel:Carousel_reducers,
     Cards:Cards_reducers,
-    search:search_reducers
+    search:search_reducers,
+    Loading:Loading_reducers
 });
 const store = createStore(reducers);
 let timerID = null,
@@ -51,6 +52,20 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
         default:
             return state
     }
+}
+
+//加载模块的reducers
+function Loading_reducers( state = {loadFail:false},action){
+  switch (action.type) {
+    case 'loadingFailed':
+      return Object.assign({},state,{
+        loadFail:true
+      })
+      break;
+    default:
+    return state;
+  }
+
 }
 // 轮播图的reducers
 function Carousel_reducers(state,action){
@@ -164,7 +179,8 @@ function mapStateToProps(state) {
         NavListState: state.NavList,
         CarouselState:state.Carousel,
         CardsState:state.Cards,
-        searchState:state.search
+        searchState:state.search,
+        LoadingState:state.Loading
     }
 }
 function mapDispatchToProps(dispatch) {

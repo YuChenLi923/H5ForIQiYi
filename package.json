@@ -9,6 +9,9 @@
     "hot-build": "webpack-dev-server --inline --compress --process --quiet --content-base ./build"
   },
   "dependencies": {
+    "console-polyfill": "^0.2.3",
+    "es5-shim": "^4.5.9",
+    "es6-promise": "^4.1.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",

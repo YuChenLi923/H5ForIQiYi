@@ -4,15 +4,7 @@ import store from '../reduxer/pagination.redux';
 let  tid,
      scrollW = getScreenSize().width;
 // 初始ajaxExpanding对象
-ajaxExpanding.init({
-    name:'getNavList',
-    dataType:'json',
-    type:'get',
-    async:true,
-    handleData:function (result) {
-        return JSON.parse(result);
-    }
-});
+
 
 (function () {
   const win = window,
@@ -25,9 +17,15 @@ ajaxExpanding.init({
     data.type = 'list';
     data.version = 7.5;
     // ajax获取数据
-    ajaxExpanding.send({
+    ajaxExpanding.init({
         url:getChannelList,
         data:data,
+        dataType:'json',
+        type:'get',
+        async:true,
+        handleData:function (result) {
+            return JSON.parse(result);
+        },
         onSuccess:function (result) {
             var i,
                 len,
@@ -44,7 +42,6 @@ ajaxExpanding.init({
                   });
             }
             handleRoute(index,data);
-            console.log(scrollW);
             store.dispatch(createAction('getNavListItems',{
               getDetail:getDetail,
               items:items,
@@ -55,8 +52,12 @@ ajaxExpanding.init({
               callback:clickNav,
               showLen:scrollW>768?10:4
             }));
+        },
+        onFail:function(){
+          this.data.req_times +=1;
+          this.send();
         }
-    },'getNavList');
+    }).send();
     // 监听页面变化，自适应改变组件参数
     win.addEventListener('resize',scrollChange,false);
     win.addEventListener('pageshow',scrollChange, false);
@@ -114,10 +115,15 @@ function getDetail(name) {
   // data.is_purchase = 2; //是否付费的片子
   zq_data.page_size = 30;
   zq_data.channel_name = name;
-  console.log("title:",name)
-  ajaxExpanding.send({
+  ajaxExpanding.init({
       url:config.host + '/openapi/realtime/channel',
       data:zq_data,
+      dataType:'json',
+      type:'get',
+      async:true,
+      handleData:function (result) {
+          return JSON.parse(result);
+      },
       onSuccess:function (result) {
         store.dispatch(createAction('newDetails',{
           loading:false,
@@ -125,8 +131,9 @@ function getDetail(name) {
         }))
         console.log("详细信息：",result)
       },
-      onFail:(result)=>{
-        getDetail(name);
+      onFail:()=>{
+        this.data.req_times +=1;
+        this.send();
       }
-  },'getDetails')
+  }).send();
 }

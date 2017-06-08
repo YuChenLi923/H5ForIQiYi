@@ -1,8 +1,3 @@
-/**
- *
- *
- *
-**/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
 import { config , getScreenSize, getlimitStr } from '../libs/ajax.public';
 import store from '../reduxer/index.redux';
@@ -14,25 +9,6 @@ const win = window,
 // 全局变量
 let  tid,
      scrollW = getScreenSize().width;
-// 初始化ajaxExpanding对象 getNavList-获取导航栏信息 getCarousel-获取轮播图信息
-ajaxExpanding.init({
-    name:'getNavList',
-    dataType:'json',
-    type:'get',
-    async:true,
-    handleData:function (result) {
-        return JSON.parse(result);
-    }
-});
-ajaxExpanding.init({
-  name:'getCarousel',
-  dataType:'json',
-  type:'get',
-  async:true,
-  handleData:function (result) {
-      return JSON.parse(result);
-  }
-});
 // 公共函数
 
 function scrollChange(){
@@ -62,10 +38,18 @@ function createAction(type,data){
     data.type = 'list';
     data.version = 7.5;
     // ajax获取导航栏数据
-    ajaxExpanding.send({
+    ajaxExpanding.init({
+        name:'getNavList',
+        dataType:'json',
+        type:'get',
+        async:true,
         url:getChannelList,
         data:data,
+        handleData:function (result) {
+            return JSON.parse(result);
+        },
         onSuccess:function (result) {
+
             var i,
                 len,
                 data = result.data,
@@ -82,8 +66,12 @@ function createAction(type,data){
               callback:clickNav,
               showLen:scrollW>768?10:4
             }));
+        },
+        onFail:function(){
+          this.data.req_times +=1;
+          this.send();
         }
-    },'getNavList');
+    }).send();
     // 监听页面变化，自适应改变组件参数
     win.addEventListener('resize',scrollChange,false);
     win.addEventListener('pageshow',scrollChange, false);
@@ -97,9 +85,16 @@ function createAction(type,data){
 (function(){
   let getCarouselURL = host + '/openapi/realtime/recommend',
       data = publicData;
-  ajaxExpanding.send({
+  ajaxExpanding.init({
+    name:'getNavList',
+    dataType:'json',
+    type:'get',
+    async:true,
     url:getCarouselURL,
     data:data,
+    handleData:function (result) {
+        return JSON.parse(result);
+    },
     onSuccess:function(result){
       let i,
           len,
@@ -108,8 +103,12 @@ function createAction(type,data){
       for( i = 0 , len = data.length ; i < len ; i++){
         handleRecommend(data[i].title,data[i]);
       }
+    },
+    onFail:function(){
+        this.data.req_times +=1;
+        this.send();
     }
-  },'getCarousel');
+  }).send();
 })();
 
 

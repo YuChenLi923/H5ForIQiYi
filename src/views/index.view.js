@@ -68,7 +68,8 @@ class Blue_Carousel extends React.Component{
           touchEnd,
           mouseOut,
           mouseOver,
-          height
+          height,
+          loadFail
         }  = this.props,
         len = items.length;
 		for(i= 0;i < len;i++){
@@ -102,7 +103,7 @@ class Blue_Carousel extends React.Component{
       					{bodyShow}
       				</ul>
             }else{
-              <Blue_Loading text="正在加载内容"/>
+              <Blue_Loading text="正在加载内容" loadFail = {loadFail}/>
             }
           }
         }
@@ -173,39 +174,26 @@ class Blue_CardBox extends React.Component{
 class Blue_Loading extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      loadFail:false
-    }
-  }
-  componentWillMount(){
-    let that = this;
-    this.timerID = setTimeout(function(){
-      that.setState({
-        loadFail:true
-      })
-    },5000);
-  }
-  componentWillUnmount(){
-    clearTimeout(this.timerID);
   }
   render(){
-    let loadingText = this.props.text ||'';
+    let loadingText = this.props.text ||'',
+        loadFail = this.props.loadFail;
     return(
       <div className = 'Blue_Loading'>
         {
-          this.state.loadFail&&
+          loadFail&&
           <img className = "failImg" src={config.ourHost + "/resource/images/" + 'fail.png'} />
         }
         {
-          this.state.loadFail&&
+          loadFail&&
           <p className = "fontSizeSS">加载失败,请重新刷新页面</p>
         }
         {
-          !this.state.loadFail&&
+          !loadFail&&
           <img className = "lodingImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
         }
         {
-          !this.state.loadFail&&
+          !loadFail&&
           <p className = "fontSizeSS">{loadingText}</p>
         }
       </div>
@@ -244,6 +232,7 @@ class Blue_Container extends React.Component{
               topDisPatch,
               NavListState,
               CarouselState,
+              LoadingState,
               CardsState
             } = this.props;
         return(
@@ -252,7 +241,7 @@ class Blue_Container extends React.Component{
                     <Blue_Top {...topDisPatch}/>
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
-                <Blue_Carousel {...CarouselState} {...CarouseDispatch}/>
+                <Blue_Carousel {...CarouselState} {...CarouseDispatch} {...LoadingState}/>
                 <div id = 'body'>
                   {do{
                     if(CardsState.cards.length > 0){
