@@ -50,7 +50,6 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   // 是手机
   console.log(isIPhone);
   if(isAndroid || isIPhone ){
-      appConfig.isMobile = true;
       mobileSystemV = isAndroid?isAndroid[1]:isIPhone[1];
   }
   if (isIPhone) {
@@ -71,8 +70,10 @@ metaEl = doc.querySelector('meta[name="viewport"]');
   if(width*scale>=768){
     appConfig.imgSzie = '_480_360';
   }else{
-    appConfig.imgSzie = '_180_236'
+    appConfig.imgSzie = '_180_236';
+    appConfig.isMobile = true;
   }
+
   appConfig.scale = scale;
   appConfig.dpr = dpr;
   appConfig.width = width;
@@ -87,10 +88,12 @@ metaEl = doc.querySelector('meta[name="viewport"]');
 function getScreenSize(){
    let width = docEl.getBoundingClientRect().width,
        height = docEl.clientHeight;
+
     if(width*appConfig.scale>=768){
        appConfig.imgSzie = '_480_360';
      }else{
-       appConfig.imgSzie = '_180_236'
+       appConfig.imgSzie = '_180_236';
+       appConfig.isMobile = true;
     }
     updateRem(width,appConfig.dpr);
 
@@ -110,7 +113,7 @@ function updateRem(width,dpr){
   rem = width / 10;
   appConfig.rem = rem;
   docEl.style.fontSize = rem + 'px';
-  if(width <= 768 )
+  if(width*appConfig.scale <= 768 )
     appConfig.isMobile = true;
 }
 

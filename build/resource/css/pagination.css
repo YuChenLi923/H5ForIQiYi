@@ -181,7 +181,7 @@ ul {
         background-position: 0 0; } }
 
 .Blue_Container .body {
-  margin-top: 146px; }
+  margin-top: 2.6rem; }
 
 .Blue_Container header {
   position: fixed;
@@ -205,7 +205,6 @@ ul {
   text-align: center; }
 
 #zq_body {
-  margin-top: 2.53rem;
   text-align: center;
   max-width: 1180px;
   margin-left: auto;

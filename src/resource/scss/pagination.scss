@@ -139,7 +139,7 @@
 .Blue_Container{
   .body{
     // height: 500px;
-    margin-top: 146px;
+    margin-top: (195rem/75);
   }
   header{
     position: fixed;
@@ -167,7 +167,6 @@
 
 // ZQ item
 #zq_body {
-  margin-top:2.53rem;
   text-align:center;
   max-width: 1180px;
   margin-left: auto;
@@ -229,6 +228,3 @@
   overflow:hidden;
   margin: 0 auto;
 }
-
-
-
