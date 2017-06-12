@@ -4,7 +4,7 @@
  *
 **/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize ,parseURLQuery , getlimitStr } from '../libs/ajax.public';
+import { config , getScreenSize ,parseURLQuery , getlimitStr ,getImgURL} from '../libs/ajax.public';
 import store from '../reduxer/searchMobile.redux';
 // 全局常量
 const win = window,
@@ -23,12 +23,6 @@ function scrollChange(){
   clearTimeout(tid);
   tid = setTimeout(function(){
       scrollW = getScreenSize().width;
-      store.dispatch(createAction('scrollChange',{
-        showLen:scrollW>768?10:4,
-        width:scrollW>768?1180:scrollW,
-        height:scrollW>768?316/640*1180:316/640*scrollW
-      }));
-
   }, 300);
 }
 
@@ -57,6 +51,8 @@ function createAction(type,data){
       win.addEventListener('popstate',()=>window.location.reload(),false);
     },0);
   },false);
+  win.addEventListener('resize',scrollChange,false);
+  win.addEventListener('pageshow',scrollChange, false);
   function ajaxSearch(searchContent,myhistory){
     let data = publicData;
     data.key = searchContent;
@@ -77,11 +73,17 @@ function createAction(type,data){
             i,
             desc = '',
             items = [],
-            len;
+            len,
+            limitLen;
+        if(scrollW >=1180){
+          limitLen = 25;
+        }else{
+          limitLen = 15;
+        }
         if(code === 100000){
           for( i = 0 , len = data.length; i < len ; i++){
             items.push({
-              title:getlimitStr(data[i].short_title,15),
+              title:getlimitStr(data[i].short_title,limitLen),
               score:data[i].sns_score,
               img:data[i].img
             });

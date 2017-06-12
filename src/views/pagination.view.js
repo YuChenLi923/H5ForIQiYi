@@ -41,8 +41,8 @@ class Blue_NavList extends React.Component{
             <nav className="Blue_NavList" >
               <div className = "list maxWarp" style = {
                 {
-                  height:isOn?Math.ceil(len/showLen)*40/75+'rem':(lineIndex)*40/75 + 'rem',
-                  marginTop:!isOn&&!isIndexHtml?((lineIndex-1)*40/75)*-1 + 'rem':'0rem'
+                  height:isOn?Math.ceil(len/showLen)*0.5+'rem':(lineIndex)*0.5 + 'rem',
+                  marginTop:!isOn&&!isIndexHtml?((lineIndex-1)*0.5)*-1 + 'rem':'0rem'
                 }}>
                 {this._createList(items,index,callback)}
               </div>
@@ -62,13 +62,13 @@ class Blue_Top extends React.Component{
     super(props);
   }
   render(){
-      let { search,input } = this.props;
+      let { search,input,keyPress } = this.props;
       return (
         <div className = "Blue_Top">
             <div className = "maxWarp">
               <a href="../index.html"><span className="logo"></span></a>
                <div className = "search">
-                  <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
+                  <input placeholder = "请输入你想搜索的内容" onInput = {input} onKeyPress = {keyPress}/>
                   <button onClick = {search} ></button>
                </div>
             </div>

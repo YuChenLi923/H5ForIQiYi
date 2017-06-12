@@ -14,8 +14,8 @@
   a{
     width:10%;
     color:white;
-    line-height:(40rem/75);
-    height:(40rem/75);
+    line-height:0.5rem;
+    height:0.5rem;
     display: block;
     float: left;
     text-align: center;
@@ -64,16 +64,16 @@
 .Blue_Top{
   background-color:#333;
   .maxWarp{
-    height:60px;
+    height:(60rem/54);
   }
   .logo{
       cursor: pointer;
       display: block;
       float: left;
-      margin-top: 5px;
-      margin-left: 5px;
-      height: 50px;
-      width: 105px;
+      margin-top: (5rem/54);
+      height: (50rem/54);
+      margin-left: (5rem/54);
+      width: (105rem/54);
       background:url($host + 'iqiyi-logo.png') no-repeat 0 0px ;
       background-size: 100% 100%;
   }
@@ -87,7 +87,7 @@
         background-size:(168rem/75) (56rem/75);
     }
     .maxWarp{
-      height:(80rem/75);
+      height:1rem;
     }
   }
   .search{
@@ -138,8 +138,13 @@
 
 .Blue_Container{
   .body{
-    // height: 500px;
-    margin-top: (195rem/75);
+
+    margin-top: 2.6rem;
+  }
+  @media screen and (max-device-width: 768px){
+    .body{
+      margin-top: 2.5rem;
+    }
   }
   header{
     position: fixed;
@@ -156,7 +161,7 @@
     background:#000;
   }
   .blackBox{
-    height: (20rem/75);
+    height: 0.2rem;
     background:#000;
   }
 }

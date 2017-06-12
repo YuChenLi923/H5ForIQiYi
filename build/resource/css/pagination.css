@@ -82,8 +82,8 @@ ul {
   .Blue_NavList a {
     width: 10%;
     color: white;
-    line-height: 0.53333rem;
-    height: 0.53333rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
     display: block;
     float: left;
     text-align: center;
@@ -121,15 +121,15 @@ ul {
 .Blue_Top {
   background-color: #333; }
   .Blue_Top .maxWarp {
-    height: 60px; }
+    height: 1.11111rem; }
   .Blue_Top .logo {
     cursor: pointer;
     display: block;
     float: left;
-    margin-top: 5px;
-    margin-left: 5px;
-    height: 50px;
-    width: 105px;
+    margin-top: 0.09259rem;
+    height: 0.92593rem;
+    margin-left: 0.09259rem;
+    width: 1.94444rem;
     background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
   @media screen and (max-device-width: 768px) {
@@ -141,7 +141,7 @@ ul {
       background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
       background-size: 2.24rem 0.74667rem; }
     .Blue_Top .maxWarp {
-      height: 1.06667rem; } }
+      height: 1rem; } }
   .Blue_Top .search {
     height: 100%;
     float: right; }
@@ -183,6 +183,10 @@ ul {
 .Blue_Container .body {
   margin-top: 2.6rem; }
 
+@media screen and (max-device-width: 768px) {
+  .Blue_Container .body {
+    margin-top: 2.5rem; } }
+
 .Blue_Container header {
   position: fixed;
   top: 0;
@@ -198,7 +202,7 @@ ul {
   background: #000; }
 
 .Blue_Container .blackBox {
-  height: 0.26667rem;
+  height: 0.2rem;
   background: #000; }
 
 .Blue_Loading {

@@ -3,7 +3,7 @@ import { config ,  getScreenSize ,parseURLQuery } from '../libs/ajax.public';
 import store from '../reduxer/pagination.redux';
 let  tid,
      scrollW = getScreenSize().width;
-// 初始ajaxExpanding对象
+
 
 
 (function () {
@@ -66,7 +66,6 @@ let  tid,
       setTimeout(function(){
         win.addEventListener('popstate',()=>window.location.reload(),false);
       },0);
-
     },false);
     function handleRoute(index,data){
       if(index>-1){

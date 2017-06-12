@@ -91,6 +91,7 @@ function getScreenSize(){
 
     if(width*appConfig.scale>=768){
        appConfig.imgSzie = '_480_360';
+       appConfig.isMobile = false;
      }else{
        appConfig.imgSzie = '_180_236';
        appConfig.isMobile = true;

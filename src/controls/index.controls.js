@@ -1,5 +1,5 @@
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize, getlimitStr } from '../libs/ajax.public';
+import { config , getScreenSize, getlimitStr,getImgURL } from '../libs/ajax.public';
 import store from '../reduxer/index.redux';
 // 全局常量
 const win = window,
@@ -170,7 +170,7 @@ function setCardInf(data,type){
   for( i = 0 ;  i < len ; i++){
     item = {
       src:'#',
-      img:videos[i].img,
+      img:getImgURL(videos[i].img),
       title:getlimitStr(videos[i].short_title,10)
     }
     if(type === '综艺'){

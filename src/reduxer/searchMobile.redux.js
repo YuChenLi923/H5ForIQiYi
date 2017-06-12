@@ -63,12 +63,13 @@ function searchMobile_reducers(state,action){
            myhistory = getSearchHistory(curHistory),
            content = action.content;
       if(content)
-      action.ajaxSearch(content,curHistory);
+        action.ajaxSearch(content,curHistory);
       return assign({},state,{
         myhistory:myhistory || [],
         ajaxSearch:action.ajaxSearch,
         value:action.content,
-        isShow:action.isShow
+        isShow:action.isShow,
+        isSearching:content?true:false
       });
       break;
     case 'submit':
@@ -133,10 +134,18 @@ function mapDispatchToProps(dispatch) {
       },
       input:function(e){
         var value = e.target.value;
+
         dispatch({
           type:'inputValue',
           value:value
         });
+      },
+      keyPress:function(e){
+        if(e.charCode == 13)
+            dispatch({type:'submit'});
+      },
+      blur:function(){
+
       },
       empty:function(){
         dispatch({type:'empty'});

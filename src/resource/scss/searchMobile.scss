@@ -1,4 +1,18 @@
 @import "public.scss";
+
+.Blue_Container{
+  header{
+    background-color: #333;
+  }
+  footer{
+    padding-top:15px;
+    padding-bottom:15px;
+    color:#999;
+    text-align:center;
+    background:#000;
+    margin-top: 10px;
+  }
+}
 // 顶部组件
 .Blue_Top{
   height: (80rem/75);
@@ -29,8 +43,10 @@
 
 .Blue_SearchMobile{
   overflow: hidden;
+  .searchWarp{
+      background: #E6E9ED;
+  }
   .inputWarp{
-    background: #E6E9ED;
     padding: 0.4rem;
     position: relative;
     input{
@@ -101,6 +117,10 @@
     color: #999;
     margin-top: 1rem;
   }
+
+  .searchImg{
+    margin: auto;
+  }
   .searchContent{
     overflow: hidden;
     text-align: center;
@@ -112,8 +132,9 @@
   padding: 0.2rem;
   overflow: hidden;
   text-align: justify;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
   .desc{
     float: left;
     color: #333;
@@ -122,7 +143,7 @@
   .name{
     display: block;
     margin-top: (30rem/75);
-    width: 5rem;
+    width:5rem;
     height: (92rem/75);
   }
   img{
@@ -159,4 +180,13 @@
     }
   }
 
+}
+
+@media screen and (max-device-width: 768px), (max-width:768px){
+  .Blue_SearchCard{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    float:none;
+    width: auto;
+  }
 }

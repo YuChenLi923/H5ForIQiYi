@@ -2,10 +2,10 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/pagination.view.js';
-import { config,assign } from '../libs/ajax.public';
+import { config,assign,getScreenSize } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
-
+let   isLocalStorage = !!window.localStorage;
 const reducers = combineReducers({
     NavList:NavList_reducers,
     search:search_reducers,
@@ -102,7 +102,7 @@ function search_reducers(state = {value:''},action){
         }
         localStorage.setItem('searchHistory',history);
       }
-      window.location.href = 'search.html?searchContent=' + encodeURI(searchValue);
+      window.location.href = 'searchMobile.html?content=' + encodeURI(searchValue);
       return state;
       break;
     case 'showMobileSearch':
@@ -131,12 +131,11 @@ function mapDispatchToProps(dispatch) {
     },
     topDisPatch:{
       search:function(){
-        let isMobile = config.isMobile;
-        if(isMobile){
-          dispatch({type:'showMobileSearch'});
-        }else{
-            dispatch({type:'submit'});
-        }
+         if(getScreenSize().width<768){
+           dispatch({type:'showMobileSearch'});
+         }else{
+             dispatch({type:'submit'});
+         }
       },
       input:function(e){
         var value = e.target.value;
@@ -144,6 +143,10 @@ function mapDispatchToProps(dispatch) {
           type:'inputValue',
           value:value
         });
+      },
+      keyPress:function(e){
+        if(e.charCode == 13)
+          dispatch({type:'submit'});
       }
     }
   }

@@ -153,7 +153,7 @@ function search_reducers(state = {value:''},action){
         }
         localStorage.setItem('searchHistory',history);
       }
-      window.location.href = 'pages/search.html?searchContent=' + encodeURI(searchValue);
+      window.location.href = 'pages/searchMobile.html?content=' + encodeURI(searchValue);
       return state;
       break;
     case 'showMobileSearch':
@@ -263,6 +263,10 @@ function mapDispatchToProps(dispatch) {
               type:'inputValue',
               value:value
             });
+          },
+          keyPress:function(e){
+            if(e.charCode == 13)
+              dispatch({type:'submit'});
           }
         }
     }

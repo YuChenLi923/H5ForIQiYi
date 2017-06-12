@@ -39,7 +39,7 @@ class Blue_Top extends React.Component{
   render(){
       let { search,input } = this.props;
       return (
-        <div className = "Blue_Top fontSizeM">
+        <div className = "Blue_Top fontSizeM maxWarp">
               <a href="../index.html"><span className="logo"></span></a>
               <span>搜索</span>
         </div>
@@ -101,17 +101,21 @@ class Blue_SearchMobile extends React.Component{
           items,
           desc,
           value,
+					keyPress,
           isSearching
         } = this.props,
         that = this;
     return (
       <div className  = "Blue_SearchMobile">
-          <div className="inputWarp">
-              <input className = "fontSizeL" value = {value} onInput = {input} />
-              <button onClick = {search}></button>
-          </div>
+					<div className="searchWarp">
+          	<div className="inputWarp maxWarp">
+              	<input className = "fontSizeL" value = {value} onInput = {input}  onKeyPress = {keyPress} />
+              	<button onClick = {search}></button>
+          	</div>
+					</div>
           { isShow&&!isSearching&&
             <div className="myHistory">
+							<div className="maxWarp">
               <h1 className = "fontSizeM">搜索记录</h1>
               <ul>
                 {
@@ -137,22 +141,30 @@ class Blue_SearchMobile extends React.Component{
                   }
                 }
               }
-            </div>
+            	</div>
+						</div>
           }
           {do{
             if(!isShow&&!isSearching){
               <div className = "searchContent">
+								<div className = "maxWarp">
                 {
                   this._creatCards(items,desc)
                 }
+								</div>
               </div>
             }
           }}
+					{!isShow&&!isSearching&&
+							<footer className = "fontSizeSS">
+											蓝山工作室15级前端组制作
+								</footer>
+					}
           {
             isSearching&&
-						<div>
-							<img src={config.ourHost + "/resource/images/" + 'loading.gif'} />
-	            <p className = 'searching fontSizeM'>正在搜索中....</p>
+						<div className='searching' >
+							<img className ="searchImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
+	            <p className = 'fontSizeM'>正在搜索中....</p>
 						</div>
           }
       </div>
@@ -168,10 +180,11 @@ class Blue_Container extends React.Component{
         let {searchState , searchDispatch } = this.props;
         return(
             <div className="Blue_Container">
-                <header>
+                <header >
                     <Blue_Top/>
                 </header>
                 <Blue_SearchMobile {...searchState} {...searchDispatch}/>
+
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getImgURL,config } from '../libs/ajax.public';
+import { config } from '../libs/ajax.public';
 // 导航栏
 class Blue_NavList extends React.Component{
     constructor(props){
@@ -38,7 +38,7 @@ class Blue_NavList extends React.Component{
         let len = items.length;
         return (
             <nav className="Blue_NavList" >
-              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*40/75+'rem':40/75+'rem'}}>
+              <div className = "list maxWarp" style = {{height:isOn?Math.ceil(len/showLen)*0.5+'rem':0.5+'rem'}}>
                 {this._createList(items,index,callback)}
               </div>
               <div className = "dropBox">
@@ -138,7 +138,7 @@ class Blue_CardBox extends React.Component{
       result.push(
         <div key ={i} className='card'>
           <a>
-            <img  src={getImgURL(items[i].img) } />
+            <img  src={items[i].img} />
             {
               items[i].extText&&
               <span className = "extText">{items[i].extText}</span>
@@ -218,13 +218,13 @@ class Blue_Top extends React.Component{
     super(props);
   }
   render(){
-      let { search,input } = this.props;
+      let { search,input,keyPress } = this.props;
       return (
         <div className = "Blue_Top">
             <div className = "maxWarp">
               <a href="#"><span className="logo"></span></a>
                <div className = "search">
-                  <input placeholder = "请输入你想搜索的内容" onInput = {input}/>
+                  <input placeholder = "请输入你想搜索的内容" onInput = {input} onKeyPress = {keyPress}/>
                   <button onClick = {search} ></button>
                </div>
             </div>

@@ -73,6 +73,17 @@ ul {
 [data-dpr='3'] .fontSizeXLL {
   font-size: 84px; }
 
+.Blue_Container header {
+  background-color: #333; }
+
+.Blue_Container footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #999;
+  text-align: center;
+  background: #000;
+  margin-top: 10px; }
+
 .Blue_Top {
   height: 1.06667rem;
   background-color: #333; }
@@ -96,8 +107,9 @@ ul {
 
 .Blue_SearchMobile {
   overflow: hidden; }
+  .Blue_SearchMobile .searchWarp {
+    background: #E6E9ED; }
   .Blue_SearchMobile .inputWarp {
-    background: #E6E9ED;
     padding: 0.4rem;
     position: relative; }
     .Blue_SearchMobile .inputWarp input {
@@ -157,6 +169,8 @@ ul {
     text-align: center;
     color: #999;
     margin-top: 1rem; }
+  .Blue_SearchMobile .searchImg {
+    margin: auto; }
   .Blue_SearchMobile .searchContent {
     overflow: hidden;
     text-align: center; }
@@ -165,8 +179,9 @@ ul {
   padding: 0.2rem;
   overflow: hidden;
   text-align: justify;
-  margin-left: 0.3rem;
-  margin-right: 0.3rem; }
+  box-sizing: border-box;
+  width: 50%;
+  float: left; }
   .Blue_SearchCard .desc {
     float: left;
     color: #333;
@@ -203,3 +218,10 @@ ul {
       line-height: 0.48rem;
       margin-left: 0.1rem;
       color: #e09015; }
+
+@media screen and (max-device-width: 768px), (max-width: 768px) {
+  .Blue_SearchCard {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    float: none;
+    width: auto; } }
