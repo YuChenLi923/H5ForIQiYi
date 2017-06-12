@@ -48,7 +48,7 @@ metaEl = doc.querySelector('meta[name="viewport"]');
       scale = 1,
       mobileSystemV = 0;
   // 是手机
-  console.log(isIPhone);
+
   if(isAndroid || isIPhone ){
       mobileSystemV = isAndroid?isAndroid[1]:isIPhone[1];
   }
@@ -103,6 +103,21 @@ function getScreenSize(){
     }
 }
 
+
+function assign(target,curObject,addObject){
+  var i;
+  for( i in curObject){
+    if( curObject.hasOwnProperty(i) && !addObject.hasOwnProperty(i)){
+      target[i] = curObject[i];
+    }
+  }
+  for( i in addObject){
+    if( addObject.hasOwnProperty(i)){
+      target[i] = addObject[i];
+    }
+  }
+  return target;
+}
 // 更新rem
 
 function updateRem(width,dpr){
@@ -185,5 +200,6 @@ module.exports = {
     parseURLQuery:parseURLQuery,
     getScreenSize:getScreenSize,
     getTouchDirection:getTouchDirection,
-    getlimitStr:getlimitStr
+    getlimitStr:getlimitStr,
+    assign:assign
 };

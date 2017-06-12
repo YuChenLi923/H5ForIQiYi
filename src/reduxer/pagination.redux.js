@@ -1,19 +1,21 @@
+
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/pagination.view.js';
-import { config } from '../libs/ajax.public';
+import { config,assign } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
+
 const reducers = combineReducers({
     NavList:NavList_reducers,
     search:search_reducers,
     Details:Detail_reducers
 });
 const store = createStore(reducers);
-function NavList_reducers(state = { items:[] , index:0 }, action) {
+function NavList_reducers(state = { items:[] , index:0,isIndexHtml:false }, action) {
     switch (action.type) {
         case 'getNavListItems':
-            return Object.assign({},state,{
+            return assign({},state,{
               items:action.items,
               index:action.index,
               showLen:action.showLen,
@@ -23,7 +25,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
               isOn:false
             });
         case 'scrollChange':
-            return Object.assign({},state,{
+            return assign({},state,{
               showLen:action.showLen,
             });
             break;
@@ -34,7 +36,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             if(actionLine === stateLine){
               isOn = false;
             }
-            return Object.assign({},state,{
+            return assign({},state,{
               index:action.index,
               lineIndex:actionLine,
               title:action.title,
@@ -42,7 +44,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
             });
             break;
         case 'clickBtn':
-            return Object.assign({},state,{
+            return assign({},state,{
               isOn:!state.isOn
             });
             break;
@@ -57,19 +59,19 @@ function Detail_reducers(state = {loading:true,nodata:0,videos:[]}, action) {
       console.log("first")
     case 'clickItem':
       action.getDetail(action.title);
-      return Object.assign({},state,{
+      return assign({},state,{
         loading:true
       });
       break;
     case 'newDetails':
       if(action.datas.code==100000)
-        return Object.assign({},state,{
+        return assign({},state,{
           loading:false,
           nodata:0,
           videos:action.datas.data.video_list
         });
       else {
-        return Object.assign({},state,{
+        return assign({},state,{
           loading:false,
           nodata:1,
           videos:[],
@@ -85,7 +87,7 @@ function Detail_reducers(state = {loading:true,nodata:0,videos:[]}, action) {
 function search_reducers(state = {value:''},action){
   switch (action.type) {
     case 'inputValue':
-      return Object.assign({},state,{
+      return assign({},state,{
         value:action.value
       });
       break;

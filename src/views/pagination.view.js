@@ -33,7 +33,8 @@ class Blue_NavList extends React.Component{
               showLen,
               lineIndex,
               clickItem,
-              clickBtn
+              clickBtn,
+              isIndexHtml
              } = this.props;
         let len = items.length;
         return (
@@ -41,7 +42,7 @@ class Blue_NavList extends React.Component{
               <div className = "list maxWarp" style = {
                 {
                   height:isOn?Math.ceil(len/showLen)*40/75+'rem':(lineIndex)*40/75 + 'rem',
-                  marginTop:!isOn?((lineIndex-1)*40/75)*-1 + 'rem':'0rem'
+                  marginTop:!isOn&&!isIndexHtml?((lineIndex-1)*40/75)*-1 + 'rem':'0rem'
                 }}>
                 {this._createList(items,index,callback)}
               </div>

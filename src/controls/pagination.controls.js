@@ -61,7 +61,13 @@ let  tid,
     // 监听页面变化，自适应改变组件参数
     win.addEventListener('resize',scrollChange,false);
     win.addEventListener('pageshow',scrollChange, false);
-    win.addEventListener('popstate',()=>window.location.reload(),false);
+    // 解决移动端QQ游览器、以及较老版本对popstate事件监测的智障行为QAQ
+    win.addEventListener('load',function(){
+      setTimeout(function(){
+        win.addEventListener('popstate',()=>window.location.reload(),false);
+      },0);
+
+    },false);
     function handleRoute(index,data){
       if(index>-1){
         title.innerHTML = data[index].name;

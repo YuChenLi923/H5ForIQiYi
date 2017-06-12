@@ -15,16 +15,7 @@ const win = window,
 // 全局变量
 let  tid,
      scrollW = getScreenSize().width;
-// 初始化ajaxExpanding对象
-ajaxExpanding.init({
-    name:'getSearchContent',
-    dataType:'json',
-    type:'get',
-    async:true,
-    handleData:function (result) {
-        return JSON.parse(result);
-    }
-});
+
 
 // 公共函数
 
@@ -61,15 +52,25 @@ function createAction(type,data){
     isShow:isShow,
     content:content || ''
   }));
-  win.addEventListener('popstate',()=>window.location.reload(),false);
+  win.addEventListener('load',function(){
+    setTimeout(function(){
+      win.addEventListener('popstate',()=>window.location.reload(),false);
+    },0);
+  },false);
   function ajaxSearch(searchContent,myhistory){
     let data = publicData;
     data.key = searchContent;
     data.from = 'mobile_list';
     data.version = 7.5;
-    ajaxExpanding.send({
+    ajaxExpanding.init({
       url:searchURL,
       data:data,
+      dataType:'json',
+      type:'get',
+      async:true,
+      handleData:function (result) {
+          return JSON.parse(result);
+      },
       onSuccess:function(result){
         let data = result.data,
             code = result.code,
@@ -80,7 +81,7 @@ function createAction(type,data){
         if(code === 100000){
           for( i = 0 , len = data.length; i < len ; i++){
             items.push({
-              title:getlimitStr(data[i].short_title,10),
+              title:getlimitStr(data[i].short_title,15),
               score:data[i].sns_score,
               img:data[i].img
             });
@@ -95,11 +96,10 @@ function createAction(type,data){
         }));
       },
       onFail:function(){
-        store.dispatch(createAction('getSearchResult',{
-          items:[],
-          desc:'工程师正在全力抢修中...'
-        }));
+        console.log(this);
+        this.data.req_times +=1;
+        this.send();
       }
-    },'getSearchContent');
+    }).send();
   }
 })();

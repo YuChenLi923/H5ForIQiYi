@@ -1,9 +1,11 @@
+
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/index.view.js';
-import { getTouchDirection,config } from '../libs/ajax.public';
+import { getTouchDirection,config,assign } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
+
 const reducers = combineReducers({
     NavList:NavList_reducers,
     Carousel:Carousel_reducers,
@@ -24,10 +26,10 @@ function createTimeid(){
   },3000);
 }
 // 导航栏的reducers
-function NavList_reducers(state = { items:[] , index:0 }, action) {
+function NavList_reducers(state = { items:[] , index:0 ,  isIndexHtml:true }, action) {
     switch (action.type) {
         case 'getNavListItems':
-            return Object.assign({},state,{
+            return assign({},state,{
               items:action.items,
               index:action.index,
               showLen:action.showLen,
@@ -35,17 +37,17 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
               isOn:false
             });
         case 'scrollChange':
-            return Object.assign({},state,{
+            return assign({},state,{
               showLen:action.showLen,
             });
             break;
         case 'clickItem':
-            return Object.assign({},state,{
+            return assign({},state,{
               index:action.index
             });
             break;
         case 'clickBtn':
-            return Object.assign({},state,{
+            return assign({},state,{
               isOn:!state.isOn
             });
             break;
@@ -58,7 +60,7 @@ function NavList_reducers(state = { items:[] , index:0 }, action) {
 function Loading_reducers( state = {loadFail:false},action){
   switch (action.type) {
     case 'loadingFailed':
-      return Object.assign({},state,{
+      return assign({},state,{
         loadFail:true
       })
       break;
@@ -81,7 +83,7 @@ function Carousel_reducers(state,action){
   switch (action.type) {
     case 'getCarouselItems':
       createTimeid();
-      return Object.assign({},state,{
+      return assign({},state,{
         items:action.items,
         width:action.width,
         height:action.height,
@@ -98,17 +100,17 @@ function Carousel_reducers(state,action){
     }else{
       index = action.index;
     }
-    return Object.assign({},state,{
+    return assign({},state,{
       index:index
     });
     break;
     case 'scrollChange':
-    return Object.assign({},state,{
+    return assign({},state,{
       width:action.width,
       height:action.height
     });
     case 'getStartXY':
-      return Object.assign({},state,{
+      return assign({},state,{
         startX:action.x,
         startY:action.y
       });
@@ -124,7 +126,7 @@ function Carousel_reducers(state,action){
       Index = (state.index + changeIndex)%state.items.length;
       if(Index < 0)
         Index = state.items.length-1;
-      return Object.assign({},state,{
+      return assign({},state,{
         index:Index
       });
     break;
@@ -136,7 +138,7 @@ function Carousel_reducers(state,action){
 function search_reducers(state = {value:''},action){
   switch (action.type) {
     case 'inputValue':
-      return Object.assign({},state,{
+      return assign({},state,{
         value:action.value
       });
       break;
@@ -156,6 +158,7 @@ function search_reducers(state = {value:''},action){
       break;
     case 'showMobileSearch':
       window.location.href = 'pages/searchMobile.html';
+      return state;
       break;
     default:
       return state;
@@ -166,7 +169,7 @@ function Cards_reducers(state = { cards:[]},action){
     case 'getCardInf':
       let cards = state.cards;
       cards.push(action.card);
-      return Object.assign({},state,{
+      return assign({},state,{
         cards:cards
       });
       break;

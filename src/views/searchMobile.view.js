@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { getImgURL,config } from '../libs/ajax.public';
 // 评分组件
 class Blue_Score extends React.Component{
 	_createStar(startNum,sum){
@@ -150,7 +150,10 @@ class Blue_SearchMobile extends React.Component{
           }}
           {
             isSearching&&
-            <p className = 'searching fontSizeM'>正在搜索中....</p>
+						<div>
+							<img src={config.ourHost + "/resource/images/" + 'loading.gif'} />
+	            <p className = 'searching fontSizeM'>正在搜索中....</p>
+						</div>
           }
       </div>
     )

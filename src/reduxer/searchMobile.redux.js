@@ -1,8 +1,11 @@
+
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/searchMobile.view.js';
+import { assign } from '../libs/ajax.public';
 import ReactDOM from 'react-dom';
 import React from 'react';
+
 const reducers = combineReducers({
   search:searchMobile_reducers
 });
@@ -61,7 +64,7 @@ function searchMobile_reducers(state,action){
            content = action.content;
       if(content)
       action.ajaxSearch(content,curHistory);
-      return Object.assign({},state,{
+      return assign({},state,{
         myhistory:myhistory || [],
         ajaxSearch:action.ajaxSearch,
         value:action.content,
@@ -76,24 +79,24 @@ function searchMobile_reducers(state,action){
         history.pushState({},'',newURL);
         state.ajaxSearch(value,myhistory);
       }
-      return Object.assign({},state,{
+      return assign({},state,{
         isSearching:true,
         isShow:false
       });
       break;
     case 'inputValue':
-    return Object.assign({},state,{
+    return assign({},state,{
       value:action.value
     });
     break;
     case 'empty':
       localStorage.removeItem('searchHistory');
-    return Object.assign({},state,{
+    return assign({},state,{
       myhistory:[]
     });
     break;
     case 'getSearchResult':
-    return Object.assign({},state,{
+    return assign({},state,{
       isShow:false,
       isSearching:false,
       items:action.items,
@@ -106,7 +109,7 @@ function searchMobile_reducers(state,action){
         newURL = 'searchMobile.html?content='+value;
         history.pushState({},'',newURL);
         state.ajaxSearch(value,myHistory);
-        return Object.assign({},state,{
+        return assign({},state,{
           isSearching:true,
           isShow:false,
           value:value

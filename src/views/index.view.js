@@ -68,8 +68,7 @@ class Blue_Carousel extends React.Component{
           touchEnd,
           mouseOut,
           mouseOver,
-          height,
-          loadFail
+          height
         }  = this.props,
         len = items.length;
 		for(i= 0;i < len;i++){
@@ -103,11 +102,10 @@ class Blue_Carousel extends React.Component{
       					{bodyShow}
       				</ul>
             }else{
-              <Blue_Loading text="正在加载内容" loadFail = {loadFail}/>
+              <Blue_Loading text="正在加载内容"/>
             }
           }
         }
-        { len>0&&
 				<div className="nav">
 					<ul className="control" >
 						<ul className="showNav">
@@ -115,7 +113,6 @@ class Blue_Carousel extends React.Component{
 						</ul>
 					</ul>
 				</div>
-        }
         { len>0&&
           <button onClick={clickNext}
                   className="next">
@@ -140,11 +137,11 @@ class Blue_CardBox extends React.Component{
     for( i = 0 , len = items.length ; i < len ; i++){
       result.push(
         <div key ={i} className='card'>
-          <a rel="noreferrer">
+          <a>
             <img  src={getImgURL(items[i].img) } />
             {
               items[i].extText&&
-              <span className = 'extText fontSizeSS'>{items[i].extText}</span>
+              <span className = "extText">{items[i].extText}</span>
             }
           </a>
           <span>{items[i].title}</span>
@@ -174,26 +171,39 @@ class Blue_CardBox extends React.Component{
 class Blue_Loading extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      loadFail:false
+    }
+  }
+  componentWillMount(){
+    let that = this;
+    this.timerID = setTimeout(function(){
+      that.setState({
+        loadFail:true
+      })
+    },3000);
+  }
+  componentWillUnmount(){
+    clearTimeout(this.timerID);
   }
   render(){
-    let loadingText = this.props.text ||'',
-        loadFail = this.props.loadFail;
+    let loadingText = this.props.text ||'';
     return(
       <div className = 'Blue_Loading'>
         {
-          loadFail&&
+          this.state.loadFail&&
           <img className = "failImg" src={config.ourHost + "/resource/images/" + 'fail.png'} />
         }
         {
-          loadFail&&
+          this.state.loadFail&&
           <p className = "fontSizeSS">加载失败,请重新刷新页面</p>
         }
         {
-          !loadFail&&
+          !this.state.loadFail&&
           <img className = "lodingImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
         }
         {
-          !loadFail&&
+          !this.state.loadFail&&
           <p className = "fontSizeSS">{loadingText}</p>
         }
       </div>
@@ -232,7 +242,6 @@ class Blue_Container extends React.Component{
               topDisPatch,
               NavListState,
               CarouselState,
-              LoadingState,
               CardsState
             } = this.props;
         return(
@@ -241,7 +250,7 @@ class Blue_Container extends React.Component{
                     <Blue_Top {...topDisPatch}/>
                     <Blue_NavList {...NavListState}  {...NavListDispatch} />
                 </header>
-                <Blue_Carousel {...CarouselState} {...CarouseDispatch} {...LoadingState}/>
+                <Blue_Carousel {...CarouselState} {...CarouseDispatch}/>
                 <div id = 'body'>
                   {do{
                     if(CardsState.cards.length > 0){

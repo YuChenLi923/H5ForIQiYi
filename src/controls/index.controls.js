@@ -68,8 +68,12 @@ function createAction(type,data){
             }));
         },
         onFail:function(){
-          this.data.req_times +=1;
-          this.send();
+          if(this.data.req_times>3)
+            store.dispatch(createAction('loadFail'));
+          else{
+            this.data.req_times +=1;
+            this.send();
+          }
         }
     }).send();
     // 监听页面变化，自适应改变组件参数
@@ -105,8 +109,13 @@ function createAction(type,data){
       }
     },
     onFail:function(){
+
+      if(this.data.req_times>3)
+        store.dispatch(createAction('loadFail'));
+      else{
         this.data.req_times +=1;
         this.send();
+      }
     }
   }).send();
 })();

@@ -173,7 +173,9 @@ ul {
     margin-left: 0.5rem; }
   .Blue_SearchCard .name {
     display: block;
-    margin-top: 0.4rem; }
+    margin-top: 0.4rem;
+    width: 5rem;
+    height: 1.22667rem; }
   .Blue_SearchCard img {
     float: left;
     width: 2.56rem;
