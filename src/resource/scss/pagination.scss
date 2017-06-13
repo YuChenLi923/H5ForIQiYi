@@ -178,24 +178,6 @@
   margin-right: auto;
 }
 
-.detail_item img{
-  font-size:0.46rem;
-  // width: (120rem/75);
-  // height: (160rem/75);
-}
-.detail_item span{
-  // font-size:$zq-font-size;
-  // display:block;
-  // height:30px;
-  // 解除浏览器对字体大小的限制
-  -webkit-text-size-adjust: none;
-  // 限制行数
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-
-}
 .detail_item {
   // box-sizing:border-box;
   // -webkit-box-sizing:border-box;
@@ -216,13 +198,15 @@
       overflow: hidden;
       color:#333;
       bottom: 0;
-      height: (64rem/75);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+      height: (62rem/75);
+      // height:1em;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
     }
     img{
+      font-size:0.46rem;
       width: 100%;
     }
 }

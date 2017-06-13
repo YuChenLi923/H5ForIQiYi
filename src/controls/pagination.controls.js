@@ -118,7 +118,7 @@ function getDetail(name) {
   zq_data.version = 7.5;
   zq_data.mode = 11;
   // data.is_purchase = 2; //是否付费的片子
-  zq_data.page_size = 30;
+  zq_data.page_size = 32;
   zq_data.channel_name = name;
   ajaxExpanding.init({
       url:config.host + '/openapi/realtime/channel',

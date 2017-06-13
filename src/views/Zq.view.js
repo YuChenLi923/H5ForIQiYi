@@ -68,6 +68,14 @@ class Page_body extends React.Component {
     this.state={};
   }
 
+  words_limit(str) {
+    if(str.length>10) {
+      return str.substring(0,10)+"...";
+    } else {
+      return str;
+    }
+  }
+
   create_body() {
     if(this.props.loading) {
       return <Blue_Loading text="正在加载内容"/>
@@ -78,7 +86,7 @@ class Page_body extends React.Component {
         return <div id="details">
           {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
             <img src={getImgURL(e.img)} alt={e.title}/>
-            <span  className="fontSizeS" title={e.title}>{e.short_title}</span>
+            <span  className="fontSizeS" title={e.title}>{this.words_limit(e.short_title)}</span>
           </div>)}
         </div>
       }
@@ -87,7 +95,12 @@ class Page_body extends React.Component {
 
   render() {
     // this.get_msg(this.props.Title);
-    console.log("ZQ:",this.props)
+    if(config.isMobile) {
+      console.log("手机端");
+    } else {
+      console.log("PC端");
+    }
+    // console.log("ZQ:",this.props)
     return <div style={{background:'#FFF'}} id="zq_body">
       {this.create_body()}
     </div>
