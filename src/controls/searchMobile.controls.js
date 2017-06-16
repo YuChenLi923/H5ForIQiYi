@@ -33,11 +33,13 @@ function createAction(type,data){
 }
 
 // 搜索组件逻辑控制
-(function () {
-  let win = window,
-      query = parseURLQuery(window.location.href),
+(function (win,doc) {
+  let query = parseURLQuery(win.location.href),
       content = query.content,
-      isShow = true;
+      isShow = true,
+      page = 1,
+      isAjaxing = false,
+      preToBottom;
   if(content){
     isShow = false;
   }
@@ -48,16 +50,44 @@ function createAction(type,data){
   }));
   win.addEventListener('load',function(){
     setTimeout(function(){
-      win.addEventListener('popstate',()=>window.location.reload(),false);
+      win.addEventListener('popstate',()=>win.location.reload(),false);
     },0);
   },false);
+  win.addEventListener('scroll',function(e){
+		let  scrollTop = window.pageYOffset|| document.documentElement.scrollTop || document.body.scrollTop,
+		     viewHeight =Math.min(document.documentElement.scrollHeight,document.documentElement.clientHeight),
+		     docHeight=Math.max(document.documentElement.scrollHeight,document.documentElement.clientHeight),
+         toBottom = scrollTop-docHeight+viewHeight;
+    if(scrollTop > 700 ){
+      store.dispatch(createAction('showTop',{
+        showTop:true
+      }));
+    }else{
+        store.dispatch(createAction('showTop',{
+          showTop:false
+        }));
+    }
+    if(toBottom >= -10){
+      if(!preToBottom || preToBottom < toBottom){
+        store.dispatch(createAction('updateing',{
+          isUpdateing:true
+        }));
+        if(isAjaxing)
+        ajaxSearch(content,false,true);
+      }
+		}
+    preToBottom = toBottom;
+	});
   win.addEventListener('resize',scrollChange,false);
-  win.addEventListener('pageshow',scrollChange, false);
-  function ajaxSearch(searchContent,myhistory){
+  win.addEventListener('pageshow',scrollChange,false);
+  function ajaxSearch(searchContent,myhistory,update){
     let data = publicData;
     data.key = searchContent;
     data.from = 'mobile_list';
+    data.pg_num = page;
+    data.page_size=scrollW>768?10:5;
     data.version = 7.5;
+    isAjaxing = false;
     ajaxExpanding.init({
       url:searchURL,
       data:data,
@@ -75,6 +105,8 @@ function createAction(type,data){
             items = [],
             len,
             limitLen;
+        ++ page;
+        isAjaxing = true;
         if(scrollW >=1180){
           limitLen = 25;
         }else{
@@ -88,11 +120,12 @@ function createAction(type,data){
               img:data[i].img
             });
           }
+          if(myhistory)
           localStorage.setItem('searchHistory',myhistory);
         }else{
           desc = "未搜索到相应内容";
         }
-        store.dispatch(createAction('getSearchResult',{
+        store.dispatch(createAction(update?'updateResult':'getSearchResult',{
           items:items,
           desc:desc
         }));
@@ -104,4 +137,4 @@ function createAction(type,data){
       }
     }).send();
   }
-})();
+})(window,document);

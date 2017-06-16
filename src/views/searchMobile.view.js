@@ -46,6 +46,8 @@ class Blue_Top extends React.Component{
       );
   }
 }
+// 返回頂部組件
+
 
 // 搜索内容卡片组件
 class Blue_SearchCard extends React.Component{
@@ -102,7 +104,8 @@ class Blue_SearchMobile extends React.Component{
           desc,
           value,
 					keyPress,
-          isSearching
+          isSearching,
+					isUpdateing
         } = this.props,
         that = this;
     return (
@@ -155,11 +158,18 @@ class Blue_SearchMobile extends React.Component{
               </div>
             }
           }}
+					{isUpdateing&&
+						<div className='searching' style={{marginTop:0}}>
+							<img className ="searchImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
+							<p className = 'fontSizeM'>正在加載中....</p>
+						</div>
+					}
 					{!isShow&&!isSearching&&
 							<footer className = "fontSizeSS">
 											蓝山工作室15级前端组制作
 								</footer>
 					}
+
           {
             isSearching&&
 						<div className='searching' >
@@ -172,19 +182,114 @@ class Blue_SearchMobile extends React.Component{
   }
 }
 
+// 翻页组件
+class Blue_PT_LI extends React.Component{
+	_create(){
+		let items=[],
+			  i,
+				{ click,start,showNum,index,sum } = this.props;
+		for(i = start;i <= showNum+start-1;i++) {
+			if(i <= showNum + start - showNum+1 && showNum + start > showNum+1 ){
+				if(i == showNum + start - showNum+1 ) {
+					items.push(
+						<li onClick={click}
+							 className="item" key={i}
+							 data-index={false}
+							 className={""}>
+							...
+						</li>);
+				}
+				if(i == showNum + start - showNum){
+					items.push(
+						<li onClick={click}
+							 className="item" key={1}
+							 data-index={1}
+							 className={""}>
+							{1}
+						</li>);
+				}
+			}
+			else if( i >=  showNum + start-2 && showNum + start <= sum) {
+				if(i == showNum + start-2) {
+					items.push(
+						<li onClick={click}
+							 className="item" key={i}
+							 data-index={false}
+							 className={""}>
+							...
+						</li>);
+				}
+				if(i == showNum + start-1){
+					items.push(
+						<li onClick={click}
+							 className="item" key={sum}
+							 data-index={sum}
+							 className={""}>
+							{sum}
+						</li>);
+				}
+			}
+			else{
+				items.push(
+					<li onClick={click}
+						 className="item" key={i}
+						 data-index={i}
+						 className={i==index?"cur":""}>
+						{i}
+					</li>);
+			}
+		}
+		return items;
+	}
+	render(){
+		return (
+			<ul id="warp">
+				{this._create()}
+			</ul>
+		);
+	}
+}
+class Blue_PT extends React.Component{
+	render(){
+		let {sum,index,start,showNum,last,next,click } = this.props;
+		if( showNum > sum){
+			showNum = sum;
+		}
+		return(
+			<div >
+				{sum>1&&
+				<div id="turnPageWarp">
+					<div className={"BluMUI_PT"}>
+						<button id='lastPage' onClick={last} className="last"></button>
+						<Blue_PT_LI sum={sum}
+											click = {click}
+										  showNum={showNum}
+										  index={index}
+										  start={start}
+						/>
+						<button id="nextPage" onClick={next} className="next"></button>
+					</div>
+				</div>
+				}
+			</div>
+		);
+	}
+}
 class Blue_Container extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
-        let {searchState , searchDispatch } = this.props;
+        let {searchState , PtState , searchDispatch } = this.props;
         return(
             <div className="Blue_Container">
                 <header >
                     <Blue_Top/>
                 </header>
                 <Blue_SearchMobile {...searchState} {...searchDispatch}/>
-
+								{searchState.showTop&&
+									<button className="backTopBtn" onClick = {searchDispatch.toTop }></button>
+								}
             </div>
         );
     }

@@ -12,6 +12,15 @@
     background:#000;
     margin-top: 10px;
   }
+  .backTopBtn{
+      position: fixed;
+      bottom: 1rem;
+      right: 0.5rem;
+      height: 1rem;
+      width: 1rem;
+      background:url($host + 'searchMobile/toTop.png') no-repeat;
+      background-size: 100% 100%;
+  }
 }
 // 顶部组件
 .Blue_Top{
@@ -181,6 +190,52 @@
   }
 
 }
+// 翻页组件
+
+.BluMUI_PT{
+	display: inline-block;
+	height:54px;
+	left:25%;
+	right:25%;
+	background: #ffffff;
+  button{
+  	float: left;
+  	width: 95px;
+  	height: 100%;
+  }
+  .last{
+  	background: url($host+ "searchMobile/last.png") no-repeat 38px 21px;
+  }
+  .next{
+  	background: url($host+ "searchMobile/next.png") no-repeat 44px 21px;
+  }
+  #warp {
+  	background:white;
+  	float: left;
+    li{
+    	float: left;
+    	line-height:40px;
+    	height: 40px;
+    	width: 40px;
+    	font-size: 10px;
+    	text-align: center;
+    	margin-top: 7px;
+    }
+    .cur{
+    	color: white;
+    	background: url($host+ "searchMobile/pageBoxSelected.png") no-repeat;
+    }
+    li:hover{
+    	opacity: 0.5;
+    	cursor: pointer;
+    }
+  }
+}
+
+
+
+
+
 
 @media screen and (max-device-width: 768px), (max-width:768px){
   .Blue_SearchCard{

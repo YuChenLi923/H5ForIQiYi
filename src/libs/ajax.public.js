@@ -13,6 +13,7 @@ const appConfig = {
       gpu: "",
       mem:"50.4MB"
     },
+
     net_sts:1,
     scrn_sts:1,
     scrn_res:"1334*750",

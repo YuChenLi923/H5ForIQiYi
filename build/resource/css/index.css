@@ -130,6 +130,12 @@ ul {
     width: 105px;
     background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo.png") no-repeat 0 0px;
     background-size: 100% 100%; }
+  .Blue_Top .login {
+    float: right;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px; }
   @media screen and (max-device-width: 768px) {
     .Blue_Top .logo {
       height: 0.74667rem;

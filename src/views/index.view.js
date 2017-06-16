@@ -150,13 +150,18 @@ class Blue_CardBox extends React.Component{
     }
     return result;
   }
+  goto(id){
+    return function(){
+        window.location.href = './pages/pagination.html?type='+id;
+    }
+  }
   render(){
     let { card  } = this.props;
     return (
       <section className='Blue_CardBox fontSizeS'>
         <header className='header'>
           <span className='title fontSizeL' style={{backgroundImage:'url('+ config.ourHost + '/resource/images/title-'+card.id+'.png)'}}>{card.title}</span>
-          <span className='more fontSizeL'>更多</span>
+          <span className='more fontSizeL' onClick = {this.goto(card.id)}>更多</span>
         </header>
         <div className="cardWarp">
         {this._createItems(card.items)}
@@ -223,10 +228,14 @@ class Blue_Top extends React.Component{
         <div className = "Blue_Top">
             <div className = "maxWarp">
               <a href="#"><span className="logo"></span></a>
+              <div className="login fontSizeM">
+                 <span>登录</span>
+              </div>
                <div className = "search">
                   <input placeholder = "请输入你想搜索的内容" onInput = {input} onKeyPress = {keyPress}/>
                   <button onClick = {search} ></button>
                </div>
+
             </div>
         </div>
       );

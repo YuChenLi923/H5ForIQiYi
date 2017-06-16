@@ -84,6 +84,15 @@ ul {
   background: #000;
   margin-top: 10px; }
 
+.Blue_Container .backTopBtn {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/toTop.png") no-repeat;
+  background-size: 100% 100%; }
+
 .Blue_Top {
   height: 1.06667rem;
   background-color: #333; }
@@ -218,6 +227,38 @@ ul {
       line-height: 0.48rem;
       margin-left: 0.1rem;
       color: #e09015; }
+
+.BluMUI_PT {
+  display: inline-block;
+  height: 54px;
+  left: 25%;
+  right: 25%;
+  background: #ffffff; }
+  .BluMUI_PT button {
+    float: left;
+    width: 95px;
+    height: 100%; }
+  .BluMUI_PT .last {
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/last.png") no-repeat 38px 21px; }
+  .BluMUI_PT .next {
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/next.png") no-repeat 44px 21px; }
+  .BluMUI_PT #warp {
+    background: white;
+    float: left; }
+    .BluMUI_PT #warp li {
+      float: left;
+      line-height: 40px;
+      height: 40px;
+      width: 40px;
+      font-size: 10px;
+      text-align: center;
+      margin-top: 7px; }
+    .BluMUI_PT #warp .cur {
+      color: white;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/pageBoxSelected.png") no-repeat; }
+    .BluMUI_PT #warp li:hover {
+      opacity: 0.5;
+      cursor: pointer; }
 
 @media screen and (max-device-width: 768px), (max-width: 768px) {
   .Blue_SearchCard {

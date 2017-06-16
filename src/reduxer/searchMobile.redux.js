@@ -54,7 +54,9 @@ function searchMobile_reducers(state,action){
       myhistory:[],
       items:[],
       desc:'',
-      isSearching:false
+      isSearching:false,
+      isUpdateing:false,
+      showTop:false
     }
   }
   switch (action.type) {
@@ -70,6 +72,16 @@ function searchMobile_reducers(state,action){
         value:action.content,
         isShow:action.isShow,
         isSearching:content?true:false
+      });
+      break;
+    case 'updateing':
+      return assign({},state,{
+        isUpdateing:true
+      });
+      break;
+    case 'showTop':
+      return assign({},state,{
+        showTop:action.showTop
       });
       break;
     case 'submit':
@@ -103,6 +115,14 @@ function searchMobile_reducers(state,action){
       items:action.items,
       desc:action.desc
     });
+    case 'updateResult':
+    return assign({},state,{
+      isShow:false,
+      isSearching:false,
+      items:state.items.concat(action.items),
+      desc:action.desc,
+      isUpdateing:false
+    });
     break;
     case 'clickHistory':
     let value = action.value,
@@ -121,9 +141,45 @@ function searchMobile_reducers(state,action){
   }
 }
 
+//翻页
+
+// function Pt_reducers(state,action){
+//   if(state == undefined){
+//     return {
+//       sum:11,
+//       index:1,
+//       start:1,
+//       showNum:7
+//     }
+//   }else{
+//     switch (action.type) {
+//       case 'changePage':
+//         var { index , showNum , sum, start} = state,
+//             { add,toIndex} = action;
+//         if( index + add > 0 && index + add <= sum){
+//           index = toIndex? toIndex : index + add;
+//         }
+//         if( index == sum){
+//           start = index - showNum + 1>0?index-showNum+1:1;
+//         }else if(index  >Math.floor(showNum)/2 && index < sum-Math.floor(showNum/2-1)){
+//           start = index -Math.floor(showNum/2);
+//         }else if( index <= Math.floor(showNum/2)){
+//           start = 1;
+//         }
+//         return assign({},state,{
+//           start:start,
+//           index:index
+//         });
+//         break;
+//       default:
+//       return state;
+//     }
+//   }
+// }
 function mapStateToProps(state) {
     return {
-      searchState:state.search
+      searchState:state.search,
+        PtState:state.Pt
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -144,16 +200,27 @@ function mapDispatchToProps(dispatch) {
         if(e.charCode == 13)
             dispatch({type:'submit'});
       },
-      blur:function(){
-
-      },
       empty:function(){
         dispatch({type:'empty'});
+      },
+      toTop:function(){
+        scrollTo(0,0);		
       },
       clickHistory:function(value){
         dispatch({type:'clickHistory',value:value});
       }
     }
+    // PtDispatch:{
+    //   last:function(){
+    //     dispatch({type:'changePage',add:-1,toIndex:false})
+    //   },
+    //   next:function(){
+    //     dispatch({type:'changePage',add:1,toIndex:false})
+    //   },
+    //   click:function(e){
+    //     dispatch({type:'changePage',add:0,toIndex:parseInt(e.target.getAttribute('data-index'))});
+    //   }
+    // }
   }
 }
 const App = connect(

@@ -74,6 +74,13 @@
       background:url($host + 'iqiyi-logo.png') no-repeat 0 0px ;
       background-size: 100% 100%;
   }
+  .login{
+    float: right;
+    color:white;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
   @media screen and (max-device-width: 768px){
     .logo{
         height: (56rem/75);

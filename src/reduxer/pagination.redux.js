@@ -112,6 +112,7 @@ function search_reducers(state = {value:''},action){
       return state;
   }
 }
+
 function mapStateToProps(state) {
     return {
         NavListState: state.NavList,

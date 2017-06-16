@@ -214,16 +214,6 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
-.detail_item img {
-  font-size: 0.46rem; }
-
-.detail_item span {
-  -webkit-text-size-adjust: none;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden; }
-
 .detail_item {
   width: 25%;
   position: relative;
@@ -238,12 +228,13 @@ ul {
     overflow: hidden;
     color: #333;
     bottom: 0;
-    height: 0.85333rem;
+    height: 0.82667rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden; }
   .detail_item img {
+    font-size: 0.46rem;
     width: 100%; }
 
 #details {
