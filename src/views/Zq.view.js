@@ -84,10 +84,16 @@ class Page_body extends React.Component {
         return <div id="detail_error">{this.props.error}</div>
       } else {
         if(this.isMobile) { //phone
-          return <div id="details">
-            {this.props.videos.map((e,index)=><div className="detail_item" key={index} style={{height:'340px'}}>
+          return <div id="phone_details">
+            {this.props.videos.map((e,index)=><div className="detail_item" key={index}>
               <img src={getImgURL(e.img)} alt={e.title}/>
-              <span  className="fontSizeS" title={e.title}>{this.words_limit(e.short_title)}</span>
+              <div className="phone_msg">
+                <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
+                <br/>
+                <span className="fontSizeS">播放量：{e.play_count_text}</span>
+                <br/>
+                <span className="fontSizeS">类型：{e.is_vip=='1'?"VIP":"免费"}</span>
+              </div>
             </div>)}
           </div>
         } else { //pc
@@ -101,7 +107,6 @@ class Page_body extends React.Component {
                   height:'3.898rem',
                   position:'absolute',
                   top:'0.15rem',
-                  // display:'none',
                   background:'rgba(150,150,150,0.6)'
                 }}>
                   <span>播放量：{e.play_count_text}</span>

@@ -230,3 +230,26 @@
     }
   }
 }
+
+#phone_details {
+  margin-top: 3rem;
+  .detail_item {
+    // float: left;/
+    height: 5rem;
+    width: 90%;
+    text-align: left;
+    margin: 0.6rem auto;
+    // background: red;
+    img {
+      height: 5rem;
+      float: left;
+    }
+    .phone_msg {
+      display: inline-block;
+      margin-left: 0.3rem;
+      clear: both;
+      span {}
+    }
+  }
+}
+
