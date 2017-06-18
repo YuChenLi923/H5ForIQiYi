@@ -1,0 +1,221 @@
+@charset "UTF-8";
+* {
+  font-family: "\9ED1\4F53",Arial,Helvetica,sans-serif; }
+
+html, body, div, ul, button, input, li, nav, p {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none; }
+
+ul {
+  list-style: none; }
+
+.maxWarp {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.fontSizeS, .fontSizeSS, .fontSizeM, .fontSizeL, .fontSizeXL, .fontSizeXLL {
+  -webkit-text-size-adjust: none; }
+
+[data-dpr='1'] .fontSizeS {
+  font-size: 14px; }
+
+[data-dpr='2'] .fontSizeS {
+  font-size: 28px; }
+
+[data-dpr='3'] .fontSizeS {
+  font-size: 42px; }
+
+[data-dpr='1'] .fontSizeSS {
+  font-size: 12px; }
+
+[data-dpr='2'] .fontSizeSS {
+  font-size: 24px; }
+
+[data-dpr='3'] .fontSizeSS {
+  font-size: 36px; }
+
+[data-dpr='1'] .fontSizeM {
+  font-size: 16px; }
+
+[data-dpr='2'] .fontSizeM {
+  font-size: 32px; }
+
+[data-dpr='3'] .fontSizeM {
+  font-size: 48px; }
+
+[data-dpr='1'] .fontSizeL {
+  font-size: 20px; }
+
+[data-dpr='2'] .fontSizeL {
+  font-size: 40px; }
+
+[data-dpr='3'] .fontSizeL {
+  font-size: 60px; }
+
+[data-dpr='1'] .fontSizeXL {
+  font-size: 24px; }
+
+[data-dpr='2'] .fontSizeXL {
+  font-size: 48px; }
+
+[data-dpr='3'] .fontSizeXL {
+  font-size: 72px; }
+
+[data-dpr='1'] .fontSizeXLL {
+  font-size: 28px; }
+
+[data-dpr='2'] .fontSizeXLL {
+  font-size: 56px; }
+
+[data-dpr='3'] .fontSizeXLL {
+  font-size: 84px; }
+
+#pc_ranks {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%; }
+  #pc_ranks .rank_item {
+    width: 25%;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: 0.13333rem; }
+    #pc_ranks .rank_item div img.pc_vip {
+      position: absolute; }
+    #pc_ranks .rank_item div img.pc_pic {
+      font-size: 0.46rem;
+      width: 100%; }
+    #pc_ranks .rank_item div div.pc_msg {
+      display: none; }
+      #pc_ranks .rank_item div div.pc_msg span {
+        position: absolute;
+        font-size: 0.3rem;
+        bottom: -0.3rem;
+        left: 0.1rem;
+        color: #FFF; }
+    #pc_ranks .rank_item div:hover .pc_msg {
+      display: block; }
+    #pc_ranks .rank_item span {
+      left: 0;
+      text-align: center;
+      display: block;
+      overflow: hidden;
+      color: #333;
+      bottom: 0;
+      height: 0.82667rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden; }
+
+#phone_ranks .rank_item {
+  height: 5rem;
+  width: 90%;
+  text-align: left;
+  margin: 0.6rem auto; }
+  #phone_ranks .rank_item img {
+    height: 5rem;
+    float: left; }
+  #phone_ranks .rank_item .phone_msg {
+    display: inline-block;
+    margin-left: 0.3rem;
+    clear: both; }
+
+.Blue_Loading {
+  width: 100%;
+  color: #999;
+  top: 40%;
+  text-align: center; }
+  .Blue_Loading .lodingImg {
+    height: 0.42667rem;
+    width: 0.42667rem; }
+  .Blue_Loading .failImg {
+    height: 0.64rem;
+    width: 0.64rem; }
+
+.Blue_Container #body {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.Blue_Container header {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%; }
+
+.Blue_Container footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #999;
+  text-align: center;
+  background: #000;
+  margin-top: 10px; }
+
+.Blue_Top {
+  height: 1.06667rem;
+  background-color: #333; }
+  .Blue_Top .logo {
+    height: 0.74667rem;
+    width: 2.24rem;
+    margin-top: 0.16rem;
+    margin-left: 0.13333rem;
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/iqiyi-logo-mobile.png") no-repeat 0px 0px;
+    background-size: 2.24rem 0.74667rem; }
+  .Blue_Top span {
+    display: block;
+    color: #699f00;
+    float: left;
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    font-weight: bold;
+    padding-left: 0.26667rem;
+    background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/searchMobile/dot.png") no-repeat 0 0.46667rem;
+    background-size: 0.13333rem 0.13333rem; }
+  .Blue_Top .maxWarp {
+    height: 60px; }
+  @media screen and (max-device-width: 768px) {
+    .Blue_Top .maxWarp {
+      height: 1.06667rem; } }
+  .Blue_Top .search {
+    height: 100%;
+    float: right; }
+    .Blue_Top .search input {
+      float: left;
+      margin-top: 15px;
+      padding-left: 15px;
+      padding-right: 5px;
+      height: 30px;
+      width: 185px;
+      display: block;
+      color: white;
+      background-color: #699f00;
+      border: 2px; }
+    .Blue_Top .search input::placeholder {
+      color: white; }
+    .Blue_Top .search button {
+      margin-top: 15px;
+      display: block;
+      float: left;
+      height: 30px;
+      width: 30px;
+      background: url("http://www.yuchenblog.cn:8080/iqiyi/resource/images/search.png") no-repeat 5px 5px;
+      padding: 5px;
+      background-size: 20px 20px;
+      background-color: #699f00; }
+    @media screen and (max-device-width: 768px) {
+      .Blue_Top .search input {
+        display: none; }
+      .Blue_Top .search button {
+        margin-right: 0.4rem;
+        margin-top: 0.18667rem;
+        background-color: inherit;
+        height: 0.53333rem;
+        width: 0.53333rem;
+        background-size: 0.53333rem 0.53333rem;
+        background-position: 0 0; } }

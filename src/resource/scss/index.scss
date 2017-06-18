@@ -360,12 +360,13 @@
     padding:(10rem/75);
     span{
       left:0;
-      margin: (10rem/75);
+      margin:(10rem/75);
       text-align: center;
       display: block;
       overflow: hidden;
       color:#333;
-      height: 128rem/75;
+      font-size: (28rem/75);
+      height: (64rem/75);
       bottom: 0;
     }
     a{
@@ -382,6 +383,7 @@
       color: white;
       background-color: rgba(0,0,0,0.5);
       margin: 0;
+      height:auto;
     }
   }
 }

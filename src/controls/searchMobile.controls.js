@@ -73,11 +73,14 @@ function createAction(type,data){
     if(toBottom >= -10){
       // 判断是否是向下滚动
       if(!preToBottom || preToBottom < toBottom){
-        store.dispatch(createAction('updateing',{
-          isUpdateing:true
-        }));
-        if(isAjaxing)
-        ajaxSearch(content,false,true);
+
+        if(isAjaxing){
+          store.dispatch(createAction('updateing',{
+            isUpdateing:true
+          }));
+            ajaxSearch(content,false,true);
+        }
+
       }
 		}
     preToBottom = toBottom;
@@ -102,6 +105,10 @@ function createAction(type,data){
           return JSON.parse(result);
       },
       onSuccess:function(result){
+        if(update)
+        store.dispatch(createAction('updateing',{
+          isUpdateing:false
+        }));
         let data = result.data,
             code = result.code,
             i,
@@ -127,6 +134,14 @@ function createAction(type,data){
           if(myhistory)
           localStorage.setItem('searchHistory',myhistory);
         }else{
+
+          if(update){
+            store.dispatch(createAction('updateing',{
+              isUpdateing:false
+            }));
+          }
+
+          isAjaxing = false;
           desc = "未搜索到相应内容";
         }
         store.dispatch(createAction(update?'updateResult':'getSearchResult',{
@@ -135,7 +150,6 @@ function createAction(type,data){
         }));
       },
       onFail:function(){
-        console.log(this);
         this.data.req_times +=1;
         this.send();
       }

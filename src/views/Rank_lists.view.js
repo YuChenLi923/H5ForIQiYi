@@ -48,7 +48,7 @@ class Rank_lists extends React.Component {
       return <div></div>;
     } else {
       if(this.isMobile) {
-        return <div id="phone_ranks">
+        return <div id="phone_ranks" className="maxWarp">
             {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
               <img src={getImgURL(e.img)} alt={e.title}/>
               <div className="phone_msg">
@@ -61,7 +61,7 @@ class Rank_lists extends React.Component {
             </div>)}
           </div>
       } else { //pc
-        return <div id="pc_ranks">
+        return <div id="pc_ranks" className="maxWarp">
           {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
             <div>
               {e.is_vip=='1'?<img src="../resource/images/vip.png" className="pc_vip" />:''}

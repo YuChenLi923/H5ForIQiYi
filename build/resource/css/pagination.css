@@ -206,7 +206,19 @@ ul {
   background: #000; }
 
 .Blue_Loading {
-  text-align: center; }
+  width: 100%;
+  color: #999;
+  top: 40%;
+  text-align: center;
+  margin-bottom: 1.5rem; }
+  .Blue_Loading .lodingImg {
+    height: 0.42667rem;
+    width: 0.42667rem;
+    margin-top: 1.5rem; }
+  .Blue_Loading .failImg {
+    height: 0.64rem;
+    width: 0.64rem;
+    margin-top: 1.5rem; }
 
 #zq_body {
   text-align: center;
@@ -214,31 +226,56 @@ ul {
   margin-left: auto;
   margin-right: auto; }
 
-.detail_item {
-  width: 25%;
-  position: relative;
-  float: left;
-  box-sizing: border-box;
-  padding: 0.13333rem; }
-  .detail_item span {
-    left: 0;
-    margin: 0.13333rem;
-    text-align: center;
-    display: block;
-    overflow: hidden;
-    color: #333;
-    bottom: 0;
-    height: 0.82667rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden; }
-  .detail_item img {
-    font-size: 0.46rem;
-    width: 100%; }
-
-#details {
+#pc_details {
   padding-top: 30px;
   padding-bottom: 30px;
   overflow: hidden;
   margin: 0 auto; }
+  #pc_details .detail_item {
+    width: 25%;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: 0.13333rem; }
+    #pc_details .detail_item div img.pc_vip {
+      position: absolute; }
+    #pc_details .detail_item div img.pc_pic {
+      font-size: 0.46rem;
+      width: 100%; }
+    #pc_details .detail_item div div.pc_msg {
+      display: none; }
+      #pc_details .detail_item div div.pc_msg span {
+        position: absolute;
+        font-size: 0.3rem;
+        bottom: -0.3rem;
+        left: 0.1rem;
+        color: #FFF; }
+    #pc_details .detail_item div:hover .pc_msg {
+      display: block; }
+    #pc_details .detail_item span {
+      left: 0;
+      text-align: center;
+      display: block;
+      overflow: hidden;
+      color: #333;
+      bottom: 0;
+      height: 0.82667rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden; }
+
+#phone_details {
+  margin-top: 3rem; }
+  #phone_details .detail_item {
+    height: 5rem;
+    width: 90%;
+    text-align: left;
+    margin: 0.6rem auto; }
+    #phone_details .detail_item img {
+      height: 5rem;
+      float: left; }
+    #phone_details .detail_item .phone_msg {
+      display: inline-block;
+      margin-left: 0.3rem;
+      clear: both; }
