@@ -94,6 +94,7 @@ function createAction(type,data){
     data.pg_num = page;
     data.page_size=scrollW>768?10:5;
     data.version = 7.5;
+    content = searchContent;
     isAjaxing = false;
     ajaxExpanding.init({
       url:searchURL,

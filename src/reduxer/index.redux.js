@@ -2,7 +2,7 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/index.view.js';
-import { getTouchDirection,config,assign } from '../libs/public';
+import { getTouchDirection,assign,getScreenSize } from '../libs/public';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
@@ -250,8 +250,8 @@ function mapDispatchToProps(dispatch) {
         },
         topDisPatch:{
           search:function(){
-            let isMobile = config.isMobile;
-            if(isMobile){
+            let width = getScreenSize().width;
+            if(width<768){
               dispatch({type:'showMobileSearch'});
             }else{
                 dispatch({type:'submit'});
