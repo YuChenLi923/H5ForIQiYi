@@ -22,12 +22,26 @@ class Rank_lists extends React.Component {
       handleData:(result)=>JSON.parse(result),
       onSuccess:(result)=>{
         var Ranks=[];
-        result.data.map(e=>{Ranks=Ranks.concat(e.video_list)})
+        console.log(result.data)
+        result.data.map((e,index)=>{if(index>0) Ranks=Ranks.concat(e.video_list)})
         this.setState({
         nodata:0,
         datas:Ranks
       })}
     }).send();
+  }
+  words_limit(str) {
+    var screenWidth = getScreenSize().width;
+
+    if(screenWidth >= 1180 && str.length>15) {
+      return str.substring(0,15)+"...";
+    }else if(screenWidth >= 768 && screenWidth < 1180 && str.length > 10){
+      return str.substring(0,15)+"...";
+    }else if(screenWidth < 768 && str.length>7){
+      return str.substring(0,7)+"...";
+    }else {
+      return str;
+    }
   }
   render() {
     if(this.state.nodata) {
@@ -35,7 +49,7 @@ class Rank_lists extends React.Component {
     } else {
       if(this.isMobile) {
         return <div id="phone_ranks">
-            {this.props.videos.map((e,index)=><div className="rank_item" key={index}>
+            {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
               <img src={getImgURL(e.img)} alt={e.title}/>
               <div className="phone_msg">
                 <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
@@ -48,7 +62,7 @@ class Rank_lists extends React.Component {
           </div>
       } else { //pc
         return <div id="pc_ranks">
-          {this.props.videos.map((e,index)=><div className="rank_item" key={index}>
+          {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
             <div>
               {e.is_vip=='1'?<img src="../resource/images/vip.png" className="pc_vip" />:''}
               <img src={getImgURL(e.img)} alt={e.title} className='pc_pic'/>
