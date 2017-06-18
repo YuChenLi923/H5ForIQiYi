@@ -1,6 +1,48 @@
 import React from 'react';
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
 import { config , getImgURL , getScreenSize } from '../libs/public';
+class Blue_Loading extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      loadFail:false
+    }
+  }
+  componentWillMount(){
+    let that = this;
+    this.timerID = setTimeout(function(){
+      that.setState({
+        loadFail:true
+      })
+    },7000);
+  }
+  componentWillUnmount(){
+    clearTimeout(this.timerID);
+  }
+  render(){
+    let loadingText = this.props.text ||'';
+    return(
+      <div className = 'Blue_Loading'>
+        {
+          this.state.loadFail&&
+          <img className = "failImg" src={config.ourHost + "/resource/images/" + 'fail.png'} />
+        }
+        {
+          this.state.loadFail&&
+          <p className = "fontSizeSS">加载失败,请重新刷新页面</p>
+        }
+        {
+          !this.state.loadFail&&
+          <img className = "lodingImg" src={config.ourHost + "/resource/images/" + 'loading.gif'} />
+        }
+        {
+          !this.state.loadFail&&
+          <p className = "fontSizeSS">{loadingText}</p>
+        }
+      </div>
+    );
+  }
+}
 
 class Rank_lists extends React.Component {
   constructor(props) {
@@ -22,7 +64,6 @@ class Rank_lists extends React.Component {
       handleData:(result)=>JSON.parse(result),
       onSuccess:(result)=>{
         var Ranks=[];
-        console.log(result.data)
         result.data.map((e,index)=>{if(index>0) Ranks=Ranks.concat(e.video_list)})
         this.setState({
         nodata:0,
@@ -45,39 +86,46 @@ class Rank_lists extends React.Component {
   }
   render() {
     if(this.state.nodata) {
-      return <div></div>;
+      return   <Blue_Loading text="正在加载"/>;
     } else {
       if(this.isMobile) {
-        return <div id="phone_ranks" className="maxWarp">
-            {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
-              <img src={getImgURL(e.img)} alt={e.title}/>
-              <div className="phone_msg">
-                <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
-                <br/>
-                <span className="fontSizeS">播放量：{e.play_count_text}</span>
-                <br/>
-                <span className="fontSizeS">类型：{e.is_vip=='1'?"VIP":"免费"}</span>
-              </div>
-            </div>)}
-          </div>
+        return
+         (<div id="phone_ranks" className="maxWarp">
+            {
+              this.state.datas.map((e,index)=>
+              <div className="rank_item" key={index}>
+                <img src={getImgURL(e.img)} alt={e.title}/>
+                <div className="phone_msg">
+                  <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
+                  <br/>
+                  <span className="fontSizeS">播放量：{e.play_count_text}</span>
+                  <br/>
+                  <span className="fontSizeS">类型：{e.is_vip=='1'?"VIP":"免费"}</span>
+                </div>
+              </div>)
+            }
+          </div>)
       } else { //pc
         return <div id="pc_ranks" className="maxWarp">
-          {this.state.datas.map((e,index)=><div className="rank_item" key={index}>
-            <div>
-              {e.is_vip=='1'?<img src="../resource/images/vip.png" className="pc_vip" />:''}
-              <img src={getImgURL(e.img)} alt={e.title} className='pc_pic'/>
-              <div className="pc_msg" style={{
-                width:'5.197rem',
-                height:'3.898rem',
-                position:'absolute',
-                top:'0.15rem',
-                background:'rgba(150,150,150,0.6)'
-              }}>
-                <span>播放量：{e.play_count_text}</span>
+          {
+            this.state.datas.map((e,index)=>
+            <div className="rank_item" key={index}>
+              <div>
+                {e.is_vip=='1'?<img src="../resource/images/vip.png" className="pc_vip" />:''}
+                <img src={getImgURL(e.img)} alt={e.title} className='pc_pic'/>
+                <div className="pc_msg" style={{
+                  width:'5.197rem',
+                  height:'3.898rem',
+                  position:'absolute',
+                  top:'0.15rem',
+                  background:'rgba(150,150,150,0.6)'
+                }}>
+                  <span>播放量：{e.play_count_text}</span>
+                </div>
               </div>
-            </div>
             <span  className="fontSizeS" title={e.title}>{this.words_limit(e.short_title)}</span>
-          </div>)}
+            </div>)
+        }
         </div>
       }
     }
