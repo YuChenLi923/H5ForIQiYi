@@ -86,26 +86,29 @@ class Rank_lists extends React.Component {
   }
   render() {
     if(this.state.nodata) {
+      console.log('a')
       return   <Blue_Loading text="正在加载"/>;
     } else {
+      console.log("b")
       if(this.isMobile) {
-        return
-         (<div id="phone_ranks" className="maxWarp">
-            {
-              this.state.datas.map((e,index)=>
-              <div className="rank_item" key={index}>
-                <img src={getImgURL(e.img)} alt={e.title}/>
-                <div className="phone_msg">
-                  <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
-                  <br/>
-                  <span className="fontSizeS">播放量：{e.play_count_text}</span>
-                  <br/>
-                  <span className="fontSizeS">类型：{e.is_vip=='1'?"VIP":"免费"}</span>
-                </div>
-              </div>)
-            }
-          </div>)
+        console.log('c')
+        return <div id="phone_ranks" className="maxWarp">
+          {
+            this.state.datas.map((e,index)=>
+            <div className="rank_item" key={index}>
+              <img src={getImgURL(e.img)} alt={e.title}/>
+              <div className="phone_msg">
+                <span className="fontSizeS" title={e.title}>名称：{this.words_limit(e.short_title)}</span>
+                <br/>
+                <span className="fontSizeS">播放量：{e.play_count_text}</span>
+                <br/>
+                <span className="fontSizeS">类型：{e.is_vip=='1'?"VIP":"免费"}</span>
+              </div>
+            </div>)
+          }
+        </div>
       } else { //pc
+        console.log('d')
         return <div id="pc_ranks" className="maxWarp">
           {
             this.state.datas.map((e,index)=>
