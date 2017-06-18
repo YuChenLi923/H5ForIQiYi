@@ -6,9 +6,6 @@
 
  [已部署至服务器，点击这个链接](http://www.yuchenblog.cn:8080/iqiyi/index.html)
 
-## github
-
- [github](http://www.yuchenblog.cn:8080/iqiyi/index.html)
 
 ## 项目目录结构
 
