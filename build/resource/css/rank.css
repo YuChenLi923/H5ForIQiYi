@@ -159,7 +159,8 @@ ul {
 
 .Blue_Top {
   height: 1.06667rem;
-  background-color: #333; }
+  background-color: #333;
+  overflow: hidden; }
   .Blue_Top .logo {
     height: 0.74667rem;
     width: 2.24rem;
