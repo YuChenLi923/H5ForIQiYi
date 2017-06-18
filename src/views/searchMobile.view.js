@@ -1,5 +1,5 @@
 import React from 'react';
-import { getImgURL,config } from '../libs/ajax.public';
+import { getImgURL,config } from '../libs/public';
 // 评分组件
 class Blue_Score extends React.Component{
 	_createStar(startNum,sum){
@@ -166,7 +166,7 @@ class Blue_SearchMobile extends React.Component{
 					}
 					{!isShow&&!isSearching&&
 							<footer className = "fontSizeSS">
-											蓝山工作室15级前端组制作
+											蓝山车队小组制作
 								</footer>
 					}
 

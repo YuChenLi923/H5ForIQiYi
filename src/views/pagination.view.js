@@ -93,7 +93,7 @@ class Blue_Container extends React.Component{
                   <Zq {...DetailsState}/>
                 </div>
                 <footer className = "fontSizeSS">
-                    蓝山工作室15级前端组制作
+                    蓝山车队小组制作
                 </footer>
             </div>
         );

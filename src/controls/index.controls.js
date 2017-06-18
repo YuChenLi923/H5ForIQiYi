@@ -1,5 +1,5 @@
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize, getlimitStr,getImgURL } from '../libs/ajax.public';
+import { config , getScreenSize, getlimitStr,getImgURL } from '../libs/public';
 import store from '../reduxer/index.redux';
 // 全局常量
 const win = window,
@@ -89,6 +89,7 @@ function createAction(type,data){
 (function(){
   let getCarouselURL = host + '/openapi/realtime/recommend',
       data = publicData;
+      data.psp_uid = '213131';
   ajaxExpanding.init({
     name:'getNavList',
     dataType:'json',
@@ -166,7 +167,7 @@ function setCardInf(data,type){
       title = data.title,
       id = data.channel_id,
       videos = data.video_list,
-      len = videos.length;
+      len = type == '资讯'?4:videos.length;
   for( i = 0 ;  i < len ; i++){
     item = {
       src:'#',
@@ -185,6 +186,7 @@ function setCardInf(data,type){
     }
     items.push(item);
   }
+
   card.id  = id;
   card.title = title;
   card.items = items;

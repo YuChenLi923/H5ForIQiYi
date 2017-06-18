@@ -1,8 +1,10 @@
 # H5ForIQiYi
 
-
-
 这是为2017爱奇艺全国高校技术大赛准备的H5应用。
+
+## 展示
+
+ [已部署至服务器，点击这个个链接](http://www.yuchenblog.cn:8080/iqiyi/index.html)
 
 
 ## 项目目录结构
@@ -26,7 +28,7 @@
     │    │
     │    ├──  pages/  页面HTML文件
     │    │
-    │	 └──  views/   打包后的JS文件
+    │	 └──  controls/   打包后的JS文件
     │
     │        
     ├── src/ 源文件
@@ -86,10 +88,3 @@ npm run hot-run
 npm run hot-build
 
 ```
-
-
-## 开发注意
-
-- 所有html文件必须引用ajax.config.js文件,这个文件目前可以输出1个config对象和3个工具函数，同时会自动设置rem的大小。
-- 长度单位使用rem,1rem = 75px(以Ipone6为参考)
-- 关于字体大小，这里我提供了几种不同的尺寸，引用相应的样式即可，已经做了适配了。

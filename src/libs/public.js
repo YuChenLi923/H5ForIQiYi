@@ -13,7 +13,6 @@ const appConfig = {
       gpu: "",
       mem:"50.4MB"
     },
-
     net_sts:1,
     scrn_sts:1,
     scrn_res:"1334*750",
@@ -36,6 +35,12 @@ win = window,
 docEl = doc.documentElement,
 metaEl = doc.querySelector('meta[name="viewport"]');
 
+// 更新config
+
+function updateConfig(){
+  getDeviceInf();
+  return appConfig;
+}
 
 // 获取设备信息
 (function getDeviceInf(){
@@ -49,7 +54,6 @@ metaEl = doc.querySelector('meta[name="viewport"]');
       scale = 1,
       mobileSystemV = 0;
   // 是手机
-
   if(isAndroid || isIPhone ){
       mobileSystemV = isAndroid?isAndroid[1]:isIPhone[1];
   }
@@ -74,7 +78,6 @@ metaEl = doc.querySelector('meta[name="viewport"]');
     appConfig.imgSzie = '_180_236';
     appConfig.isMobile = true;
   }
-
   appConfig.scale = scale;
   appConfig.dpr = dpr;
   appConfig.width = width;
@@ -89,7 +92,6 @@ metaEl = doc.querySelector('meta[name="viewport"]');
 function getScreenSize(){
    let width = docEl.getBoundingClientRect().width,
        height = docEl.clientHeight;
-
     if(width*appConfig.scale>=768){
        appConfig.imgSzie = '_480_360';
        appConfig.isMobile = false;
@@ -98,7 +100,6 @@ function getScreenSize(){
        appConfig.isMobile = true;
     }
     updateRem(width,appConfig.dpr);
-
     return {
       width:Math.ceil(width*appConfig.scale),
       height:Math.ceil(height*appConfig.scale)
@@ -189,12 +190,16 @@ function getlimitStr(str,limitLen,suffix){
 
 // 处理适配图片问题
 
-function getImgURL(url){
+function getImgURL(url,size){
   let suffixStart = url.lastIndexOf('.',url.length),
       imgURL = url.substring(0,suffixStart),
-      suffix = url.substring(suffixStart,url.length);
-
-  return imgURL + appConfig.imgSzie + suffix + '?sign=iqiyi';
+      suffix = url.substring(suffixStart,url.length),
+      newURL;
+  if(size)
+    newURL = imgURL + size + suffix + '?sign=iqiyi';
+  else
+    newURL = imgURL + appConfig.imgSzie + suffix + '?sign=iqiyi';
+  return newURL;
 }
 module.exports = {
     config:appConfig,
@@ -203,5 +208,6 @@ module.exports = {
     getScreenSize:getScreenSize,
     getTouchDirection:getTouchDirection,
     getlimitStr:getlimitStr,
-    assign:assign
+    assign:assign,
+    updateConfig:updateConfig
 };

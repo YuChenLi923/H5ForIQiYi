@@ -1,0 +1,193 @@
+// 通用部分
+@import "public.scss";
+#pc_ranks {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow: hidden;
+  margin: 0 auto;
+
+  .rank_item {
+    width: 25%;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: (10rem/75);
+
+    div {
+
+      img.pc_vip {
+        position: absolute;
+      }
+
+      img.pc_pic {
+        font-size: 0.46rem;
+        width: 100%;
+      }
+
+      div.pc_msg {
+        display: none;
+        span {
+          position: absolute;
+          font-size: 0.3rem;
+          bottom: -0.3rem;
+          left: 0.1rem;
+          color: #FFF;
+        }
+      }
+    }
+    div:hover .pc_msg {
+      display: block;
+    }
+
+    span {
+      left: 0;
+      text-align: center;
+      display: block;
+      overflow: hidden;
+      color: #333;
+      bottom: 0;
+      height: (62rem/75);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+}
+
+#phone_ranks {
+  margin-top: 3rem;
+  .rank_item {
+    // float: left;/
+    height: 5rem;
+    width: 90%;
+    text-align: left;
+    margin: 0.6rem auto;
+    // background: red;
+    img {
+      height: 5rem;
+      float: left;
+    }
+    .phone_msg {
+      display: inline-block;
+      margin-left: 0.3rem;
+      clear: both;
+      span {}
+    }
+  }
+}
+.Blue_Loading{
+  width: 100%;
+
+  color:#999;
+  top: 40%;
+  text-align: center;
+
+  .lodingImg{
+    height: (32rem/75);
+    width:(32rem/75);
+  }
+  .failImg{
+    height: (48rem/75);
+    width:(48rem/75);
+  }
+}
+// 顶级容器
+.Blue_Container{
+  #body{
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header{
+    top:0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+  }
+  footer{
+    padding-top:15px;
+    padding-bottom:15px;
+    color:#999;
+    text-align:center;
+    background:#000;
+    margin-top: 10px;
+  }
+}
+
+.Blue_Top{
+  height: (80rem/75);
+  background-color:#333;
+  .logo{
+      height:(56rem/75);
+      width: (168rem/75);
+      margin-top: (12rem/75);
+      margin-left: (10rem/75);
+      background:url($host + 'iqiyi-logo-mobile.png') no-repeat 0px 0px;
+      background-size:(168rem/75) (56rem/75);
+  }
+  span{
+    display:block;
+    color: #699f00;
+    float: left;
+    height: (80rem/75);
+    line-height: (80rem/75);
+    font-weight: bold;
+    padding-left: (20rem/75);
+    background: url($host + 'searchMobile/dot.png') no-repeat 0 (35rem/75);
+    background-size: (10rem/75) (10rem/75);
+  }
+  .maxWarp{
+    height:60px;
+  }
+
+  @media screen and (max-device-width: 768px){
+    .maxWarp{
+      height:(80rem/75);
+    }
+  }
+  .search{
+    height: 100%;
+    float: right;
+    input{
+      float:left;
+      margin-top: 15px;
+      padding-left: 15px;
+      padding-right: 5px;
+      height: 30px;
+      width: 185px;
+      display: block;
+      color:white;
+      background-color: #699f00;
+      border: 2px;
+    }
+    input::placeholder{
+      color:white;
+    }
+    button{
+      margin-top: 15px;
+      display: block;
+      float:left;
+      height: 30px;
+      width: 30px;
+      background:url($host + 'search.png') no-repeat 5px 5px;
+      padding: 5px;
+      background-size:20px 20px;
+      background-color: #699f00;
+    }
+    @media screen and (max-device-width: 768px){
+      input{
+        display: none;
+      }
+      button{
+          margin-right: (30rem/75);
+          margin-top: (14rem/75);
+          background-color: inherit;
+          height:(40rem/75);
+          width: (40rem/75);
+          background-size:(40rem/75) (40rem/75);
+          background-position: 0 0;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/pagination.view.js';
-import { config,assign,getScreenSize } from '../libs/ajax.public';
+import { config,assign,getScreenSize } from '../libs/public';
 import ReactDOM from 'react-dom';
 import React from 'react';
 let   isLocalStorage = !!window.localStorage;

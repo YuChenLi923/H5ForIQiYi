@@ -1,6 +1,6 @@
 import React from 'react';
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getImgURL , getScreenSize } from '../libs/ajax.public';
+import { config , getImgURL , getScreenSize } from '../libs/public';
 
 class Rank_lists extends React.Component {
   constructor(props) {
@@ -11,9 +11,8 @@ class Rank_lists extends React.Component {
       nodata:1
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     var send_data=config.publicData;
-
     ajaxExpanding.init({
       url: config.host+'/openapi/realtime/recommend',
       data: send_data,
@@ -23,12 +22,12 @@ class Rank_lists extends React.Component {
       handleData:(result)=>JSON.parse(result),
       onSuccess:(result)=>{
         var Ranks=[];
-        result.data.map(e=>{Ranks=Rank.concat(e.video_list)})
+        result.data.map(e=>{Ranks=Ranks.concat(e.video_list)})
         this.setState({
         nodata:0,
         datas:Ranks
       })}
-    })
+    }).send();
   }
   render() {
     if(this.state.nodata) {

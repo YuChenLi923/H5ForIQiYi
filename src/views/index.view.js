@@ -1,5 +1,5 @@
 import React from 'react';
-import { config } from '../libs/ajax.public';
+import { config } from '../libs/public';
 // 导航栏
 class Blue_NavList extends React.Component{
     constructor(props){
@@ -106,7 +106,7 @@ class Blue_Carousel extends React.Component{
             }
           }
         }
-				<div className="nav">
+				<div className={len>0?'nav':''}>
 					<ul className="control" >
 						<ul className="showNav">
 							{navShow}
@@ -141,7 +141,7 @@ class Blue_CardBox extends React.Component{
             <img  src={items[i].img} />
             {
               items[i].extText&&
-              <span className = "extText">{items[i].extText}</span>
+              <span className = "extText fontSizeSS">{items[i].extText}</span>
             }
           </a>
           <span>{items[i].title}</span>
@@ -228,14 +228,14 @@ class Blue_Top extends React.Component{
         <div className = "Blue_Top">
             <div className = "maxWarp">
               <a href="#"><span className="logo"></span></a>
-              <div className="login fontSizeM">
-                 <span>登录</span>
-              </div>
                <div className = "search">
                   <input placeholder = "请输入你想搜索的内容" onInput = {input} onKeyPress = {keyPress}/>
                   <button onClick = {search} ></button>
                </div>
-
+               <a href="pages/rank.html"><span className="fontSizeSS rank">
+                排行榜
+               </span>
+               </a>
             </div>
         </div>
       );
@@ -271,7 +271,7 @@ class Blue_Container extends React.Component{
 
                 </div>
                 <footer className = "fontSizeSS">
-                    蓝山工作室15级前端组制作
+                    蓝山车队小组制作
                 </footer>
             </div>
         );

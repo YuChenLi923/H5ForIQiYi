@@ -162,8 +162,22 @@
   }
 }
 
-.Blue_Loading {
+.Blue_Loading{
+  width: 100%;
+  color:#999;
+  top: 40%;
   text-align: center;
+  margin-bottom: 1.5rem;
+  .lodingImg{
+    height: (32rem/75);
+    width:(32rem/75);
+    margin-top: 1.5rem;
+  }
+  .failImg{
+    height: (48rem/75);
+    width:(48rem/75);
+    margin-top: 1.5rem;
+  }
 }
 
 // ZQ item
@@ -252,4 +266,3 @@
     }
   }
 }
-

@@ -1,5 +1,5 @@
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config ,  getScreenSize ,parseURLQuery } from '../libs/ajax.public';
+import { config ,  getScreenSize ,parseURLQuery } from '../libs/public';
 import store from '../reduxer/pagination.redux';
 let  tid,
      scrollW = getScreenSize().width;

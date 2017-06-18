@@ -4,7 +4,7 @@
  *
 **/
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getScreenSize ,parseURLQuery , getlimitStr ,getImgURL} from '../libs/ajax.public';
+import { config , getScreenSize ,parseURLQuery , getlimitStr ,getImgURL} from '../libs/public';
 import store from '../reduxer/searchMobile.redux';
 // 全局常量
 const win = window,
@@ -58,6 +58,8 @@ function createAction(type,data){
 		     viewHeight =Math.min(document.documentElement.scrollHeight,document.documentElement.clientHeight),
 		     docHeight=Math.max(document.documentElement.scrollHeight,document.documentElement.clientHeight),
          toBottom = scrollTop-docHeight+viewHeight;
+
+    // 显示置顶按钮
     if(scrollTop > 700 ){
       store.dispatch(createAction('showTop',{
         showTop:true
@@ -67,7 +69,9 @@ function createAction(type,data){
           showTop:false
         }));
     }
+    // 到达页面底部，更新数据
     if(toBottom >= -10){
+      // 判断是否是向下滚动
       if(!preToBottom || preToBottom < toBottom){
         store.dispatch(createAction('updateing',{
           isUpdateing:true
@@ -117,7 +121,7 @@ function createAction(type,data){
             items.push({
               title:getlimitStr(data[i].short_title,limitLen),
               score:data[i].sns_score,
-              img:data[i].img
+              img:getImgURL(data[i].img,'_180_236')
             });
           }
           if(myhistory)

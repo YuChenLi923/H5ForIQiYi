@@ -74,10 +74,10 @@
       background:url($host + 'iqiyi-logo.png') no-repeat 0 0px ;
       background-size: 100% 100%;
   }
-  .login{
+  .rank{
     float: right;
     color:white;
-    margin-top: 20px;
+    margin-top: 23px;
     margin-left: 20px;
     margin-right: 10px;
   }
@@ -92,6 +92,9 @@
     }
     .maxWarp{
       height:(80rem/75);
+    }
+    .rank{
+      margin-top: (23rem/75);
     }
   }
   .search{
@@ -362,6 +365,7 @@
       display: block;
       overflow: hidden;
       color:#333;
+      height: 128rem/75;
       bottom: 0;
     }
     a{

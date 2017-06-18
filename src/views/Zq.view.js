@@ -1,6 +1,6 @@
 import React from 'react';
 import { ajaxExpanding } from '../libs/ajaxExpand.mini.min.js';
-import { config , getImgURL , getScreenSize } from '../libs/ajax.public';
+import { config , getImgURL , getScreenSize } from '../libs/public';
 // 中间部分
 ajaxExpanding.init({
   name:'getDetails',
@@ -27,7 +27,7 @@ class Blue_Loading extends React.Component{
       this.setState({
         loadFail:true
       })
-    },5000);
+    },8000);
   }
   componentWillUnmount(){
     clearTimeout(this.timerID);
@@ -69,9 +69,15 @@ class Page_body extends React.Component {
   }
 
   words_limit(str) {
-    if(str.length>10) {
-      return str.substring(0,10)+"...";
-    } else {
+    var screenWidth = getScreenSize().width;
+
+    if(screenWidth >= 1180 && str.length>15) {
+      return str.substring(0,15)+"...";
+    }else if(screenWidth >= 768 && screenWidth < 1180 && str.length > 10){
+      return str.substring(0,15)+"...";
+    }else if(screenWidth < 768 && str.length>7){
+      return str.substring(0,7)+"...";
+    }else {
       return str;
     }
   }

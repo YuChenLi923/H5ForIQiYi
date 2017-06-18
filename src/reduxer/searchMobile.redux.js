@@ -1,8 +1,7 @@
-
 import { createStore,combineReducers,dispatch } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { Blue_Container } from '../views/searchMobile.view.js';
-import { assign } from '../libs/ajax.public';
+import { assign } from '../libs/public';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
@@ -204,7 +203,7 @@ function mapDispatchToProps(dispatch) {
         dispatch({type:'empty'});
       },
       toTop:function(){
-        scrollTo(0,0);		
+        scrollTo(0,0);
       },
       clickHistory:function(value){
         dispatch({type:'clickHistory',value:value});
